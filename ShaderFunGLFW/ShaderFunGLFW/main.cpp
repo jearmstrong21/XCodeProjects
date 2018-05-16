@@ -12,17 +12,7 @@
 #include <GLFW/glfw3.h>
 #include "shaders.hpp"
 
-#include <chrono>
-
-// ...
-
-using namespace std::chrono;
-milliseconds getMillis(){
-    return duration_cast< milliseconds >(system_clock::now().time_since_epoch());
-}
-
 int main(int argc, const char * argv[]) {
-    
     if(!glfwInit()){
         return -1;
     }
@@ -77,30 +67,41 @@ int main(int argc, const char * argv[]) {
     glBindBuffer(GL_ARRAY_BUFFER, 0);
     glBindVertexArray(0);
     int numFrames=0;
-    milliseconds start,end;
+    
+    double start,end,diff,fps;
     while(!glfwWindowShouldClose(window)){
-        start=getMillis();
+        start=glfwGetTime();
         glClearColor(0.25,0.25,0.25,1.0);
         glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
+        GLint doMandelbrot=glGetUniformLocation(shaderProg, "doMandelbrot");
+        GLint xOffScale=glGetUniformLocation(shaderProg, "xOffScale");
+        GLint yOffScale=glGetUniformLocation(shaderProg, "yOffScale");
+        GLint maxIters=glGetUniformLocation(shaderProg, "maxIters");
+        GLint doHSB=glGetUniformLocation(shaderProg, "doHSB");
+        glUniform1i(doMandelbrot, false);
+        glUniform1f(xOffScale,0.8);
+        glUniform1f(yOffScale,0);
+        glUniform1f(maxIters,10);
+        glUniform1i(doHSB, true);
         glUseProgram(shaderProg);
         glBindVertexArray(VAO);
         glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
-        
-//        printf("END RENDER: ");
-        std::cout<<numFrames;
-        printf("\n");
+
         numFrames++;
         
         glfwSwapBuffers(window);
         glfwPollEvents();
-        end=getMillis();
-        std::cout<<(end.count()-start.count())<<"\n";
+        end=glfwGetTime();
+        diff=end-start;//Seconds Per Frame
+        fps=1.0/diff;
+//        std::cout<<"FPS: "<<fps<<"\n";
+//        glfwSetWindowTitle(window, std::string("Title, frameRate=").append(fps));
     }
     glDeleteVertexArrays(1, &VAO);
     glDeleteBuffers(1, &VBO);
     glDeleteBuffers(1, &EBO);
     glfwTerminate();
-
+    
     
     return 0;
 }

@@ -1,6 +1,12 @@
-
 #version 330 core
 out vec4 FragColor;
+
+uniform bool doMandelbrot;
+uniform float xOffScale;
+uniform float yOffScale;
+uniform float maxIters;
+uniform bool doHSB;
+
 vec3 hsv2rgb(vec3 c)
 {
     vec4 K = vec4(1.0, 2.0 / 3.0, 1.0 / 3.0, 3.0);
@@ -17,16 +23,18 @@ void main()
     float newX;
     float newY;
     float i=0.0;
-    float maxIters=10.0;
-    while(i<maxIters&&x*x+y*y<4){
+    while(i<maxIters&&x*x+y*y<1600){
         newX=x*x-y*y;
         newY=2.0*x*y;
-        x=newX+0.8;
-        y=newY+0.8;
+        if(doMandelbrot){
+            x=newX+origX*xOffScale;
+            y=newY+origY*yOffScale;
+        }else{
+            x=newX+xOffScale;
+            y=newY+yOffScale;
+        }
         i+=1.0;
     }
-//    FragColor=vec4(i/maxIters,i/maxIters,i/maxIters,1.0);
-    FragColor=vec4(hsv2rgb(vec3(i/maxIters,1.0,1.0),1.0);
-//    FragColor=vec4(origX,origY,0.0,1.0);
-//    FragColor = vec4(gl_FragCoord.xyz/1000.0,1.0);
+    if(doHSB)FragColor=vec4(hsv2rgb(vec3(i/maxIters,0.75,1.0)),1.0);
+    else FragColor=vec4(i/maxIters,i/maxIters,i/maxIters,1.0);
 }
