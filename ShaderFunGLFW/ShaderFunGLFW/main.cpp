@@ -7,10 +7,13 @@
 //
 
 #include <iostream>
-#include <stdio.h>
+#include <cstdio>
+#include <cmath>
 #include <OpenGL/gl3.h>
 #include <GLFW/glfw3.h>
 #include "shaders.hpp"
+#include "ShaderProgram.hpp"
+#include "MandelbrotProgram.hpp"
 
 int main(int argc, const char * argv[]) {
     if(!glfwInit()){
@@ -26,7 +29,8 @@ int main(int argc, const char * argv[]) {
         glfwTerminate();
         return -1;
     }
-    
+//    ShaderProgram shaderProgram=MandelbrotProgram();//its not finding the constructor
+    MandelbrotProgram shaderProgram;
     glfwMakeContextCurrent(window);
     printf("Version: ");
     std::cout<<glGetString(GL_VERSION);
@@ -35,12 +39,12 @@ int main(int argc, const char * argv[]) {
     std::cout<<glGetString(GL_RENDERER);
     printf("\n");
     
-    int shaderFrag=compileShader(GL_FRAGMENT_SHADER, "shader.frag");
-    int shaderVert=compileShader(GL_VERTEX_SHADER  , "shader.vert");
-    int shaderProg=compileProgram(shaderFrag, shaderVert);
+//    int shaderFrag=compileShader(GL_FRAGMENT_SHADER, "Shaders/shader.frag");
+//    int shaderVert=compileShader(GL_VERTEX_SHADER  , "Shaders/shader.vert");
+//    int shaderProg=compileProgram(shaderFrag, shaderVert);
     
-    glDeleteShader(shaderFrag);
-    glDeleteShader(shaderVert);
+//    glDeleteShader(shaderFrag);
+//    glDeleteShader(shaderVert);
     float marg=1;
     float vertices[] = {
         marg,  marg, 0.0f,  // top right
@@ -69,21 +73,28 @@ int main(int argc, const char * argv[]) {
     int numFrames=0;
     
     double start,end,diff,fps;
+    shaderProgram.compile();
     while(!glfwWindowShouldClose(window)){
         start=glfwGetTime();
         glClearColor(0.25,0.25,0.25,1.0);
         glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
-        GLint doMandelbrot=glGetUniformLocation(shaderProg, "doMandelbrot");
-        GLint xOffScale=glGetUniformLocation(shaderProg, "xOffScale");
-        GLint yOffScale=glGetUniformLocation(shaderProg, "yOffScale");
-        GLint maxIters=glGetUniformLocation(shaderProg, "maxIters");
-        GLint doHSB=glGetUniformLocation(shaderProg, "doHSB");
-        glUniform1i(doMandelbrot, false);
-        glUniform1f(xOffScale,0.8);
-        glUniform1f(yOffScale,0);
-        glUniform1f(maxIters,10);
-        glUniform1i(doHSB, true);
-        glUseProgram(shaderProg);
+//        shaderProgram.glAssignParams();
+//        shaderProgram.glBind();
+//        int MANDELBROT=0;
+//        int JULIA=1;
+//        GLint fractalType=glGetUniformLocation(shaderProg, "fractalType");
+//        GLint xOffScale=glGetUniformLocation(shaderProg, "xOffScale");
+//        GLint yOffScale=glGetUniformLocation(shaderProg, "yOffScale");
+//        GLint maxIters=glGetUniformLocation(shaderProg, "maxIters");
+//        GLint doHSB=glGetUniformLocation(shaderProg, "doHSB");
+//        glUniform1i(fractalType, MANDELBROT);
+//        glUniform1f(xOffScale,1);
+//        glUniform1f(yOffScale,1);
+//        glUniform1f(maxIters,cos(start*2)*20+25);
+//        glUniform1i(doHSB, false);
+//        glUseProgram(shaderProg);
+        shaderProgram.glAssignParams();
+        shaderProgram.glBind();
         glBindVertexArray(VAO);
         glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 
@@ -97,6 +108,7 @@ int main(int argc, const char * argv[]) {
 //        std::cout<<"FPS: "<<fps<<"\n";
 //        glfwSetWindowTitle(window, std::string("Title, frameRate=").append(fps));
     }
+    shaderProgram.unBind();
     glDeleteVertexArrays(1, &VAO);
     glDeleteBuffers(1, &VBO);
     glDeleteBuffers(1, &EBO);

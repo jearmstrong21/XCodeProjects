@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5A05F1C520ABD2E20079271D /* ShaderProgram.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A05F1C320ABD2E20079271D /* ShaderProgram.cpp */; };
+		5A90040920AD25410056B9F0 /* MandelbrotProgram.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A90040520AD25410056B9F0 /* MandelbrotProgram.cpp */; };
 		5AF3F61720AB6F400006A807 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5AF3F61620AB6F400006A807 /* main.cpp */; };
 		5AF3F61F20AB6F4E0006A807 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AF3F61E20AB6F4E0006A807 /* OpenGL.framework */; };
 		5AF9C3F820AB7B41008E8F08 /* libglfw.3.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AF9C3F720AB7B41008E8F08 /* libglfw.3.2.dylib */; };
@@ -29,6 +31,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		5A05F1C320ABD2E20079271D /* ShaderProgram.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ShaderProgram.cpp; sourceTree = "<group>"; };
+		5A05F1C420ABD2E20079271D /* ShaderProgram.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ShaderProgram.hpp; sourceTree = "<group>"; };
+		5A90040520AD25410056B9F0 /* MandelbrotProgram.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MandelbrotProgram.cpp; sourceTree = "<group>"; };
+		5A90040620AD25410056B9F0 /* MandelbrotProgram.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = MandelbrotProgram.hpp; sourceTree = "<group>"; };
+		5A90040720AD25410056B9F0 /* shader.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = shader.vert; sourceTree = "<group>"; };
+		5A90040820AD25410056B9F0 /* shader.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = shader.frag; sourceTree = "<group>"; };
 		5AF3F61320AB6F400006A807 /* ShaderFunGLFW */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ShaderFunGLFW; sourceTree = BUILT_PRODUCTS_DIR; };
 		5AF3F61620AB6F400006A807 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		5AF3F61E20AB6F4E0006A807 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
@@ -37,8 +45,6 @@
 		5AF3F63420AB75810006A807 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
 		5AF3F63920AB76040006A807 /* libglfw.3.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libglfw.3.2.dylib; path = ../../../../../usr/local/Cellar/glfw/3.2.1/lib/libglfw.3.2.dylib; sourceTree = "<group>"; };
 		5AF9C3F720AB7B41008E8F08 /* libglfw.3.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libglfw.3.2.dylib; path = ../../../../../usr/local/lib/libglfw.3.2.dylib; sourceTree = "<group>"; };
-		5AF9C3FC20AB7E84008E8F08 /* shader.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = shader.frag; sourceTree = "<group>"; };
-		5AF9C3FD20AB7E8D008E8F08 /* shader.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = shader.vert; sourceTree = "<group>"; };
 		5AF9C3FE20AB7F54008E8F08 /* shaders.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = shaders.cpp; sourceTree = "<group>"; };
 		5AF9C3FF20AB7F54008E8F08 /* shaders.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = shaders.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -79,11 +85,15 @@
 		5AF3F61520AB6F400006A807 /* ShaderFunGLFW */ = {
 			isa = PBXGroup;
 			children = (
+				5A90040520AD25410056B9F0 /* MandelbrotProgram.cpp */,
+				5A90040620AD25410056B9F0 /* MandelbrotProgram.hpp */,
+				5A90040820AD25410056B9F0 /* shader.frag */,
+				5A90040720AD25410056B9F0 /* shader.vert */,
 				5AF3F61620AB6F400006A807 /* main.cpp */,
-				5AF9C3FC20AB7E84008E8F08 /* shader.frag */,
-				5AF9C3FD20AB7E8D008E8F08 /* shader.vert */,
 				5AF9C3FE20AB7F54008E8F08 /* shaders.cpp */,
 				5AF9C3FF20AB7F54008E8F08 /* shaders.hpp */,
+				5A05F1C320ABD2E20079271D /* ShaderProgram.cpp */,
+				5A05F1C420ABD2E20079271D /* ShaderProgram.hpp */,
 			);
 			path = ShaderFunGLFW;
 			sourceTree = "<group>";
@@ -157,7 +167,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A05F1C520ABD2E20079271D /* ShaderProgram.cpp in Sources */,
 				5AF9C40020AB7F54008E8F08 /* shaders.cpp in Sources */,
+				5A90040920AD25410056B9F0 /* MandelbrotProgram.cpp in Sources */,
 				5AF3F61720AB6F400006A807 /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
