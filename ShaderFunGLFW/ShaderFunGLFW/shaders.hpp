@@ -14,7 +14,7 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
-//#include <OpenGL/OpenGL.h>
+#include <OpenGL/gl3.h>
 #include <glfw3.h>
 
 std::string readFileStr(std::string fileName);

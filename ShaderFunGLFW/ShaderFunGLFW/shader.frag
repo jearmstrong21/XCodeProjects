@@ -18,6 +18,13 @@ vec3 hsv2rgb(vec3 c)
 }
 void main()
 {
+//    int fractalType=0;
+//    float xOffScale=1;
+//    float yOffScale=1;
+//    float maxIters=50;
+//    bool doHSB=false;
+//    bool doSmooth=true;
+    
     vec3 coord=gl_FragCoord.xyz/1000.0;
     float origX=2.0*(coord.x-1);
     float origY=2.0*(coord.y-1);
@@ -26,12 +33,12 @@ void main()
     float newX;
     float newY;
     float i=0.0;
-    while(i<maxIters&&x*x+y*y<1600){
+    while(i<maxIters-1&&x*x+y*y<1600){
         newX=x*x-y*y;
         newY=2.0*x*y;
         if(fractalType==0){
-            x=newX+origX*1.0;
-            y=newY+origY*1.0;
+            x=newX+origX*xOffScale;
+            y=newY+origY*yOffScale;
         }else if(fractalType==1){
             x=newX+xOffScale;
             y=newY+yOffScale;
@@ -43,10 +50,18 @@ void main()
         i += nsmooth;
     }
     //    i=round(i/30.0)*30;
-    if(doHSB)FragColor=vec4(hsv2rgb(vec3(i/maxIters,0.75,1.0)),1.0);
+    if(doHSB)FragColor=vec4(hsv2rgb(vec3(i/maxIters,0.5,1.0)),1.0);
     else FragColor=vec4(i/maxIters,i/maxIters,i/maxIters,1.0);
-    //    if(i<maxIters)FragColor=vec4(0.0,0.0,0.0,0.0);å
-    
+//    FragColor=vec4(gl_FragCoord.xyz/1000.0,1.0);
+//    FragColor=vec4(fractalType,fractalType,fractalType,1.0);
+    //    if(i<maxIters)FragColor=vec4(0.0,0.0,0.0,0.0);
+//    float fx=gl_FragCoord.x/1000.0;
+//    float fy=gl_FragCoord.y/1000.0;
+//    fx=fract(fx*100.0);
+//    fy=fract(fy*100.0);
+//    if(fx<0.1||fy<0.1)FragColor=vec4(1.0-FragColor.x,1.0-FragColor.y,1.0-FragColor.z,1.0);;
+//    if(abs(origX)<0.01||abs(origY)<0.01)FragColor=vec4(1.0,1.0,1.0,1.0);
+
 }
 
 

@@ -7,12 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5A05F1C520ABD2E20079271D /* ShaderProgram.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A05F1C320ABD2E20079271D /* ShaderProgram.cpp */; };
-		5A2ACE4620AE41C00081BFDD /* VOGen.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A2ACE4420AE41C00081BFDD /* VOGen.cpp */; };
-		5A5112EB20AE4B85001AA285 /* UIShader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A5112E920AE4B85001AA285 /* UIShader.cpp */; };
-		5A90040920AD25410056B9F0 /* MandelbrotProgram.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A90040520AD25410056B9F0 /* MandelbrotProgram.cpp */; };
-		5A90041120ADE5650056B9F0 /* UIWindow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A90040F20ADE5650056B9F0 /* UIWindow.cpp */; };
-		5A90041420ADE5BF0056B9F0 /* UIComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A90041220ADE5BF0056B9F0 /* UIComponent.cpp */; };
+		5A51133920B117E0001AA285 /* VO.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A51133720B117E0001AA285 /* VO.cpp */; };
+		5A51133C20B12059001AA285 /* ShaderProgram.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A51133A20B12059001AA285 /* ShaderProgram.cpp */; };
 		5AF3F61720AB6F400006A807 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5AF3F61620AB6F400006A807 /* main.cpp */; };
 		5AF3F61F20AB6F4E0006A807 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AF3F61E20AB6F4E0006A807 /* OpenGL.framework */; };
 		5AF9C3F820AB7B41008E8F08 /* libglfw.3.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AF9C3F720AB7B41008E8F08 /* libglfw.3.2.dylib */; };
@@ -35,22 +31,14 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		5A05F1C320ABD2E20079271D /* ShaderProgram.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ShaderProgram.cpp; sourceTree = "<group>"; };
-		5A05F1C420ABD2E20079271D /* ShaderProgram.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ShaderProgram.hpp; sourceTree = "<group>"; };
-		5A2ACE4420AE41C00081BFDD /* VOGen.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = VOGen.cpp; sourceTree = "<group>"; };
-		5A2ACE4520AE41C00081BFDD /* VOGen.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = VOGen.hpp; sourceTree = "<group>"; };
-		5A5112E920AE4B85001AA285 /* UIShader.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = UIShader.cpp; sourceTree = "<group>"; };
-		5A5112EA20AE4B85001AA285 /* UIShader.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = UIShader.hpp; sourceTree = "<group>"; };
 		5A5112EC20AE4C84001AA285 /* uidefault.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = uidefault.vert; sourceTree = "<group>"; };
 		5A5112ED20AE4C93001AA285 /* uidefault.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = uidefault.frag; sourceTree = "<group>"; };
-		5A90040520AD25410056B9F0 /* MandelbrotProgram.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MandelbrotProgram.cpp; sourceTree = "<group>"; };
-		5A90040620AD25410056B9F0 /* MandelbrotProgram.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = MandelbrotProgram.hpp; sourceTree = "<group>"; };
+		5A51133720B117E0001AA285 /* VO.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = VO.cpp; sourceTree = "<group>"; };
+		5A51133820B117E0001AA285 /* VO.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = VO.hpp; sourceTree = "<group>"; };
+		5A51133A20B12059001AA285 /* ShaderProgram.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ShaderProgram.cpp; sourceTree = "<group>"; };
+		5A51133B20B12059001AA285 /* ShaderProgram.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ShaderProgram.hpp; sourceTree = "<group>"; };
 		5A90040720AD25410056B9F0 /* shader.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = shader.vert; sourceTree = "<group>"; };
 		5A90040820AD25410056B9F0 /* shader.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = shader.frag; sourceTree = "<group>"; };
-		5A90040F20ADE5650056B9F0 /* UIWindow.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = UIWindow.cpp; sourceTree = "<group>"; };
-		5A90041020ADE5650056B9F0 /* UIWindow.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = UIWindow.hpp; sourceTree = "<group>"; };
-		5A90041220ADE5BF0056B9F0 /* UIComponent.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = UIComponent.cpp; sourceTree = "<group>"; };
-		5A90041320ADE5BF0056B9F0 /* UIComponent.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = UIComponent.hpp; sourceTree = "<group>"; };
 		5AF3F61320AB6F400006A807 /* ShaderFunGLFW */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ShaderFunGLFW; sourceTree = BUILT_PRODUCTS_DIR; };
 		5AF3F61620AB6F400006A807 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		5AF3F61E20AB6F4E0006A807 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
@@ -79,39 +67,9 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		5A90040A20ADE5190056B9F0 /* ShaderPrograms */ = {
-			isa = PBXGroup;
-			children = (
-				5A05F1C420ABD2E20079271D /* ShaderProgram.hpp */,
-				5A05F1C320ABD2E20079271D /* ShaderProgram.cpp */,
-				5A90040520AD25410056B9F0 /* MandelbrotProgram.cpp */,
-				5A90040620AD25410056B9F0 /* MandelbrotProgram.hpp */,
-			);
-			name = ShaderPrograms;
-			path = ShaderFunGLFW/ShaderPrograms;
-			sourceTree = "<group>";
-		};
-		5A90040B20ADE5440056B9F0 /* UI */ = {
-			isa = PBXGroup;
-			children = (
-				5A90040F20ADE5650056B9F0 /* UIWindow.cpp */,
-				5A90041020ADE5650056B9F0 /* UIWindow.hpp */,
-				5A90041220ADE5BF0056B9F0 /* UIComponent.cpp */,
-				5A90041320ADE5BF0056B9F0 /* UIComponent.hpp */,
-				5A2ACE4420AE41C00081BFDD /* VOGen.cpp */,
-				5A2ACE4520AE41C00081BFDD /* VOGen.hpp */,
-				5A5112E920AE4B85001AA285 /* UIShader.cpp */,
-				5A5112EA20AE4B85001AA285 /* UIShader.hpp */,
-			);
-			name = UI;
-			path = ShaderFunGLFW/UI;
-			sourceTree = "<group>";
-		};
 		5AF3F60A20AB6F400006A807 = {
 			isa = PBXGroup;
 			children = (
-				5A90040B20ADE5440056B9F0 /* UI */,
-				5A90040A20ADE5190056B9F0 /* ShaderPrograms */,
 				5AF3F61520AB6F400006A807 /* ShaderFunGLFW */,
 				5AF3F61420AB6F400006A807 /* Products */,
 				5AF3F61D20AB6F4E0006A807 /* Frameworks */,
@@ -136,6 +94,10 @@
 				5AF3F61620AB6F400006A807 /* main.cpp */,
 				5AF9C3FE20AB7F54008E8F08 /* shaders.cpp */,
 				5AF9C3FF20AB7F54008E8F08 /* shaders.hpp */,
+				5A51133720B117E0001AA285 /* VO.cpp */,
+				5A51133820B117E0001AA285 /* VO.hpp */,
+				5A51133A20B12059001AA285 /* ShaderProgram.cpp */,
+				5A51133B20B12059001AA285 /* ShaderProgram.hpp */,
 			);
 			path = ShaderFunGLFW;
 			sourceTree = "<group>";
@@ -209,14 +171,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5A05F1C520ABD2E20079271D /* ShaderProgram.cpp in Sources */,
 				5AF9C40020AB7F54008E8F08 /* shaders.cpp in Sources */,
-				5A5112EB20AE4B85001AA285 /* UIShader.cpp in Sources */,
-				5A90040920AD25410056B9F0 /* MandelbrotProgram.cpp in Sources */,
-				5A90041420ADE5BF0056B9F0 /* UIComponent.cpp in Sources */,
-				5A90041120ADE5650056B9F0 /* UIWindow.cpp in Sources */,
+				5A51133C20B12059001AA285 /* ShaderProgram.cpp in Sources */,
 				5AF3F61720AB6F400006A807 /* main.cpp in Sources */,
-				5A2ACE4620AE41C00081BFDD /* VOGen.cpp in Sources */,
+				5A51133920B117E0001AA285 /* VO.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -337,7 +295,7 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				HEADER_SEARCH_PATHS = "/usr/local/Cellar/glfw/3.2.1/include/**";
-				LIBRARY_SEARCH_PATHS = "/usr/local/Cellar/glfw/3.2.1/lib/libglfw.3.dylib/**";
+				LIBRARY_SEARCH_PATHS = "/usr/local/Cellar/glfw/3.2.1/lib/**";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -347,7 +305,7 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				HEADER_SEARCH_PATHS = "/usr/local/Cellar/glfw/3.2.1/include/**";
-				LIBRARY_SEARCH_PATHS = "/usr/local/Cellar/glfw/3.2.1/lib/libglfw.3.dylib/**";
+				LIBRARY_SEARCH_PATHS = "/usr/local/Cellar/glfw/3.2.1/lib/**";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
