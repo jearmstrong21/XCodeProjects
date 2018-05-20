@@ -25,8 +25,8 @@ void MandelbrotProgram::glAssignParams(){
     glUniform1i(fractalType, MANDELBROT);
     glUniform1f(xOffScale,1);
     glUniform1f(yOffScale,1);
-//        glUniform1f(maxIters,(int)(cos(glfwGetTime()*2)*200+210));
+    //        glUniform1f(maxIters,(int)(cos(glfwGetTime()*2)*200+210));
     glUniform1f(maxIters, 50);
-    glUniform1i(doHSB, true);
-    glUniform1i(doSmooth, true);
+    glUniform1i(doHSB, false);
+    glUniform1i(doSmooth, false);
 }

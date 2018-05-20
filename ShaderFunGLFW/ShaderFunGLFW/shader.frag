@@ -42,10 +42,10 @@ void main()
         float nsmooth = 1.0 - log(0.0001+log(0.0001+sqrt(x*x+y*y)))/log(2.0);
         i += nsmooth;
     }
-//    i=round(i/30.0)*30;
+    //    i=round(i/30.0)*30;
     if(doHSB)FragColor=vec4(hsv2rgb(vec3(i/maxIters,0.75,1.0)),1.0);
     else FragColor=vec4(i/maxIters,i/maxIters,i/maxIters,1.0);
-//    if(i<maxIters)FragColor=vec4(0.0,0.0,0.0,0.0);å
+    //    if(i<maxIters)FragColor=vec4(0.0,0.0,0.0,0.0);å
     
 }
 

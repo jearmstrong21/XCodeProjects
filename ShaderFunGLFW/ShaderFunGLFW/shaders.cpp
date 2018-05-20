@@ -43,7 +43,8 @@ int compileShaderSource(GLenum shaderType, GLchar* shaderSource){
 
 int compileShader(GLenum shaderType,std::string shaderFile){
     std::string str=readFileStr(shaderFile);
-    std::cout<<"-------------------- begin: "<<shaderFile<<"--------------------\n"<<str<<"\n--------------------end: "<<shaderFile<<"--------------------\n";
+//    std::cout<<"-------------------- begin: "<<shaderFile<<"--------------------\n"<<str<<"\n--------------------end: "<<shaderFile<<"--------------------\n";
+    std::cout<<"Loaded "<<shaderFile<<"\n";
     return compileShaderSource(shaderType,(GLchar*)str.c_str());
 }
 
@@ -52,6 +53,8 @@ unsigned int compileProgram(int frag,int vert){
     glAttachShader(prog, vert);
     glAttachShader(prog, frag);
     glLinkProgram(prog);
+    glDeleteShader(vert);
+    glDeleteShader(frag);
     return prog;
 }
 

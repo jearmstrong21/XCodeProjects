@@ -28,7 +28,7 @@ public:
     
     ShaderProgram();
     
-    
+    void assignSources(string v,string f);
     void compile();
     void glAssignParams();
     void glBind();
