@@ -18,12 +18,6 @@ vec3 hsv2rgb(vec3 c)
 }
 void main()
 {
-//    int fractalType=0;
-//    float xOffScale=1;
-//    float yOffScale=1;
-//    float maxIters=50;
-//    bool doHSB=false;
-//    bool doSmooth=true;
     
     vec3 coord=gl_FragCoord.xyz/1000.0;
     float origX=2.0*(coord.x-1);

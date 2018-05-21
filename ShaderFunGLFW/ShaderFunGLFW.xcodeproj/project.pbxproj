@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		5A51133920B117E0001AA285 /* VO.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A51133720B117E0001AA285 /* VO.cpp */; };
 		5A51133C20B12059001AA285 /* ShaderProgram.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A51133A20B12059001AA285 /* ShaderProgram.cpp */; };
+		5A51144820B1CC51001AA285 /* BoxVO.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A51144620B1CC51001AA285 /* BoxVO.cpp */; };
+		5A51144B20B1CD2B001AA285 /* UIWindow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A51144920B1CD2B001AA285 /* UIWindow.cpp */; };
 		5AF3F61720AB6F400006A807 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5AF3F61620AB6F400006A807 /* main.cpp */; };
 		5AF3F61F20AB6F4E0006A807 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AF3F61E20AB6F4E0006A807 /* OpenGL.framework */; };
 		5AF9C3F820AB7B41008E8F08 /* libglfw.3.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AF9C3F720AB7B41008E8F08 /* libglfw.3.2.dylib */; };
@@ -37,6 +39,10 @@
 		5A51133820B117E0001AA285 /* VO.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = VO.hpp; sourceTree = "<group>"; };
 		5A51133A20B12059001AA285 /* ShaderProgram.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ShaderProgram.cpp; sourceTree = "<group>"; };
 		5A51133B20B12059001AA285 /* ShaderProgram.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ShaderProgram.hpp; sourceTree = "<group>"; };
+		5A51144620B1CC51001AA285 /* BoxVO.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = BoxVO.cpp; sourceTree = "<group>"; };
+		5A51144720B1CC51001AA285 /* BoxVO.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = BoxVO.hpp; sourceTree = "<group>"; };
+		5A51144920B1CD2B001AA285 /* UIWindow.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = UIWindow.cpp; sourceTree = "<group>"; };
+		5A51144A20B1CD2B001AA285 /* UIWindow.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = UIWindow.hpp; sourceTree = "<group>"; };
 		5A90040720AD25410056B9F0 /* shader.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = shader.vert; sourceTree = "<group>"; };
 		5A90040820AD25410056B9F0 /* shader.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = shader.frag; sourceTree = "<group>"; };
 		5AF3F61320AB6F400006A807 /* ShaderFunGLFW */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ShaderFunGLFW; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -98,6 +104,10 @@
 				5A51133820B117E0001AA285 /* VO.hpp */,
 				5A51133A20B12059001AA285 /* ShaderProgram.cpp */,
 				5A51133B20B12059001AA285 /* ShaderProgram.hpp */,
+				5A51144620B1CC51001AA285 /* BoxVO.cpp */,
+				5A51144720B1CC51001AA285 /* BoxVO.hpp */,
+				5A51144920B1CD2B001AA285 /* UIWindow.cpp */,
+				5A51144A20B1CD2B001AA285 /* UIWindow.hpp */,
 			);
 			path = ShaderFunGLFW;
 			sourceTree = "<group>";
@@ -171,8 +181,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A51144820B1CC51001AA285 /* BoxVO.cpp in Sources */,
 				5AF9C40020AB7F54008E8F08 /* shaders.cpp in Sources */,
 				5A51133C20B12059001AA285 /* ShaderProgram.cpp in Sources */,
+				5A51144B20B1CD2B001AA285 /* UIWindow.cpp in Sources */,
 				5AF3F61720AB6F400006A807 /* main.cpp in Sources */,
 				5A51133920B117E0001AA285 /* VO.cpp in Sources */,
 			);
@@ -294,7 +306,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				HEADER_SEARCH_PATHS = "/usr/local/Cellar/glfw/3.2.1/include/**";
+				HEADER_SEARCH_PATHS = (
+					"/usr/local/Cellar/glfw/3.2.1/include/**",
+					"/usr/local/Cellar/glm/0.9.8.5/include/**",
+				);
 				LIBRARY_SEARCH_PATHS = "/usr/local/Cellar/glfw/3.2.1/lib/**";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -304,7 +319,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				HEADER_SEARCH_PATHS = "/usr/local/Cellar/glfw/3.2.1/include/**";
+				HEADER_SEARCH_PATHS = (
+					"/usr/local/Cellar/glfw/3.2.1/include/**",
+					"/usr/local/Cellar/glm/0.9.8.5/include/**",
+				);
 				LIBRARY_SEARCH_PATHS = "/usr/local/Cellar/glfw/3.2.1/lib/**";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

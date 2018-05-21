@@ -11,21 +11,27 @@
 #include <cmath>
 #include <OpenGL/gl3.h>
 #include <GLFW/glfw3.h>
-#include "VO.hpp"
+#include "BoxVO.hpp"
 #include "ShaderProgram.hpp"
+#include "glm/mat4x4.hpp"
+#include "glm/vec3.hpp"
+#include "glm/gtc/matrix_transform.hpp"
+
+using glm::mat4x4;
+using glm::vec3;
 
 bool hsb,smooth;
 float xscale,yscale,maxIters;
 int type;
 
 void key_callback(GLFWwindow*window,int key,int scancode,int action,int mods){
+    if(key==GLFW_KEY_1)maxIters++;
+    if(key==GLFW_KEY_2)maxIters--;
     if(action==GLFW_RELEASE)return;
     if(action==GLFW_REPEAT)return;
-    if(key==GLFW_KEY_M){
-        type=0;
-    }
-    if(key==GLFW_KEY_J){
-        type=1;
+    if(key==GLFW_KEY_T){
+        if(type==0)type=1;
+        else if(type==1)type=0;
     }
     if(key==GLFW_KEY_S){
         smooth=!smooth;
@@ -36,12 +42,12 @@ void key_callback(GLFWwindow*window,int key,int scancode,int action,int mods){
 }
 
 int main(int argc, const char * argv[]) {
-    type=0;
-    hsb=false;
+    type=1;
+    hsb=true;
     smooth=true;
     xscale=1;
     yscale=1;
-    maxIters=50;
+    maxIters=0;
     
     if(!glfwInit()){
         return -1;
@@ -56,21 +62,16 @@ int main(int argc, const char * argv[]) {
         glfwTerminate();
         return -1;
     }
-    float marg=1;
-    float vertices[] = {
-        marg,  marg, 0.0f,  // top right
-        marg, -marg, 0.0f,  // bottom right
-        -marg, -marg, 0.0f,  // bottom left
-        -marg,  marg, 0.0f   // top left
-    };
-    unsigned int indices[] = {  // note that we start from 0!
-        0, 1, 3,  // first Triangle
-        1, 2, 3   // second Triangle
-    };
+
+    
     glfwMakeContextCurrent(window);
     
-    VO vo;
-    vo.genBuffers(vertices, indices,sizeof(vertices),sizeof(indices));
+    BoxVO vo;
+    vo.genBuffersBox(-1,-1, 2, 2);
+    
+    BoxVO other;
+    other.genBuffersBox(-1, -1, 1, 1);
+    
     ShaderProgram shader;
     shader.vertFileName="shader.vert";
     shader.fragFileName="shader.frag";
@@ -90,6 +91,8 @@ int main(int argc, const char * argv[]) {
         glClearColor(0.25,0.25,0.25,1.0);
         glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
         
+        
+//        shader.setMat4x4("ViewMatrix", mat);
         shader.setBool("doHSB", hsb);
         shader.setBool("doSmooth",smooth);
         shader.setFloat("xOffScale",xscale);
@@ -97,14 +100,19 @@ int main(int argc, const char * argv[]) {
         shader.setFloat("maxIters", maxIters);
         shader.setInt("fractalType", type);
         
+//        shader.bi
+        nd();
+//        vo.bindBuffers();
+        
         shader.bind();
-        vo.bindBuffers();
+        other.bindBuffers();
 
         glfwSwapBuffers(window);
         glfwPollEvents();
     }
 //    glDeleteProgram(prog);
     vo.delBuffers();
+    other.delBuffers();
     shader.del();
 //    glDeleteVertexArrays(1, &VAO);
 //    glDeleteBuffers(1, &VBO);
