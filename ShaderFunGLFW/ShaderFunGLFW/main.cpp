@@ -67,7 +67,7 @@ int main(int argc, const char * argv[]) {
     glfwMakeContextCurrent(window);
     
     BoxVO vo;
-    vo.genBuffersBox(-1,-1, 2, 2);
+    vo.genBuffersBox(0,0, 1, 1);
     
     BoxVO other;
     other.genBuffersBox(-1, -1, 1, 1);
@@ -100,9 +100,8 @@ int main(int argc, const char * argv[]) {
         shader.setFloat("maxIters", maxIters);
         shader.setInt("fractalType", type);
         
-//        shader.bi
-        nd();
-//        vo.bindBuffers();
+        shader.bind();
+        vo.bindBuffers();
         
         shader.bind();
         other.bindBuffers();
