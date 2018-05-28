@@ -15,11 +15,8 @@
 #include <fstream>
 #include <sstream>
 #include <OpenGL/gl3.h>
-#include <glfw3.h>
+#include <GLFW/glfw3.h>
 #include "shaders.hpp"
-#include "glm/mat4x4.hpp"
-
-using glm::mat4x4;
 
 using std::string;
 
@@ -36,7 +33,6 @@ public:
     void setBool(string param,bool b);
     void setFloat(string param,float f);
     void setInt(string param,int i);
-    void setMat4x4(string param,mat4x4 mat);
     
     bool getBool(string param);
     float getFloat(string param);

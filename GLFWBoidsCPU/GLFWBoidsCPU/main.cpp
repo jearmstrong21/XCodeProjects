@@ -11,14 +11,13 @@
 #include <cmath>
 #include <OpenGL/gl3.h>
 #include <GLFW/glfw3.h>
-#include "BoxVO.hpp"
 #include "ShaderProgram.hpp"
-#include "glm/mat4x4.hpp"
-#include "glm/vec3.hpp"
-#include "glm/gtc/matrix_transform.hpp"
+#include "Mesh.hpp"
+#include <glm/glm.hpp>
 
-using glm::mat4x4;
-using glm::vec3;
+
+#define STB_IMAGE_IMPLEMENTATION
+#include "stb_image.hpp"
 
 bool hsb,smooth;
 float xscale,yscale,maxIters;
@@ -66,16 +65,49 @@ int main(int argc, const char * argv[]) {
     
     glfwMakeContextCurrent(window);
     
-    BoxVO vo;
-    vo.genBuffersBox(-1,-1,2,2);
-    
     ShaderProgram shader;
     shader.vertFileName="shader.vert";
     shader.fragFileName="shader.frag";
     
     shader.compile();
     
+    Mesh mesh;
     
+    Vertex v1;
+    v1.pos=vec3(-1,-1,0);
+    v1.texCoords=vec2(0,0);
+    v1.col=vec3(1,1,1);
+    
+    Vertex v2;
+    v2.pos=vec3(1,-1,0);
+    v2.texCoords=vec2(1,0);
+    v2.col=vec3(1,1,1);
+    
+    Vertex v3;
+    v3.pos=vec3(1,1,0);
+    v3.texCoords=vec2(1,1);
+    v3.col=vec3(1,1,1);
+    
+    Vertex v4;
+    v4.pos=vec3(-1,1,0);
+    v4.texCoords=vec2(0,1);
+    v4.col=vec3(1,1,1);
+    
+    mesh.verts.push_back(v1);
+    mesh.verts.push_back(v2);
+    mesh.verts.push_back(v3);
+    mesh.verts.push_back(v4);
+    mesh.tris.push_back(0);
+    mesh.tris.push_back(1);
+    mesh.tris.push_back(2);
+
+    Texture tex;
+    int w=512;
+    int h=512;
+    int nrChannels=1;
+    unsigned char* data=stbi_load("grass-top.png",&w,&h,&nrChannels,0);
+    
+
     glfwSetKeyCallback(window, key_callback);
     
     while(!glfwWindowShouldClose(window)){
@@ -95,13 +127,12 @@ int main(int argc, const char * argv[]) {
         shader.setFloat("maxIters", maxIters);
         shader.setInt("fractalType", type);
         
-        shader.bind();
-        vo.bindBuffers();
+        mesh.drawMesh(shader);
+
         
         glfwSwapBuffers(window);
         glfwPollEvents();
     }
-    vo.delBuffers();
     shader.del();
     
     glfwTerminate();

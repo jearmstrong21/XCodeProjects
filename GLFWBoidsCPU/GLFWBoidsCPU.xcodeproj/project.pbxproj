@@ -7,15 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5A3DF07620BB924D00555AFB /* Mesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A3DF07420BB924D00555AFB /* Mesh.cpp */; };
 		5A98D11820BB38FA0086A73F /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A98D11720BB38FA0086A73F /* main.cpp */; };
 		5A98D12020BB395E0086A73F /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A98D11F20BB395E0086A73F /* IOKit.framework */; };
 		5A98D12220BB39640086A73F /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A98D12120BB39640086A73F /* CoreVideo.framework */; };
 		5A98D12420BB396B0086A73F /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A98D12320BB396B0086A73F /* Cocoa.framework */; };
 		5A98D12620BB39710086A73F /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A98D12520BB39710086A73F /* OpenGL.framework */; };
 		5A98D12820BB399D0086A73F /* libglfw.3.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A98D12720BB399D0086A73F /* libglfw.3.2.dylib */; };
-		5A98D12F20BB3A660086A73F /* BoxVO.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A98D12A20BB3A650086A73F /* BoxVO.cpp */; };
 		5A98D13020BB3A660086A73F /* ShaderProgram.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A98D12C20BB3A650086A73F /* ShaderProgram.cpp */; };
-		5A98D13120BB3A660086A73F /* VO.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A98D12E20BB3A660086A73F /* VO.cpp */; };
 		5A98D13620BB3B3A0086A73F /* shaders.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A98D13520BB3B3A0086A73F /* shaders.cpp */; };
 /* End PBXBuildFile section */
 
@@ -32,6 +31,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		5A3DF07420BB924D00555AFB /* Mesh.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Mesh.cpp; sourceTree = "<group>"; };
+		5A3DF07520BB924D00555AFB /* Mesh.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Mesh.hpp; sourceTree = "<group>"; };
+		5A3DF18120BBA84900555AFB /* stb_image.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = stb_image.hpp; sourceTree = "<group>"; };
+		5A3DF18320BBACB600555AFB /* grass-top.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "grass-top.png"; sourceTree = "<group>"; };
 		5A98D11420BB38FA0086A73F /* GLFWBoidsCPU */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = GLFWBoidsCPU; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A98D11720BB38FA0086A73F /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		5A98D11F20BB395E0086A73F /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
@@ -40,11 +43,7 @@
 		5A98D12520BB39710086A73F /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		5A98D12720BB399D0086A73F /* libglfw.3.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libglfw.3.2.dylib; path = ../../../../../usr/local/lib/libglfw.3.2.dylib; sourceTree = "<group>"; };
 		5A98D12920BB3A650086A73F /* ShaderProgram.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ShaderProgram.hpp; sourceTree = "<group>"; };
-		5A98D12A20BB3A650086A73F /* BoxVO.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BoxVO.cpp; sourceTree = "<group>"; };
-		5A98D12B20BB3A650086A73F /* VO.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = VO.hpp; sourceTree = "<group>"; };
 		5A98D12C20BB3A650086A73F /* ShaderProgram.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ShaderProgram.cpp; sourceTree = "<group>"; };
-		5A98D12D20BB3A650086A73F /* BoxVO.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BoxVO.hpp; sourceTree = "<group>"; };
-		5A98D12E20BB3A660086A73F /* VO.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = VO.cpp; sourceTree = "<group>"; };
 		5A98D13220BB3A7C0086A73F /* shader.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = shader.vert; sourceTree = "<group>"; };
 		5A98D13320BB3A9D0086A73F /* shader.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = shader.frag; sourceTree = "<group>"; };
 		5A98D13420BB3B3A0086A73F /* shaders.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = shaders.hpp; sourceTree = "<group>"; };
@@ -87,17 +86,17 @@
 		5A98D11620BB38FA0086A73F /* GLFWBoidsCPU */ = {
 			isa = PBXGroup;
 			children = (
+				5A3DF18320BBACB600555AFB /* grass-top.png */,
 				5A98D13520BB3B3A0086A73F /* shaders.cpp */,
 				5A98D13420BB3B3A0086A73F /* shaders.hpp */,
-				5A98D12A20BB3A650086A73F /* BoxVO.cpp */,
-				5A98D12D20BB3A650086A73F /* BoxVO.hpp */,
 				5A98D12C20BB3A650086A73F /* ShaderProgram.cpp */,
 				5A98D12920BB3A650086A73F /* ShaderProgram.hpp */,
-				5A98D12E20BB3A660086A73F /* VO.cpp */,
-				5A98D12B20BB3A650086A73F /* VO.hpp */,
 				5A98D11720BB38FA0086A73F /* main.cpp */,
 				5A98D13220BB3A7C0086A73F /* shader.vert */,
 				5A98D13320BB3A9D0086A73F /* shader.frag */,
+				5A3DF07420BB924D00555AFB /* Mesh.cpp */,
+				5A3DF07520BB924D00555AFB /* Mesh.hpp */,
+				5A3DF18120BBA84900555AFB /* stb_image.hpp */,
 			);
 			path = GLFWBoidsCPU;
 			sourceTree = "<group>";
@@ -170,10 +169,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5A98D13120BB3A660086A73F /* VO.cpp in Sources */,
 				5A98D13020BB3A660086A73F /* ShaderProgram.cpp in Sources */,
 				5A98D13620BB3B3A0086A73F /* shaders.cpp in Sources */,
-				5A98D12F20BB3A660086A73F /* BoxVO.cpp in Sources */,
+				5A3DF07620BB924D00555AFB /* Mesh.cpp in Sources */,
 				5A98D11820BB38FA0086A73F /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -295,8 +293,9 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				HEADER_SEARCH_PATHS = (
-					"/usr/local/Cellar/glm/0.9.8.5/include/**",
 					"/usr/local/Cellar/glfw/3.2.1/include/**",
+					"~/Documents/XCodeProjects/GLFWBoidsCPU/GLFWBoidsCPU/**",
+					/usr/local/Cellar/glm/0.9.8.5/include,
 				);
 				LIBRARY_SEARCH_PATHS = "/usr/local/Cellar/glfw/3.2.1/lib/**";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -308,8 +307,9 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				HEADER_SEARCH_PATHS = (
-					"/usr/local/Cellar/glm/0.9.8.5/include/**",
 					"/usr/local/Cellar/glfw/3.2.1/include/**",
+					"~/Documents/XCodeProjects/GLFWBoidsCPU/GLFWBoidsCPU/**",
+					/usr/local/Cellar/glm/0.9.8.5/include,
 				);
 				LIBRARY_SEARCH_PATHS = "/usr/local/Cellar/glfw/3.2.1/lib/**";
 				PRODUCT_NAME = "$(TARGET_NAME)";
