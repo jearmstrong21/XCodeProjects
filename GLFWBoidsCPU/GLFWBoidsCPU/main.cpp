@@ -11,13 +11,8 @@
 #include <cmath>
 #include <OpenGL/gl3.h>
 #include <GLFW/glfw3.h>
-#include "ShaderProgram.hpp"
-#include "Mesh.hpp"
-#include <glm/glm.hpp>
-
-
-#define STB_IMAGE_IMPLEMENTATION
-#include "stb_image.hpp"
+#include "Boid.hpp"
+#include "Params.hpp"
 
 bool hsb,smooth;
 float xscale,yscale,maxIters;
@@ -64,51 +59,15 @@ int main(int argc, const char * argv[]) {
     
     
     glfwMakeContextCurrent(window);
-    
-    ShaderProgram shader;
-    shader.vertFileName="shader.vert";
-    shader.fragFileName="shader.frag";
-    
-    shader.compile();
-    
-    Mesh mesh;
-    
-    Vertex v1;
-    v1.pos=vec3(-1,-1,0);
-    v1.texCoords=vec2(0,0);
-    v1.col=vec3(1,1,1);
-    
-    Vertex v2;
-    v2.pos=vec3(1,-1,0);
-    v2.texCoords=vec2(1,0);
-    v2.col=vec3(1,1,1);
-    
-    Vertex v3;
-    v3.pos=vec3(1,1,0);
-    v3.texCoords=vec2(1,1);
-    v3.col=vec3(1,1,1);
-    
-    Vertex v4;
-    v4.pos=vec3(-1,1,0);
-    v4.texCoords=vec2(0,1);
-    v4.col=vec3(1,1,1);
-    
-    mesh.verts.push_back(v1);
-    mesh.verts.push_back(v2);
-    mesh.verts.push_back(v3);
-    mesh.verts.push_back(v4);
-    mesh.tris.push_back(0);
-    mesh.tris.push_back(1);
-    mesh.tris.push_back(2);
 
-    Texture tex;
-    int w=512;
-    int h=512;
-    int nrChannels=1;
-    unsigned char* data=stbi_load("grass-top.png",&w,&h,&nrChannels,0);
-    
 
     glfwSetKeyCallback(window, key_callback);
+    
+    Params params;
+    params.boidSize=0.025;
+    
+    Boid boid;
+    boid.init(&params);
     
     while(!glfwWindowShouldClose(window)){
         double xpos, ypos;
@@ -119,21 +78,13 @@ int main(int argc, const char * argv[]) {
         glfwMakeContextCurrent(window);
         glClearColor(0.25,0.25,0.25,1.0);
         glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
-        
-        shader.setBool("doHSB", hsb);
-        shader.setBool("doSmooth",smooth);
-        shader.setFloat("xOffScale",xscale);
-        shader.setFloat("yOffScale", yscale);
-        shader.setFloat("maxIters", maxIters);
-        shader.setInt("fractalType", type);
-        
-        mesh.drawMesh(shader);
 
+        boid.draw();
+        boid.update();
         
         glfwSwapBuffers(window);
         glfwPollEvents();
     }
-    shader.del();
     
     glfwTerminate();
 }

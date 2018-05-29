@@ -17,8 +17,10 @@
 #include <OpenGL/gl3.h>
 #include <GLFW/glfw3.h>
 #include "shaders.hpp"
+#include <glm/glm.hpp>
 
 using std::string;
+using glm::mat4;
 
 class ShaderProgram{
 public:
