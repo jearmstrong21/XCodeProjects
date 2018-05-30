@@ -9,6 +9,10 @@
 #ifndef Params_hpp
 #define Params_hpp
 
+#include <glm/glm.hpp>
+
+using glm::vec2;
+
 class Params{
 public:
     //render boid
@@ -21,7 +25,10 @@ public:
     float boidSepDist;
     float boidSepMult;
     float boidMaxVel;
-    
+    float boidStayInBorders;
+    vec2 boidMinPos;
+    vec2 boidMaxPos;
+    vec2 boidWorldCenter;
     
     Params();
 };

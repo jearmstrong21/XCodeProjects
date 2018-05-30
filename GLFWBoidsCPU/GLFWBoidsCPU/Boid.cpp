@@ -34,7 +34,7 @@ void Boid::freeMem(){
 }
 
 void Boid::update(vector<Boid>* boids, Params*params){
-    wrapPos();
+//    wrapPos();
     acc=vec2(0,0);
     vec2 attractPosV2f;
     vec2 attractVelV2f;
@@ -71,6 +71,7 @@ void Boid::update(vector<Boid>* boids, Params*params){
     if(num!=0){
         sep/=num;
         sep+=pos;
+        sep=normalize(sep);
         sep*=params->boidSepMult;
         acc+=sep;
     }
@@ -82,14 +83,19 @@ void Boid::update(vector<Boid>* boids, Params*params){
     if(velL>params->boidMaxVel){
         vel=normalize(vel)*params->boidMaxVel;
     }
+    vel+=wrapPos(params);
     pos+=vel;
 }
 
-void Boid::wrapPos(){
-    if(pos.x<-1)pos.x=1;
-    if(pos.y<-1)pos.y=1;
-    if(pos.x>1)pos.x=-1;
-    if(pos.y>1)pos.y=-1;
+vec2 Boid::wrapPos(Params*params){
+//    if(pos.x<-1)pos.x=1;
+//    if(pos.y<-1)pos.y=1;
+//    if(pos.x>1)pos.x=-1;
+//    if(pos.y>1)pos.y=-1;
+    if(pos.x<params->boidMinPos.x||pos.x>params->boidMaxPos.x||pos.y<params->boidMinPos.y||pos.y>params->boidMaxPos.y){
+        return params->boidWorldCenter-pos*params->boidStayInBorders;
+    }
+    return vec2(0,0);
 }
 
 void Boid::draw(Params*params,ShaderProgram* shader){

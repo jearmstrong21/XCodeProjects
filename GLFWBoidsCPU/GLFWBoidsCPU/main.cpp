@@ -39,12 +39,16 @@ int main(int argc, const char * argv[]) {
     
     Params params;
     params.boidSize=0.01;
-    params.boidAttractDist=0.1;
-    params.boidAttractPosMult=0.1;
-    params.boidAttractVelMult=2.0;
-    params.boidSepMult=0.5;
-    params.boidSepDist=0.025;
-    params.boidMaxVel=0.005;
+    params.boidAttractDist=0.03;
+    params.boidAttractPosMult=0.5;
+    params.boidAttractVelMult=50;
+    params.boidSepMult=0.1;
+    params.boidSepDist=0.02;
+    params.boidMaxVel=0.01;
+    params.boidStayInBorders=0.001;
+    params.boidMinPos=vec2(-0.75,-0.75);
+    params.boidMaxPos=vec2( 0.75, 0.75);
+    params.boidWorldCenter=vec2(0,0);
     
     vector<Boid>boids;
     
@@ -53,7 +57,7 @@ int main(int argc, const char * argv[]) {
     shader.fragFileName="boid.frag";
     shader.compile();
     
-    for(int i=0;i<500;i++){
+    for(int i=0;i<750;i++){
         Boid boid(i);
         boid.init(&params);
         boids.push_back(boid);

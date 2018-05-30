@@ -42,7 +42,7 @@ public:
     
     void init(Params* params);
     
-    void wrapPos();
+    vec2 wrapPos(Params* params);
     
     void draw(Params*params,ShaderProgram*shader);
     
