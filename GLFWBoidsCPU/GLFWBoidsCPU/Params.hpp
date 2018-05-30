@@ -11,7 +11,18 @@
 
 class Params{
 public:
+    //render boid
     float boidSize;
+    
+    //update boid
+    float boidAttractDist;
+    float boidAttractPosMult;
+    float boidAttractVelMult;
+    float boidSepDist;
+    float boidSepMult;
+    float boidMaxVel;
+    
+    
     Params();
 };
 

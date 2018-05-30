@@ -13,35 +13,11 @@
 #include <GLFW/glfw3.h>
 #include "Boid.hpp"
 #include "Params.hpp"
+#include <vector>
 
-bool hsb,smooth;
-float xscale,yscale,maxIters;
-int type;
-
-void key_callback(GLFWwindow*window,int key,int scancode,int action,int mods){
-    if(key==GLFW_KEY_1)maxIters++;
-    if(key==GLFW_KEY_2)maxIters--;
-    if(action==GLFW_RELEASE)return;
-    if(action==GLFW_REPEAT)return;
-    if(key==GLFW_KEY_T){
-        if(type==0)type=1;
-        else if(type==1)type=0;
-    }
-    if(key==GLFW_KEY_S){
-        smooth=!smooth;
-    }
-    if(key==GLFW_KEY_H){
-        hsb=!hsb;
-    }
-}
+using std::vector;
 
 int main(int argc, const char * argv[]) {
-    type=1;
-    hsb=true;
-    smooth=true;
-    xscale=1;
-    yscale=1;
-    maxIters=50;
     
     if(!glfwInit()){
         return -1;
@@ -60,31 +36,47 @@ int main(int argc, const char * argv[]) {
     
     glfwMakeContextCurrent(window);
 
-
-    glfwSetKeyCallback(window, key_callback);
     
     Params params;
-    params.boidSize=0.025;
+    params.boidSize=0.01;
+    params.boidAttractDist=0.1;
+    params.boidAttractPosMult=0.1;
+    params.boidAttractVelMult=2.0;
+    params.boidSepMult=0.5;
+    params.boidSepDist=0.025;
+    params.boidMaxVel=0.005;
     
-    Boid boid;
-    boid.init(&params);
+    vector<Boid>boids;
+    
+    ShaderProgram shader;
+    shader.vertFileName="boid.vert";
+    shader.fragFileName="boid.frag";
+    shader.compile();
+    
+    for(int i=0;i<500;i++){
+        Boid boid(i);
+        boid.init(&params);
+        boids.push_back(boid);
+    }
     
     while(!glfwWindowShouldClose(window)){
-        double xpos, ypos;
-        glfwGetCursorPos(window, &xpos, &ypos);
-        xscale=(xpos/500)-1;
-        yscale=(ypos/500)-1;
-        
         glfwMakeContextCurrent(window);
         glClearColor(0.25,0.25,0.25,1.0);
         glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
 
-        boid.draw();
-        boid.update();
+        for(int i=0;i<boids.size();i++){
+            boids[i].draw(&params, &shader);
+            boids[i].update(&boids, &params);
+        }
         
         glfwSwapBuffers(window);
         glfwPollEvents();
     }
+    
+    for(int i=0;i<boids.size();i++){
+        boids[i].freeMem();
+    }
+    shader.del();
     
     glfwTerminate();
 }
