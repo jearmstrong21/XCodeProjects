@@ -1,0 +1,349 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5AFCE47620BEF36A006272F7 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5AFCE47520BEF36A006272F7 /* main.cpp */; };
+		5AFCE47E20BEF3E3006272F7 /* libglfw.3.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AFCE47D20BEF3E3006272F7 /* libglfw.3.2.dylib */; };
+		5AFCE48020BEF3E8006272F7 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AFCE47F20BEF3E8006272F7 /* OpenGL.framework */; };
+		5AFCE48220BEF3EB006272F7 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AFCE48120BEF3EB006272F7 /* IOKit.framework */; };
+		5AFCE48420BEF3F1006272F7 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AFCE48320BEF3F1006272F7 /* CoreVideo.framework */; };
+		5AFCE48620BEF3F8006272F7 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AFCE48520BEF3F8006272F7 /* Cocoa.framework */; };
+		5AFCE49120BEF5B5006272F7 /* shaders.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5AFCE48820BEF5B4006272F7 /* shaders.cpp */; };
+		5AFCE49220BEF5B5006272F7 /* VO.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5AFCE48A20BEF5B4006272F7 /* VO.cpp */; };
+		5AFCE49320BEF5B5006272F7 /* Hue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5AFCE48B20BEF5B4006272F7 /* Hue.cpp */; };
+		5AFCE49420BEF5B5006272F7 /* Math.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5AFCE48F20BEF5B5006272F7 /* Math.cpp */; };
+		5AFCE49520BEF5B5006272F7 /* ShaderProgram.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5AFCE49020BEF5B5006272F7 /* ShaderProgram.cpp */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		5AFCE47020BEF36A006272F7 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		5AFCE47220BEF36A006272F7 /* GLFW_UI */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = GLFW_UI; sourceTree = BUILT_PRODUCTS_DIR; };
+		5AFCE47520BEF36A006272F7 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		5AFCE47D20BEF3E3006272F7 /* libglfw.3.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libglfw.3.2.dylib; path = ../../../../../usr/local/lib/libglfw.3.2.dylib; sourceTree = "<group>"; };
+		5AFCE47F20BEF3E8006272F7 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
+		5AFCE48120BEF3EB006272F7 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
+		5AFCE48320BEF3F1006272F7 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		5AFCE48520BEF3F8006272F7 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		5AFCE48720BEF5B4006272F7 /* shaders.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = shaders.hpp; sourceTree = "<group>"; };
+		5AFCE48820BEF5B4006272F7 /* shaders.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = shaders.cpp; sourceTree = "<group>"; };
+		5AFCE48920BEF5B4006272F7 /* Hue.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Hue.hpp; sourceTree = "<group>"; };
+		5AFCE48A20BEF5B4006272F7 /* VO.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = VO.cpp; sourceTree = "<group>"; };
+		5AFCE48B20BEF5B4006272F7 /* Hue.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Hue.cpp; sourceTree = "<group>"; };
+		5AFCE48C20BEF5B4006272F7 /* Math.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Math.hpp; sourceTree = "<group>"; };
+		5AFCE48D20BEF5B4006272F7 /* ShaderProgram.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ShaderProgram.hpp; sourceTree = "<group>"; };
+		5AFCE48E20BEF5B4006272F7 /* VO.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = VO.hpp; sourceTree = "<group>"; };
+		5AFCE48F20BEF5B5006272F7 /* Math.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Math.cpp; sourceTree = "<group>"; };
+		5AFCE49020BEF5B5006272F7 /* ShaderProgram.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ShaderProgram.cpp; sourceTree = "<group>"; };
+		5AFCE49620BEFB25006272F7 /* shader.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = shader.vert; sourceTree = "<group>"; };
+		5AFCE49720BEFB66006272F7 /* shader.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = shader.frag; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5AFCE46F20BEF36A006272F7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5AFCE48620BEF3F8006272F7 /* Cocoa.framework in Frameworks */,
+				5AFCE48420BEF3F1006272F7 /* CoreVideo.framework in Frameworks */,
+				5AFCE48220BEF3EB006272F7 /* IOKit.framework in Frameworks */,
+				5AFCE48020BEF3E8006272F7 /* OpenGL.framework in Frameworks */,
+				5AFCE47E20BEF3E3006272F7 /* libglfw.3.2.dylib in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5AFCE46920BEF36A006272F7 = {
+			isa = PBXGroup;
+			children = (
+				5AFCE47420BEF36A006272F7 /* GLFW_UI */,
+				5AFCE47320BEF36A006272F7 /* Products */,
+				5AFCE47C20BEF3E3006272F7 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		5AFCE47320BEF36A006272F7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5AFCE47220BEF36A006272F7 /* GLFW_UI */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5AFCE47420BEF36A006272F7 /* GLFW_UI */ = {
+			isa = PBXGroup;
+			children = (
+				5AFCE48B20BEF5B4006272F7 /* Hue.cpp */,
+				5AFCE48920BEF5B4006272F7 /* Hue.hpp */,
+				5AFCE48F20BEF5B5006272F7 /* Math.cpp */,
+				5AFCE48C20BEF5B4006272F7 /* Math.hpp */,
+				5AFCE49020BEF5B5006272F7 /* ShaderProgram.cpp */,
+				5AFCE48D20BEF5B4006272F7 /* ShaderProgram.hpp */,
+				5AFCE48820BEF5B4006272F7 /* shaders.cpp */,
+				5AFCE48720BEF5B4006272F7 /* shaders.hpp */,
+				5AFCE48A20BEF5B4006272F7 /* VO.cpp */,
+				5AFCE48E20BEF5B4006272F7 /* VO.hpp */,
+				5AFCE47520BEF36A006272F7 /* main.cpp */,
+				5AFCE49620BEFB25006272F7 /* shader.vert */,
+				5AFCE49720BEFB66006272F7 /* shader.frag */,
+			);
+			path = GLFW_UI;
+			sourceTree = "<group>";
+		};
+		5AFCE47C20BEF3E3006272F7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5AFCE48520BEF3F8006272F7 /* Cocoa.framework */,
+				5AFCE48320BEF3F1006272F7 /* CoreVideo.framework */,
+				5AFCE48120BEF3EB006272F7 /* IOKit.framework */,
+				5AFCE47F20BEF3E8006272F7 /* OpenGL.framework */,
+				5AFCE47D20BEF3E3006272F7 /* libglfw.3.2.dylib */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5AFCE47120BEF36A006272F7 /* GLFW_UI */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5AFCE47920BEF36A006272F7 /* Build configuration list for PBXNativeTarget "GLFW_UI" */;
+			buildPhases = (
+				5AFCE46E20BEF36A006272F7 /* Sources */,
+				5AFCE46F20BEF36A006272F7 /* Frameworks */,
+				5AFCE47020BEF36A006272F7 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = GLFW_UI;
+			productName = GLFW_UI;
+			productReference = 5AFCE47220BEF36A006272F7 /* GLFW_UI */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5AFCE46A20BEF36A006272F7 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0930;
+				ORGANIZATIONNAME = "Jack Armstrong";
+				TargetAttributes = {
+					5AFCE47120BEF36A006272F7 = {
+						CreatedOnToolsVersion = 9.3;
+					};
+				};
+			};
+			buildConfigurationList = 5AFCE46D20BEF36A006272F7 /* Build configuration list for PBXProject "GLFW_UI" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 5AFCE46920BEF36A006272F7;
+			productRefGroup = 5AFCE47320BEF36A006272F7 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5AFCE47120BEF36A006272F7 /* GLFW_UI */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5AFCE46E20BEF36A006272F7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5AFCE49120BEF5B5006272F7 /* shaders.cpp in Sources */,
+				5AFCE47620BEF36A006272F7 /* main.cpp in Sources */,
+				5AFCE49320BEF5B5006272F7 /* Hue.cpp in Sources */,
+				5AFCE49520BEF5B5006272F7 /* ShaderProgram.cpp in Sources */,
+				5AFCE49220BEF5B5006272F7 /* VO.cpp in Sources */,
+				5AFCE49420BEF5B5006272F7 /* Math.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		5AFCE47720BEF36A006272F7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		5AFCE47820BEF36A006272F7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		5AFCE47A20BEF36A006272F7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				HEADER_SEARCH_PATHS = (
+					"/usr/local/Cellar/glm/0.9.8.5/include/**",
+					"/usr/local/Cellar/glfw/3.2.1/include/**",
+				);
+				LIBRARY_SEARCH_PATHS = "/usr/local/Cellar/glfw/3.2.1/lib/**";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		5AFCE47B20BEF36A006272F7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				HEADER_SEARCH_PATHS = (
+					"/usr/local/Cellar/glm/0.9.8.5/include/**",
+					"/usr/local/Cellar/glfw/3.2.1/include/**",
+				);
+				LIBRARY_SEARCH_PATHS = "/usr/local/Cellar/glfw/3.2.1/lib/**";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5AFCE46D20BEF36A006272F7 /* Build configuration list for PBXProject "GLFW_UI" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5AFCE47720BEF36A006272F7 /* Debug */,
+				5AFCE47820BEF36A006272F7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5AFCE47920BEF36A006272F7 /* Build configuration list for PBXNativeTarget "GLFW_UI" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5AFCE47A20BEF36A006272F7 /* Debug */,
+				5AFCE47B20BEF36A006272F7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 5AFCE46A20BEF36A006272F7 /* Project object */;
+}
