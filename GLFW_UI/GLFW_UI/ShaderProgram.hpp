@@ -35,6 +35,7 @@ public:
     void setBool(string param,bool b);
     void setFloat(string param,float f);
     void setInt(string param,int i);
+    void setMat4(string param,mat4 m);
     
     bool getBool(string param);
     float getFloat(string param);

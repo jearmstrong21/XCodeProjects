@@ -39,10 +39,10 @@ int main(int argc, const char * argv[]) {
     
     Params params;
     params.boidSize=0.01;
-    params.boidAttractDist=0.03;
+    params.boidAttractDist=0.05;
     params.boidAttractPosMult=0.5;
     params.boidAttractVelMult=50;
-    params.boidSepMult=0.1;
+    params.boidSepMult=0.25;
     params.boidSepDist=0.02;
     params.boidMaxVel=0.01;
     params.boidStayInBorders=0.001;

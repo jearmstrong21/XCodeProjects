@@ -53,6 +53,16 @@ unsigned int compileProgram(int frag,int vert){
     glAttachShader(prog, vert);
     glAttachShader(prog, frag);
     glLinkProgram(prog);
+    int success;
+    char infoLog[512];
+    glGetProgramiv(prog, GL_LINK_STATUS, &success);
+    if(!success){
+        glGetProgramInfoLog(prog, 512, NULL, infoLog);
+        printf("ERROR::PROGRAM::LINK::FAILED\n");
+        printf(infoLog);
+        printf("\n");
+        return -1;
+    }
     glDeleteShader(vert);
     glDeleteShader(frag);
     return prog;

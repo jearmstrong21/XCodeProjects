@@ -48,6 +48,10 @@ void ShaderProgram::setInt(string param,int i){
     glUniform1i(glGetUniformLocation(progID, param.c_str()), i);
 }
 
+void ShaderProgram::setMat4(string param, mat4 m){
+    glUniformMatrix4fv(glGetUniformLocation(progID, param.c_str()), 1, GL_FALSE, &m[0][0]);
+}
+
 bool ShaderProgram::getBool(string param){
     int b;
     glGetUniformiv(progID, glGetUniformLocation(progID, param.c_str()), &b);
