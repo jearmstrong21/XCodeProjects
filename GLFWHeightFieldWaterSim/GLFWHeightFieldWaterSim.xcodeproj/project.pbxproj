@@ -7,13 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5ABF78A820D0BB8D00C9E778 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5ABF78A720D0BB8D00C9E778 /* main.cpp */; };
-		5ABF78B020D0BB9700C9E778 /* OpenCL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5ABF78AF20D0BB9700C9E778 /* OpenCL.framework */; };
-		5ABF78B220D0BD3100C9E778 /* mykernel.cl in Sources */ = {isa = PBXBuildFile; fileRef = 5ABF78B120D0BD3100C9E778 /* mykernel.cl */; };
+		5ABF78C120D1A0BA00C9E778 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5ABF78C020D1A0BA00C9E778 /* main.cpp */; };
+		5ABF78C920D1A0C300C9E778 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5ABF78C820D1A0C300C9E778 /* CoreVideo.framework */; };
+		5ABF78CB20D1A0C700C9E778 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5ABF78CA20D1A0C700C9E778 /* IOKit.framework */; };
+		5ABF78CD20D1A0D900C9E778 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5ABF78CC20D1A0D900C9E778 /* Cocoa.framework */; };
+		5ABF78CF20D1A0DE00C9E778 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5ABF78CE20D1A0DE00C9E778 /* OpenGL.framework */; };
+		5ABF78D120D1A0F000C9E778 /* libglfw.3.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5ABF78D020D1A0F000C9E778 /* libglfw.3.2.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		5ABF78A220D0BB8D00C9E778 /* CopyFiles */ = {
+		5ABF78BB20D1A0BA00C9E778 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = /usr/share/man/man1/;
@@ -25,54 +28,66 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		5ABF78A420D0BB8D00C9E778 /* HelloOpenCL */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = HelloOpenCL; sourceTree = BUILT_PRODUCTS_DIR; };
-		5ABF78A720D0BB8D00C9E778 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
-		5ABF78AF20D0BB9700C9E778 /* OpenCL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenCL.framework; path = System/Library/Frameworks/OpenCL.framework; sourceTree = SDKROOT; };
-		5ABF78B120D0BD3100C9E778 /* mykernel.cl */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.opencl; path = mykernel.cl; sourceTree = "<group>"; };
+		5ABF78BD20D1A0BA00C9E778 /* GLFWHeightFieldWaterSim */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = GLFWHeightFieldWaterSim; sourceTree = BUILT_PRODUCTS_DIR; };
+		5ABF78C020D1A0BA00C9E778 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		5ABF78C820D1A0C300C9E778 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		5ABF78CA20D1A0C700C9E778 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
+		5ABF78CC20D1A0D900C9E778 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		5ABF78CE20D1A0DE00C9E778 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
+		5ABF78D020D1A0F000C9E778 /* libglfw.3.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libglfw.3.2.dylib; path = ../../../../../usr/local/lib/libglfw.3.2.dylib; sourceTree = "<group>"; };
+		5ABF78D320D1A26C00C9E778 /* VertexBuffer.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = VertexBuffer.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		5ABF78A120D0BB8D00C9E778 /* Frameworks */ = {
+		5ABF78BA20D1A0BA00C9E778 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5ABF78B020D0BB9700C9E778 /* OpenCL.framework in Frameworks */,
+				5ABF78CB20D1A0C700C9E778 /* IOKit.framework in Frameworks */,
+				5ABF78C920D1A0C300C9E778 /* CoreVideo.framework in Frameworks */,
+				5ABF78CD20D1A0D900C9E778 /* Cocoa.framework in Frameworks */,
+				5ABF78D120D1A0F000C9E778 /* libglfw.3.2.dylib in Frameworks */,
+				5ABF78CF20D1A0DE00C9E778 /* OpenGL.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		5ABF789B20D0BB8D00C9E778 = {
+		5ABF78B420D1A0BA00C9E778 = {
 			isa = PBXGroup;
 			children = (
-				5ABF78A620D0BB8D00C9E778 /* HelloOpenCL */,
-				5ABF78A520D0BB8D00C9E778 /* Products */,
-				5ABF78AE20D0BB9700C9E778 /* Frameworks */,
+				5ABF78BF20D1A0BA00C9E778 /* GLFWHeightFieldWaterSim */,
+				5ABF78BE20D1A0BA00C9E778 /* Products */,
+				5ABF78C720D1A0C300C9E778 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
-		5ABF78A520D0BB8D00C9E778 /* Products */ = {
+		5ABF78BE20D1A0BA00C9E778 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				5ABF78A420D0BB8D00C9E778 /* HelloOpenCL */,
+				5ABF78BD20D1A0BA00C9E778 /* GLFWHeightFieldWaterSim */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		5ABF78A620D0BB8D00C9E778 /* HelloOpenCL */ = {
+		5ABF78BF20D1A0BA00C9E778 /* GLFWHeightFieldWaterSim */ = {
 			isa = PBXGroup;
 			children = (
-				5ABF78A720D0BB8D00C9E778 /* main.cpp */,
-				5ABF78B120D0BD3100C9E778 /* mykernel.cl */,
+				5ABF78C020D1A0BA00C9E778 /* main.cpp */,
+				5ABF78D320D1A26C00C9E778 /* VertexBuffer.hpp */,
 			);
-			path = HelloOpenCL;
+			path = GLFWHeightFieldWaterSim;
 			sourceTree = "<group>";
 		};
-		5ABF78AE20D0BB9700C9E778 /* Frameworks */ = {
+		5ABF78C720D1A0C300C9E778 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				5ABF78AF20D0BB9700C9E778 /* OpenCL.framework */,
+				5ABF78D020D1A0F000C9E778 /* libglfw.3.2.dylib */,
+				5ABF78CE20D1A0DE00C9E778 /* OpenGL.framework */,
+				5ABF78CC20D1A0D900C9E778 /* Cocoa.framework */,
+				5ABF78CA20D1A0C700C9E778 /* IOKit.framework */,
+				5ABF78C820D1A0C300C9E778 /* CoreVideo.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -80,68 +95,67 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		5ABF78A320D0BB8D00C9E778 /* HelloOpenCL */ = {
+		5ABF78BC20D1A0BA00C9E778 /* GLFWHeightFieldWaterSim */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 5ABF78AB20D0BB8D00C9E778 /* Build configuration list for PBXNativeTarget "HelloOpenCL" */;
+			buildConfigurationList = 5ABF78C420D1A0BA00C9E778 /* Build configuration list for PBXNativeTarget "GLFWHeightFieldWaterSim" */;
 			buildPhases = (
-				5ABF78A020D0BB8D00C9E778 /* Sources */,
-				5ABF78A120D0BB8D00C9E778 /* Frameworks */,
-				5ABF78A220D0BB8D00C9E778 /* CopyFiles */,
+				5ABF78B920D1A0BA00C9E778 /* Sources */,
+				5ABF78BA20D1A0BA00C9E778 /* Frameworks */,
+				5ABF78BB20D1A0BA00C9E778 /* CopyFiles */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = HelloOpenCL;
-			productName = HelloOpenCL;
-			productReference = 5ABF78A420D0BB8D00C9E778 /* HelloOpenCL */;
+			name = GLFWHeightFieldWaterSim;
+			productName = GLFWHeightFieldWaterSim;
+			productReference = 5ABF78BD20D1A0BA00C9E778 /* GLFWHeightFieldWaterSim */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		5ABF789C20D0BB8D00C9E778 /* Project object */ = {
+		5ABF78B520D1A0BA00C9E778 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = "Jack Armstrong";
 				TargetAttributes = {
-					5ABF78A320D0BB8D00C9E778 = {
+					5ABF78BC20D1A0BA00C9E778 = {
 						CreatedOnToolsVersion = 9.3;
 					};
 				};
 			};
-			buildConfigurationList = 5ABF789F20D0BB8D00C9E778 /* Build configuration list for PBXProject "HelloOpenCL" */;
+			buildConfigurationList = 5ABF78B820D1A0BA00C9E778 /* Build configuration list for PBXProject "GLFWHeightFieldWaterSim" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 			);
-			mainGroup = 5ABF789B20D0BB8D00C9E778;
-			productRefGroup = 5ABF78A520D0BB8D00C9E778 /* Products */;
+			mainGroup = 5ABF78B420D1A0BA00C9E778;
+			productRefGroup = 5ABF78BE20D1A0BA00C9E778 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				5ABF78A320D0BB8D00C9E778 /* HelloOpenCL */,
+				5ABF78BC20D1A0BA00C9E778 /* GLFWHeightFieldWaterSim */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		5ABF78A020D0BB8D00C9E778 /* Sources */ = {
+		5ABF78B920D1A0BA00C9E778 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5ABF78A820D0BB8D00C9E778 /* main.cpp in Sources */,
-				5ABF78B220D0BD3100C9E778 /* mykernel.cl in Sources */,
+				5ABF78C120D1A0BA00C9E778 /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		5ABF78A920D0BB8D00C9E778 /* Debug */ = {
+		5ABF78C220D1A0BA00C9E778 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -199,7 +213,7 @@
 			};
 			name = Debug;
 		};
-		5ABF78AA20D0BB8D00C9E778 /* Release */ = {
+		5ABF78C320D1A0BA00C9E778 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -250,18 +264,28 @@
 			};
 			name = Release;
 		};
-		5ABF78AC20D0BB8D00C9E778 /* Debug */ = {
+		5ABF78C520D1A0BA00C9E778 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				HEADER_SEARCH_PATHS = (
+					"/usr/local/Cellar/glm/0.9.8.5/include/**",
+					"/usr/local/Cellar/glfw/3.2.1/include/**",
+				);
+				LIBRARY_SEARCH_PATHS = "/usr/local/Cellar/glfw/3.2.1/lib/**";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
 		};
-		5ABF78AD20D0BB8D00C9E778 /* Release */ = {
+		5ABF78C620D1A0BA00C9E778 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				HEADER_SEARCH_PATHS = (
+					"/usr/local/Cellar/glm/0.9.8.5/include/**",
+					"/usr/local/Cellar/glfw/3.2.1/include/**",
+				);
+				LIBRARY_SEARCH_PATHS = "/usr/local/Cellar/glfw/3.2.1/lib/**";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -269,25 +293,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		5ABF789F20D0BB8D00C9E778 /* Build configuration list for PBXProject "HelloOpenCL" */ = {
+		5ABF78B820D1A0BA00C9E778 /* Build configuration list for PBXProject "GLFWHeightFieldWaterSim" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				5ABF78A920D0BB8D00C9E778 /* Debug */,
-				5ABF78AA20D0BB8D00C9E778 /* Release */,
+				5ABF78C220D1A0BA00C9E778 /* Debug */,
+				5ABF78C320D1A0BA00C9E778 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		5ABF78AB20D0BB8D00C9E778 /* Build configuration list for PBXNativeTarget "HelloOpenCL" */ = {
+		5ABF78C420D1A0BA00C9E778 /* Build configuration list for PBXNativeTarget "GLFWHeightFieldWaterSim" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				5ABF78AC20D0BB8D00C9E778 /* Debug */,
-				5ABF78AD20D0BB8D00C9E778 /* Release */,
+				5ABF78C520D1A0BA00C9E778 /* Debug */,
+				5ABF78C620D1A0BA00C9E778 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 5ABF789C20D0BB8D00C9E778 /* Project object */;
+	rootObject = 5ABF78B520D1A0BA00C9E778 /* Project object */;
 }

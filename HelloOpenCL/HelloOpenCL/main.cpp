@@ -34,18 +34,17 @@ static int validate(cl_float* input, cl_float* output) {
 int main (int argc, const char * argv[]) {
     int i;
     char name[128];
-    
+
     // First, try to obtain a dispatch queue that can send work to the
     // GPU in our system.                                             // 2
-    dispatch_queue_t queue =
-    gcl_create_dispatch_queue(CL_DEVICE_TYPE_GPU, NULL);
+    dispatch_queue_t queue = gcl_create_dispatch_queue(CL_DEVICE_TYPE_GPU, NULL);
     
     // In the event that our system does NOT have an OpenCL-compatible GPU,
     // we can use the OpenCL CPU compute device instead.
     if (queue == NULL) {
         queue = gcl_create_dispatch_queue(CL_DEVICE_TYPE_CPU, NULL);
     }
-    
+
     // This is not required, but let's print out the name of the device
     // we are using to do work.  We could use the same function,
     // clGetDeviceInfo, to obtain all manner of information about the device.
@@ -149,4 +148,3 @@ int main (int argc, const char * argv[]) {
     // Finally, release your queue just as you would any GCD queue.    // 11
     dispatch_release(queue);
 }
-

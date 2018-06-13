@@ -27,7 +27,8 @@ int main(int argc, const char * argv[]) {
     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
     GLFWwindow* window;
-    window=glfwCreateWindow(1000, 1000, "Title", 0, 0);
+    float min=1000;
+    window=glfwCreateWindow(min, min, "Title", 0, 0);
     if(!window){
         glfwTerminate();
         return -1;
