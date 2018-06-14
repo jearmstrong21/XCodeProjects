@@ -35,7 +35,11 @@
 		5ABF78CC20D1A0D900C9E778 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		5ABF78CE20D1A0DE00C9E778 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		5ABF78D020D1A0F000C9E778 /* libglfw.3.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libglfw.3.2.dylib; path = ../../../../../usr/local/lib/libglfw.3.2.dylib; sourceTree = "<group>"; };
-		5ABF78D320D1A26C00C9E778 /* VertexBuffer.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = VertexBuffer.hpp; sourceTree = "<group>"; };
+		5ABF78D720D1BB6F00C9E778 /* shader.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = shader.vert; sourceTree = "<group>"; };
+		5ABF78D820D1BBDD00C9E778 /* shader.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = shader.frag; sourceTree = "<group>"; };
+		5ABF78D920D1CEF000C9E778 /* GLUtils.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = GLUtils.hpp; sourceTree = "<group>"; };
+		5ABF78DA20D1D09100C9E778 /* Shader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Shader.h; sourceTree = "<group>"; };
+		5ABF78DB20D201E900C9E778 /* VertexBuffer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VertexBuffer.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,7 +79,11 @@
 			isa = PBXGroup;
 			children = (
 				5ABF78C020D1A0BA00C9E778 /* main.cpp */,
-				5ABF78D320D1A26C00C9E778 /* VertexBuffer.hpp */,
+				5ABF78D720D1BB6F00C9E778 /* shader.vert */,
+				5ABF78D820D1BBDD00C9E778 /* shader.frag */,
+				5ABF78D920D1CEF000C9E778 /* GLUtils.hpp */,
+				5ABF78DA20D1D09100C9E778 /* Shader.h */,
+				5ABF78DB20D201E900C9E778 /* VertexBuffer.h */,
 			);
 			path = GLFWHeightFieldWaterSim;
 			sourceTree = "<group>";
