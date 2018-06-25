@@ -26,8 +26,13 @@ int main()
     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE); // uncomment this statement to fix compilation on OS X
 #endif
     
-    const int arrW=200;
-    const int arrH=200;
+    float windowWidth=1000;
+    float windowHeight=1000;
+    string windowTitle="GLFW Heightfield water simulation";
+    GLFWwindow* window = glfwCreateWindow(windowWidth, windowHeight, windowTitle.c_str(), NULL, NULL);
+    
+    const int arrW=windowWidth/5.0;
+    const int arrH=windowHeight/5.0;
     float heights[arrW][arrH];
     float diff[arrW][arrH];
     
@@ -36,8 +41,8 @@ int main()
     
     for(int x=0;x<arrW;x++){
         for(int y=0;y<arrH;y++){
-            heights[x][y]=cos( (x+y)*0.01 )*0.5+0.5;
-//            heights[x][y]=0.0;
+//            heights[x][y]=cos( (x+y)*0.01 )*0.5+0.5;
+            heights[x][y]=0.0;
             diff[x][y]=0.0;
         }
     }
@@ -45,9 +50,6 @@ int main()
     // glfw window creation
     // --------------------
     
-    float windowWidth=1000;
-    float windowHeight=1000;
-    GLFWwindow* window = glfwCreateWindow(windowWidth, windowHeight, "GLFW Heightfield water simulation", NULL, NULL);
     if (window == NULL)
     {
         std::cout << "Failed to create GLFW window" << std::endl;
@@ -74,10 +76,10 @@ int main()
     float dy=1.0/arrH;
     for(int x=0;x<arrW;x++){
         for(int y=0;y<arrH;y++){
-            Vertex v1=makeVert(x*dx, y*dy,        x*dx, y*dy);
-            Vertex v2=makeVert(x*dx+dx, y*dy,     x*dx+dx, y*dy);
-            Vertex v3=makeVert(x*dx+dx, y*dy+dy,  x*dx+dx, y*dy+dy);
-            Vertex v4=makeVert(x*dx, y*dy+dy,     x*dx, y*dy+dy);
+            Vertex v1=makeVert(x*dx, y*dy,           0,0);
+            Vertex v2=makeVert(x*dx+dx, y*dy,      1,0);
+            Vertex v3=makeVert(x*dx+dx, y*dy+dy,    1,1);
+            Vertex v4=makeVert(x*dx, y*dy+dy,       0,1);
             int n=verts.size();
             verts.push_back(v1);
             verts.push_back(v2);
@@ -97,10 +99,22 @@ int main()
     vertexBuffer.provokingVertex=VERTEX_FIRST;
     vertexBuffer.genBuffers(verts,tris);
     
+    int frames = 0;
+    
+    float fps=0.0;
     
     while (!glfwWindowShouldClose(window)){
         glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
+        glfwSetWindowTitle(window, (windowTitle+", FPS="+std::to_string(fps)).c_str());
+        
+        frames++;
+        float time=glfwGetTime();
+        if(time>1.0){
+            fps = frames / time;
+            glfwSetTime(0.0);
+            frames = 0.0;
+        }
         
         double x,y;
         glfwGetCursorPos(window, &x, &y);
@@ -131,7 +145,7 @@ int main()
                 newDiff[x][y]+=(xmi+xpl+ymi+ypl)/4-heights[x][y];
                 newDiff[x][y]*=0.99;
                 newHeights[x][y]+=newDiff[x][y];
-                if(pressed==GLFW_PRESS&&glm::length(glm::vec2(x-ix,y-iy))<2.0)newHeights[x][y]=1.0;
+                if(pressed==GLFW_PRESS&&x==ix&&y==iy)newHeights[x][y]=1.5;
             }
         }
         for(int x=0;x<arrW;x++){
@@ -143,7 +157,13 @@ int main()
         
         for(int x=0;x<arrW;x++){
             for(int y=0;y<arrH;y++){
-                verts[ (x*arrH+y)*4].col.b=heights[x][y];
+//                int j=x*arrH+y;
+                int j=x*arrH+y;
+                int i=j*4;
+                verts[ i+0 ].col.b=heights[x][y];
+//                verts[ i+1 ].col.b=heights[x+1][y];
+//                verts[ i+2 ].col.b=heights[x+1][y+1];
+//                verts[ i+3 ].col.b=heights[x][y+1];
             }
         }
         
