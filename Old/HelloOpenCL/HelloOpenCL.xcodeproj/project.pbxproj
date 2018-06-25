@@ -1,0 +1,435 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5A5B209B20DECE0900803A17 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A5B209A20DECE0900803A17 /* OpenGL.framework */; };
+		5A5B209D20DF017100803A17 /* libglfw.3.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A5B209C20DF017100803A17 /* libglfw.3.2.dylib */; };
+		5A5B209F20DF025600803A17 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A5B209E20DF025500803A17 /* CoreVideo.framework */; };
+		5A5B20A120DF026000803A17 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A5B20A020DF026000803A17 /* Cocoa.framework */; };
+		5A5B20A320DF026400803A17 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A5B20A220DF026400803A17 /* IOKit.framework */; };
+		5A5B21FC20DF14B800803A17 /* EasyCL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A5B21DD20DF14B800803A17 /* EasyCL.cpp */; };
+		5A5B21FD20DF14B800803A17 /* easycl_stringhelper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A5B21E220DF14B800803A17 /* easycl_stringhelper.cpp */; };
+		5A5B21FE20DF14B800803A17 /* StatefulTimer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A5B21E320DF14B800803A17 /* StatefulTimer.cpp */; };
+		5A5B21FF20DF14B800803A17 /* deviceinfo_helper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A5B21EA20DF14B800803A17 /* deviceinfo_helper.cpp */; };
+		5A5B220020DF14B800803A17 /* DevicesInfo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A5B21EF20DF14B800803A17 /* DevicesInfo.cpp */; };
+		5A5B220120DF14B800803A17 /* gpuinfo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A5B21F120DF14B800803A17 /* gpuinfo.cpp */; };
+		5A5B220220DF14B800803A17 /* platforminfo_helper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A5B21F720DF14B800803A17 /* platforminfo_helper.cpp */; };
+		5A5B220320DF14B800803A17 /* CLKernel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A5B21F820DF14B800803A17 /* CLKernel.cpp */; };
+		5A5B220420DF14B800803A17 /* CLWrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A5B21F920DF14B800803A17 /* CLWrapper.cpp */; };
+		5A5B220520DF14B800803A17 /* DeviceInfo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A5B21FB20DF14B800803A17 /* DeviceInfo.cpp */; };
+		5A5B220720DF194600803A17 /* add.cl in Sources */ = {isa = PBXBuildFile; fileRef = 5A5B220620DF194600803A17 /* add.cl */; };
+		5A5B220920DF196800803A17 /* mult.cl in Sources */ = {isa = PBXBuildFile; fileRef = 5A5B220820DF196800803A17 /* mult.cl */; };
+		5A5B220B20DF1C5600803A17 /* boid.cl in Sources */ = {isa = PBXBuildFile; fileRef = 5A5B220A20DF1C5600803A17 /* boid.cl */; };
+		5ABF78B020D0BB9700C9E778 /* OpenCL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5ABF78AF20D0BB9700C9E778 /* OpenCL.framework */; };
+		5ABF790220D5AA1900C9E778 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5ABF790120D5AA1900C9E778 /* main.cpp */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		5ABF78A220D0BB8D00C9E778 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		5A5B209820DECE0500803A17 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = System/Library/Frameworks/GLUT.framework; sourceTree = SDKROOT; };
+		5A5B209A20DECE0900803A17 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
+		5A5B209C20DF017100803A17 /* libglfw.3.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libglfw.3.2.dylib; path = ../../../../../usr/local/lib/libglfw.3.2.dylib; sourceTree = "<group>"; };
+		5A5B209E20DF025500803A17 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		5A5B20A020DF026000803A17 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		5A5B20A220DF026400803A17 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
+		5A5B21DC20DF14B800803A17 /* DevicesInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DevicesInfo.h; sourceTree = "<group>"; };
+		5A5B21DD20DF14B800803A17 /* EasyCL.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EasyCL.cpp; sourceTree = "<group>"; };
+		5A5B21DE20DF14B800803A17 /* CLArrayInt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLArrayInt.h; sourceTree = "<group>"; };
+		5A5B21DF20DF14B800803A17 /* mystdint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mystdint.h; sourceTree = "<group>"; };
+		5A5B21E120DF14B800803A17 /* StatefulTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatefulTimer.h; sourceTree = "<group>"; };
+		5A5B21E220DF14B800803A17 /* easycl_stringhelper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = easycl_stringhelper.cpp; sourceTree = "<group>"; };
+		5A5B21E320DF14B800803A17 /* StatefulTimer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StatefulTimer.cpp; sourceTree = "<group>"; };
+		5A5B21E420DF14B800803A17 /* easycl_stringhelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = easycl_stringhelper.h; sourceTree = "<group>"; };
+		5A5B21E520DF14B800803A17 /* EasyCL_export.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EasyCL_export.h; sourceTree = "<group>"; };
+		5A5B21E620DF14B800803A17 /* deviceinfo_helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = deviceinfo_helper.h; sourceTree = "<group>"; };
+		5A5B21E720DF14B800803A17 /* EasyCL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EasyCL.h; sourceTree = "<group>"; };
+		5A5B21E820DF14B800803A17 /* CLIntWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLIntWrapper.h; sourceTree = "<group>"; };
+		5A5B21E920DF14B800803A17 /* ICLArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICLArray.h; sourceTree = "<group>"; };
+		5A5B21EA20DF14B800803A17 /* deviceinfo_helper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = deviceinfo_helper.cpp; sourceTree = "<group>"; };
+		5A5B21EB20DF14B800803A17 /* CLKernel_structs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLKernel_structs.h; sourceTree = "<group>"; };
+		5A5B21EC20DF14B800803A17 /* DeviceInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceInfo.h; sourceTree = "<group>"; };
+		5A5B21ED20DF14B800803A17 /* CLArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLArray.h; sourceTree = "<group>"; };
+		5A5B21EE20DF14B800803A17 /* platforminfo_helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = platforminfo_helper.h; sourceTree = "<group>"; };
+		5A5B21EF20DF14B800803A17 /* DevicesInfo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DevicesInfo.cpp; sourceTree = "<group>"; };
+		5A5B21F020DF14B800803A17 /* CLWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLWrapper.h; sourceTree = "<group>"; };
+		5A5B21F120DF14B800803A17 /* gpuinfo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = gpuinfo.cpp; sourceTree = "<group>"; };
+		5A5B21F220DF14B800803A17 /* CLKernel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLKernel.h; sourceTree = "<group>"; };
+		5A5B21F320DF14B800803A17 /* deprecated.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = deprecated.h; sourceTree = "<group>"; };
+		5A5B21F420DF14B800803A17 /* CLArrayFloat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLArrayFloat.h; sourceTree = "<group>"; };
+		5A5B21F520DF14B800803A17 /* CLFloatWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLFloatWrapper.h; sourceTree = "<group>"; };
+		5A5B21F620DF14B800803A17 /* CLUCharWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLUCharWrapper.h; sourceTree = "<group>"; };
+		5A5B21F720DF14B800803A17 /* platforminfo_helper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = platforminfo_helper.cpp; sourceTree = "<group>"; };
+		5A5B21F820DF14B800803A17 /* CLKernel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CLKernel.cpp; sourceTree = "<group>"; };
+		5A5B21F920DF14B800803A17 /* CLWrapper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CLWrapper.cpp; sourceTree = "<group>"; };
+		5A5B21FA20DF14B800803A17 /* CLFloatWrapperConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLFloatWrapperConst.h; sourceTree = "<group>"; };
+		5A5B21FB20DF14B800803A17 /* DeviceInfo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DeviceInfo.cpp; sourceTree = "<group>"; };
+		5A5B220620DF194600803A17 /* add.cl */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.opencl; path = add.cl; sourceTree = "<group>"; };
+		5A5B220820DF196800803A17 /* mult.cl */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.opencl; path = mult.cl; sourceTree = "<group>"; };
+		5A5B220A20DF1C5600803A17 /* boid.cl */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.opencl; path = boid.cl; sourceTree = "<group>"; };
+		5ABF78A420D0BB8D00C9E778 /* HelloOpenCL */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = HelloOpenCL; sourceTree = BUILT_PRODUCTS_DIR; };
+		5ABF78AF20D0BB9700C9E778 /* OpenCL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenCL.framework; path = System/Library/Frameworks/OpenCL.framework; sourceTree = SDKROOT; };
+		5ABF790120D5AA1900C9E778 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		5ABF790620D5BB5D00C9E778 /* all_info.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = all_info.txt; sourceTree = "<group>"; };
+		5AE0B7C820E0323F00CBF2A9 /* FPSCounter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FPSCounter.h; sourceTree = "<group>"; };
+		5AE0B7C920E0618600CBF2A9 /* Hue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Hue.h; sourceTree = "<group>"; };
+		5AE0B7CA20E061DE00CBF2A9 /* Math.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Math.h; sourceTree = "<group>"; };
+		5AE0B7CB20E06F4A00CBF2A9 /* PrintDeviceInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrintDeviceInfo.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5ABF78A120D0BB8D00C9E778 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5A5B20A320DF026400803A17 /* IOKit.framework in Frameworks */,
+				5A5B209F20DF025600803A17 /* CoreVideo.framework in Frameworks */,
+				5A5B20A120DF026000803A17 /* Cocoa.framework in Frameworks */,
+				5A5B209D20DF017100803A17 /* libglfw.3.2.dylib in Frameworks */,
+				5A5B209B20DECE0900803A17 /* OpenGL.framework in Frameworks */,
+				5ABF78B020D0BB9700C9E778 /* OpenCL.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5A5B21DB20DF14B800803A17 /* EasyCL */ = {
+			isa = PBXGroup;
+			children = (
+				5A5B21DC20DF14B800803A17 /* DevicesInfo.h */,
+				5A5B21DD20DF14B800803A17 /* EasyCL.cpp */,
+				5A5B21DE20DF14B800803A17 /* CLArrayInt.h */,
+				5A5B21DF20DF14B800803A17 /* mystdint.h */,
+				5A5B21E020DF14B800803A17 /* util */,
+				5A5B21E520DF14B800803A17 /* EasyCL_export.h */,
+				5A5B21E620DF14B800803A17 /* deviceinfo_helper.h */,
+				5A5B21E720DF14B800803A17 /* EasyCL.h */,
+				5A5B21E820DF14B800803A17 /* CLIntWrapper.h */,
+				5A5B21E920DF14B800803A17 /* ICLArray.h */,
+				5A5B21EA20DF14B800803A17 /* deviceinfo_helper.cpp */,
+				5A5B21EB20DF14B800803A17 /* CLKernel_structs.h */,
+				5A5B21EC20DF14B800803A17 /* DeviceInfo.h */,
+				5A5B21ED20DF14B800803A17 /* CLArray.h */,
+				5A5B21EE20DF14B800803A17 /* platforminfo_helper.h */,
+				5A5B21EF20DF14B800803A17 /* DevicesInfo.cpp */,
+				5A5B21F020DF14B800803A17 /* CLWrapper.h */,
+				5A5B21F120DF14B800803A17 /* gpuinfo.cpp */,
+				5A5B21F220DF14B800803A17 /* CLKernel.h */,
+				5A5B21F320DF14B800803A17 /* deprecated.h */,
+				5A5B21F420DF14B800803A17 /* CLArrayFloat.h */,
+				5A5B21F520DF14B800803A17 /* CLFloatWrapper.h */,
+				5A5B21F620DF14B800803A17 /* CLUCharWrapper.h */,
+				5A5B21F720DF14B800803A17 /* platforminfo_helper.cpp */,
+				5A5B21F820DF14B800803A17 /* CLKernel.cpp */,
+				5A5B21F920DF14B800803A17 /* CLWrapper.cpp */,
+				5A5B21FA20DF14B800803A17 /* CLFloatWrapperConst.h */,
+				5A5B21FB20DF14B800803A17 /* DeviceInfo.cpp */,
+			);
+			path = EasyCL;
+			sourceTree = "<group>";
+		};
+		5A5B21E020DF14B800803A17 /* util */ = {
+			isa = PBXGroup;
+			children = (
+				5A5B21E120DF14B800803A17 /* StatefulTimer.h */,
+				5A5B21E220DF14B800803A17 /* easycl_stringhelper.cpp */,
+				5A5B21E320DF14B800803A17 /* StatefulTimer.cpp */,
+				5A5B21E420DF14B800803A17 /* easycl_stringhelper.h */,
+			);
+			path = util;
+			sourceTree = "<group>";
+		};
+		5ABF789B20D0BB8D00C9E778 = {
+			isa = PBXGroup;
+			children = (
+				5ABF78A620D0BB8D00C9E778 /* HelloOpenCL */,
+				5ABF78A520D0BB8D00C9E778 /* Products */,
+				5ABF78AE20D0BB9700C9E778 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		5ABF78A520D0BB8D00C9E778 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5ABF78A420D0BB8D00C9E778 /* HelloOpenCL */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5ABF78A620D0BB8D00C9E778 /* HelloOpenCL */ = {
+			isa = PBXGroup;
+			children = (
+				5A5B220620DF194600803A17 /* add.cl */,
+				5A5B21DB20DF14B800803A17 /* EasyCL */,
+				5ABF790620D5BB5D00C9E778 /* all_info.txt */,
+				5A5B220820DF196800803A17 /* mult.cl */,
+				5A5B220A20DF1C5600803A17 /* boid.cl */,
+				5ABF790120D5AA1900C9E778 /* main.cpp */,
+				5AE0B7C820E0323F00CBF2A9 /* FPSCounter.h */,
+				5AE0B7C920E0618600CBF2A9 /* Hue.h */,
+				5AE0B7CA20E061DE00CBF2A9 /* Math.h */,
+				5AE0B7CB20E06F4A00CBF2A9 /* PrintDeviceInfo.h */,
+			);
+			path = HelloOpenCL;
+			sourceTree = "<group>";
+		};
+		5ABF78AE20D0BB9700C9E778 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5A5B20A220DF026400803A17 /* IOKit.framework */,
+				5A5B20A020DF026000803A17 /* Cocoa.framework */,
+				5A5B209E20DF025500803A17 /* CoreVideo.framework */,
+				5A5B209C20DF017100803A17 /* libglfw.3.2.dylib */,
+				5A5B209A20DECE0900803A17 /* OpenGL.framework */,
+				5A5B209820DECE0500803A17 /* GLUT.framework */,
+				5ABF78AF20D0BB9700C9E778 /* OpenCL.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5ABF78A320D0BB8D00C9E778 /* HelloOpenCL */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5ABF78AB20D0BB8D00C9E778 /* Build configuration list for PBXNativeTarget "HelloOpenCL" */;
+			buildPhases = (
+				5ABF78A020D0BB8D00C9E778 /* Sources */,
+				5ABF78A120D0BB8D00C9E778 /* Frameworks */,
+				5ABF78A220D0BB8D00C9E778 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = HelloOpenCL;
+			productName = HelloOpenCL;
+			productReference = 5ABF78A420D0BB8D00C9E778 /* HelloOpenCL */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5ABF789C20D0BB8D00C9E778 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0930;
+				ORGANIZATIONNAME = "Jack Armstrong";
+				TargetAttributes = {
+					5ABF78A320D0BB8D00C9E778 = {
+						CreatedOnToolsVersion = 9.3;
+					};
+				};
+			};
+			buildConfigurationList = 5ABF789F20D0BB8D00C9E778 /* Build configuration list for PBXProject "HelloOpenCL" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 5ABF789B20D0BB8D00C9E778;
+			productRefGroup = 5ABF78A520D0BB8D00C9E778 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5ABF78A320D0BB8D00C9E778 /* HelloOpenCL */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5ABF78A020D0BB8D00C9E778 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5ABF790220D5AA1900C9E778 /* main.cpp in Sources */,
+				5A5B21FC20DF14B800803A17 /* EasyCL.cpp in Sources */,
+				5A5B21FE20DF14B800803A17 /* StatefulTimer.cpp in Sources */,
+				5A5B21FF20DF14B800803A17 /* deviceinfo_helper.cpp in Sources */,
+				5A5B220220DF14B800803A17 /* platforminfo_helper.cpp in Sources */,
+				5A5B220B20DF1C5600803A17 /* boid.cl in Sources */,
+				5A5B220020DF14B800803A17 /* DevicesInfo.cpp in Sources */,
+				5A5B220320DF14B800803A17 /* CLKernel.cpp in Sources */,
+				5A5B220920DF196800803A17 /* mult.cl in Sources */,
+				5A5B220120DF14B800803A17 /* gpuinfo.cpp in Sources */,
+				5A5B220520DF14B800803A17 /* DeviceInfo.cpp in Sources */,
+				5A5B220720DF194600803A17 /* add.cl in Sources */,
+				5A5B21FD20DF14B800803A17 /* easycl_stringhelper.cpp in Sources */,
+				5A5B220420DF14B800803A17 /* CLWrapper.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		5ABF78A920D0BB8D00C9E778 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		5ABF78AA20D0BB8D00C9E778 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		5ABF78AC20D0BB8D00C9E778 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				HEADER_SEARCH_PATHS = "/usr/local/Cellar/glfw/3.2.1/include/**";
+				LIBRARY_SEARCH_PATHS = "/usr/local/Cellar/glfw/3.2.1/lib/**";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		5ABF78AD20D0BB8D00C9E778 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				HEADER_SEARCH_PATHS = "/usr/local/Cellar/glfw/3.2.1/include/**";
+				LIBRARY_SEARCH_PATHS = "/usr/local/Cellar/glfw/3.2.1/lib/**";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5ABF789F20D0BB8D00C9E778 /* Build configuration list for PBXProject "HelloOpenCL" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5ABF78A920D0BB8D00C9E778 /* Debug */,
+				5ABF78AA20D0BB8D00C9E778 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5ABF78AB20D0BB8D00C9E778 /* Build configuration list for PBXNativeTarget "HelloOpenCL" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5ABF78AC20D0BB8D00C9E778 /* Debug */,
+				5ABF78AD20D0BB8D00C9E778 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 5ABF789C20D0BB8D00C9E778 /* Project object */;
+}

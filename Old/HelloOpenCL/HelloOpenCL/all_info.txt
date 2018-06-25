@@ -1,0 +1,40 @@
+Number of OpenCL platforms found: 1
+CL_PLATFORM_PROFILE: FULL_PROFILE
+CL_PLATFORM_VERSION: OpenCL 1.2 (Mar 15 2018 21:59:37)
+CL_PLATFORM_NAME: Apple
+CL_PLATFORM_VENDOR: Apple
+CL_PLATFORM_EXTENSIONS: cl_APPLE_SetMemObjectDestructor cl_APPLE_ContextLoggingFunctions cl_APPLE_clut cl_APPLE_query_kernel_names cl_APPLE_gl_sharing cl_khr_gl_event
+Number of detected OpenCL devices: 3
+CPU detected
+    Device name is Intel(R) Core(TM) i7-7820HQ CPU @ 2.90GHz
+    Device vendor is Intel
+    VENDOR ID: 0xffffffff
+    Device max memory allocation: 4096 mega-bytes
+    Device global cacheline size: 8388608 bytes
+    Device global mem: 16384 mega-bytes
+    Maximum number of parallel compute units: 8
+    Maximum dimensions for global/local work-item IDs: 3
+    Maximum number of work-items in each dimension: ( 1024 1 1  )
+    Maximum number of work-items in a work-group: 1024
+GPU detected
+    Device name is Intel(R) HD Graphics 630
+    Device vendor is Intel Inc.
+    VENDOR ID: 0x1024500
+    Device max memory allocation: 384 mega-bytes
+    Device global cacheline size: 0 bytes
+    Device global mem: 1536 mega-bytes
+    Maximum number of parallel compute units: 24
+    Maximum dimensions for global/local work-item IDs: 3
+    Maximum number of work-items in each dimension: ( 256 256 256  )
+    Maximum number of work-items in a work-group: 256
+GPU detected
+    Device name is AMD Radeon Pro 560 Compute Engine
+    Device vendor is AMD
+    VENDOR ID: 0x1021c00
+    Device max memory allocation: 1024 mega-bytes
+    Device global cacheline size: 0 bytes
+    Device global mem: 4096 mega-bytes
+    Maximum number of parallel compute units: 16
+    Maximum dimensions for global/local work-item IDs: 3
+    Maximum number of work-items in each dimension: ( 256 256 256  )
+    Maximum number of work-items in a work-group: 256
