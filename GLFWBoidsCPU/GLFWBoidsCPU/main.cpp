@@ -58,7 +58,7 @@ int main(int argc, const char * argv[]) {
     shader.fragFileName="boid.frag";
     shader.compile();
     
-    for(int i=0;i<750;i++){
+    for(int i=0;i<500;i++){
         Boid boid(i);
         boid.init(&params);
         boids.push_back(boid);
