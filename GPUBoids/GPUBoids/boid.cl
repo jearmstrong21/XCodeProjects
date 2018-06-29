@@ -8,7 +8,7 @@ constant float sepDist=0.0158*1.5;
 constant float attractVelMult=0.0075;
 constant float attractVelDist=0.075*1.5;
 
-constant float boundaryRepelMult=0.01;
+constant float boundaryRepelMult=0.0001;
 
 #define PI 3.14159265359
 
@@ -16,7 +16,7 @@ kernel void boid(int num_boids,
                  int offset,
                  
                  global float* posBounds,
-                 global float* velBounds,
+                 float maxvel,
                  
                  global float*inx,global float*iny,global float*invx,global float*invy,
                  global float*outx,global float*outy,global float*outvx,global float*outvy,global float*outang){
@@ -106,27 +106,23 @@ kernel void boid(int num_boids,
         vy-=y*boundaryRepelMult;
         //        y=posBounds[3];
     }
+    float velmag=sqrt(vx*vx+vy*vy);
+    if(velmag>maxvel){
+        vx/=velmag;
+        vy/=velmag;
+        vx*=maxvel;
+        vy*=maxvel;
+    }
     
-    
-    if(vx<velBounds[0])vx=velBounds[0];
-    if(vy<velBounds[1])vy=velBounds[1];
-    if(vx>velBounds[2])vx=velBounds[2];
-    if(vy>velBounds[3])vy=velBounds[3];
+//    if(vx<velBounds[0])vx=velBounds[0];
+//    if(vy<velBounds[1])vy=velBounds[1];
+//    if(vx>velBounds[2])vx=velBounds[2];
+//    if(vy>velBounds[3])vy=velBounds[3];
     
     outx[id]=x;
     outy[id]=y;
     outvx[id]=vx;
     outvy[id]=vy;
     outang[id]=atan2(vy,vx)*180/PI-90;
-    
-    //    //--------------------------------------------------------//
-    //    //Default kernel that passes data through without changing//
-    //    //--------------------------------------------------------//
-    //    int i=get_global_id(0);
-    //    outx[i]=inx[i+offset];
-    //    outy[i]=iny[i+offset];
-    //    outvx[i]=invx[i+offset];
-    //    outvy[i]=invy[i+offset];
-    //    outang[i]=0;
 }
 

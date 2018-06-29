@@ -78,15 +78,13 @@ int main(int argcp,char **argv) {
     pos_bounds[1]=-maxpos;//min_y
     pos_bounds[2]= maxpos;//max_x
     pos_bounds[3]= maxpos;//max_y
-    float vel_bounds[4];float maxvel=0.0025;
-    vel_bounds[0]=vel_bounds[1]=-maxvel;
-    vel_bounds[2]=vel_bounds[3]= maxvel;
+    float maxvel=0.0025;
     
     for(int i=0;i<num_boids;i++){
         x[i]=randf(-maxpos,maxpos);
         y[i]=randf(-maxpos,maxpos);
-        vx[i]=0;
-        vy[i]=0;
+        vx[i]=randf(-maxvel,maxvel);
+        vy[i]=randf(-maxvel,maxvel);
         angles[i]=0;
         //        x.push_back(randf(-1,1));
         //        y.push_back(randf(-1,1));
@@ -123,7 +121,7 @@ int main(int argcp,char **argv) {
             kernel->in((uint32_t)num_boids);
             kernel->in(offset);
             kernel->in(4,pos_bounds);
-            kernel->in(4,vel_bounds);
+            kernel->in(maxvel);
             kernel->in(num_boids,x);
             kernel->in(num_boids,y);
             kernel->in(num_boids,vx);
