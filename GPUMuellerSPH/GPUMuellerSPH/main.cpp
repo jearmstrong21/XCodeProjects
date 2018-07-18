@@ -89,7 +89,7 @@ int main(){
     int windowHeight=1000;
     string windowTitle="GPU Mueller SPH";
     
-    num_particles=512;
+    num_particles=256;
     num_in_group=256;
     num_groups=num_particles/num_in_group;
     
@@ -199,20 +199,21 @@ int main(){
         runKernel(compute_forces);
         runKernel(integrate);
         
+        
+        glEnable(GL_POINT_SMOOTH);
+        glPointSize(H/2.0f);
+        glMatrixMode(GL_PROJECTION);
+        
+        glLoadIdentity();
+        glOrtho(0, VIEW_SIZE, 0, VIEW_SIZE, 0, 1);
+        glColor3f(1,1,1);
+        glBegin(GL_POINTS);
         for(int i=0;i<num_particles;i++){
-            glPushMatrix();
-            glTranslatef(posx[i]/400-1, posy[i]/400-1, 0);
-            float hue=fmod(rho[i]*300,360);
-            glColor3f(Hue::hueToR(hue),Hue::hueToG(hue),Hue::hueToB(hue));
-            glBegin(GL_QUADS);
-            glVertex3f(-display_size, display_size,0);
-            glVertex3f(-display_size,-display_size,0);
-            glVertex3f( display_size,-display_size,0);
-            glVertex3f( display_size, display_size,0);
-            glEnd();
-
-            glPopMatrix();
+//            float hue=fmod(rho[i]*300,360);
+//            glColor3f(Hue::hueToR(hue),Hue::hueToG(hue),Hue::hueToB(hue));
+            glVertex2f(posx[i],posy[i]);
         }
+        glEnd();
         
         glfwSwapBuffers(window);
         glfwPollEvents();

@@ -53,6 +53,8 @@ kernel void compute_density_pressure(int num_particles,
     float rho=inrho[inid];
     float p=inp[inid];
     
+
+    
     rho=0;
     for(int j=0;j<num_particles;j++){
         float2 rij=float2(inx[j]-x,iny[j]-y);
@@ -62,6 +64,10 @@ kernel void compute_density_pressure(int num_particles,
         }
     }
     p=GAS_CONST*(rho-REST_DENS);
+    
+    
+    
+    
     
     outx[outid]=x;
     outy[outid]=y;
@@ -106,22 +112,26 @@ kernel void compute_forces(int num_particles,
     float rho=inrho[inid];
     float p=inp[inid];
     
+    
+    
     float2 fpress=float2(0,0);
     float2 fvisc=float2(0,0);
+    float2 fgrav=rho*float2(G_x,G_y);
     
     for(int j=0;j<num_particles;j++){
         if(j==inid)continue;
         float2 rij=float2(inx[j]-x,iny[j]-y);
-        float r=length(rij);
+        float r=sqrt(dot(rij,rij));
         if(r<H){
-            float2 norm_rij=rij/r;
-            fpress+=-norm_rij*MASS*(p+inp[j])/(2*inrho[j])*SPIKY_GRAD*pow(H-r,2.0f);
-            fvisc+=VISC_LAP*MASS*float2(invx[j]-vx,invy[j]-vy)/inrho[j]*VISC_LAP*(H-r);
+            float2 diff_v=float2(invx[j]-vx,invy[j]-vy);
+            fpress-=normalize(rij)*MASS*(p+inp[j])/(2*inrho[j])*SPIKY_GRAD*pow(H-r,2.0f);
+            fvisc+=VISC*MASS*(diff_v)/inrho[j]*VISC_LAP*(H-r);
         }
     }
     
-    fx=G_x*rho+fpress.x+fvisc.x;
-    fy=G_y*rho+fpress.y+fvisc.y;
+    float2 f=fpress+fvisc+fgrav;
+    fx=f.x;
+    fy=f.y;
     
     
     outx[outid]=x;

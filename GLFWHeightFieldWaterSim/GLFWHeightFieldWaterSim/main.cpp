@@ -145,7 +145,7 @@ int main()
                 newDiff[x][y]+=(xmi+xpl+ymi+ypl)/4-heights[x][y];
                 newDiff[x][y]*=0.99;
                 newHeights[x][y]+=newDiff[x][y];
-                if(pressed==GLFW_PRESS&&x==ix&&y==iy)newHeights[x][y]=1.5;
+                if(pressed==GLFW_PRESS&&x==ix&&y==iy)newHeights[x][y]=15;
             }
         }
         for(int x=0;x<arrW;x++){
