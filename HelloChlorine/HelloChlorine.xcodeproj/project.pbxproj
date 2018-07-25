@@ -7,16 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5ABF78C120D1A0BA00C9E778 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5ABF78C020D1A0BA00C9E778 /* main.cpp */; };
-		5ABF78C920D1A0C300C9E778 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5ABF78C820D1A0C300C9E778 /* CoreVideo.framework */; };
-		5ABF78CB20D1A0C700C9E778 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5ABF78CA20D1A0C700C9E778 /* IOKit.framework */; };
-		5ABF78CD20D1A0D900C9E778 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5ABF78CC20D1A0D900C9E778 /* Cocoa.framework */; };
-		5ABF78CF20D1A0DE00C9E778 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5ABF78CE20D1A0DE00C9E778 /* OpenGL.framework */; };
-		5ABF78D120D1A0F000C9E778 /* libglfw.3.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5ABF78D020D1A0F000C9E778 /* libglfw.3.2.dylib */; };
+		5A6471A5210817BC00BC3264 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A6471A4210817BC00BC3264 /* main.cpp */; };
+		5A6471AD210817C400BC3264 /* OpenCL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A6471AC210817C400BC3264 /* OpenCL.framework */; };
+		5A6471B3210818B300BC3264 /* square.cl in Sources */ = {isa = PBXBuildFile; fileRef = 5A6471B2210818B300BC3264 /* square.cl */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		5ABF78BB20D1A0BA00C9E778 /* CopyFiles */ = {
+		5A64719F210817BC00BC3264 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = /usr/share/man/man1/;
@@ -28,74 +25,60 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		5ABF78BD20D1A0BA00C9E778 /* GLFWHeightFieldWaterSim */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = GLFWHeightFieldWaterSim; sourceTree = BUILT_PRODUCTS_DIR; };
-		5ABF78C020D1A0BA00C9E778 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
-		5ABF78C820D1A0C300C9E778 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
-		5ABF78CA20D1A0C700C9E778 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
-		5ABF78CC20D1A0D900C9E778 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
-		5ABF78CE20D1A0DE00C9E778 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
-		5ABF78D020D1A0F000C9E778 /* libglfw.3.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libglfw.3.2.dylib; path = ../../../../../usr/local/lib/libglfw.3.2.dylib; sourceTree = "<group>"; };
-		5ABF78D720D1BB6F00C9E778 /* shader.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = shader.vert; sourceTree = "<group>"; };
-		5ABF78D820D1BBDD00C9E778 /* shader.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = shader.frag; sourceTree = "<group>"; };
-		5ABF78D920D1CEF000C9E778 /* GLUtils.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = GLUtils.hpp; sourceTree = "<group>"; };
-		5ABF78DA20D1D09100C9E778 /* Shader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Shader.h; sourceTree = "<group>"; };
-		5ABF78DB20D201E900C9E778 /* VertexBuffer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VertexBuffer.h; sourceTree = "<group>"; };
+		5A6471A1210817BC00BC3264 /* HelloChlorine */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = HelloChlorine; sourceTree = BUILT_PRODUCTS_DIR; };
+		5A6471A4210817BC00BC3264 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		5A6471AC210817C400BC3264 /* OpenCL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenCL.framework; path = System/Library/Frameworks/OpenCL.framework; sourceTree = SDKROOT; };
+		5A6471AE210817D300BC3264 /* cl.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = cl.hpp; sourceTree = "<group>"; };
+		5A6471AF210817D300BC3264 /* chlorine.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = chlorine.hpp; sourceTree = "<group>"; };
+		5A6471B0210817ED00BC3264 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
+		5A6471B2210818B300BC3264 /* square.cl */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.opencl; path = square.cl; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		5ABF78BA20D1A0BA00C9E778 /* Frameworks */ = {
+		5A64719E210817BC00BC3264 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5ABF78CB20D1A0C700C9E778 /* IOKit.framework in Frameworks */,
-				5ABF78C920D1A0C300C9E778 /* CoreVideo.framework in Frameworks */,
-				5ABF78CD20D1A0D900C9E778 /* Cocoa.framework in Frameworks */,
-				5ABF78D120D1A0F000C9E778 /* libglfw.3.2.dylib in Frameworks */,
-				5ABF78CF20D1A0DE00C9E778 /* OpenGL.framework in Frameworks */,
+				5A6471AD210817C400BC3264 /* OpenCL.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		5ABF78B420D1A0BA00C9E778 = {
+		5A647198210817BC00BC3264 = {
 			isa = PBXGroup;
 			children = (
-				5ABF78BF20D1A0BA00C9E778 /* GLFWHeightFieldWaterSim */,
-				5ABF78BE20D1A0BA00C9E778 /* Products */,
-				5ABF78C720D1A0C300C9E778 /* Frameworks */,
+				5A6471A3210817BC00BC3264 /* HelloChlorine */,
+				5A6471A2210817BC00BC3264 /* Products */,
+				5A6471AB210817C400BC3264 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
-		5ABF78BE20D1A0BA00C9E778 /* Products */ = {
+		5A6471A2210817BC00BC3264 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				5ABF78BD20D1A0BA00C9E778 /* GLFWHeightFieldWaterSim */,
+				5A6471A1210817BC00BC3264 /* HelloChlorine */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		5ABF78BF20D1A0BA00C9E778 /* GLFWHeightFieldWaterSim */ = {
+		5A6471A3210817BC00BC3264 /* HelloChlorine */ = {
 			isa = PBXGroup;
 			children = (
-				5ABF78C020D1A0BA00C9E778 /* main.cpp */,
-				5ABF78D720D1BB6F00C9E778 /* shader.vert */,
-				5ABF78D820D1BBDD00C9E778 /* shader.frag */,
-				5ABF78D920D1CEF000C9E778 /* GLUtils.hpp */,
-				5ABF78DA20D1D09100C9E778 /* Shader.h */,
-				5ABF78DB20D201E900C9E778 /* VertexBuffer.h */,
+				5A6471AF210817D300BC3264 /* chlorine.hpp */,
+				5A6471AE210817D300BC3264 /* cl.hpp */,
+				5A6471A4210817BC00BC3264 /* main.cpp */,
+				5A6471B2210818B300BC3264 /* square.cl */,
 			);
-			path = GLFWHeightFieldWaterSim;
+			path = HelloChlorine;
 			sourceTree = "<group>";
 		};
-		5ABF78C720D1A0C300C9E778 /* Frameworks */ = {
+		5A6471AB210817C400BC3264 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				5ABF78D020D1A0F000C9E778 /* libglfw.3.2.dylib */,
-				5ABF78CE20D1A0DE00C9E778 /* OpenGL.framework */,
-				5ABF78CC20D1A0D900C9E778 /* Cocoa.framework */,
-				5ABF78CA20D1A0C700C9E778 /* IOKit.framework */,
-				5ABF78C820D1A0C300C9E778 /* CoreVideo.framework */,
+				5A6471B0210817ED00BC3264 /* OpenGL.framework */,
+				5A6471AC210817C400BC3264 /* OpenCL.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -103,67 +86,68 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		5ABF78BC20D1A0BA00C9E778 /* GLFWHeightFieldWaterSim */ = {
+		5A6471A0210817BC00BC3264 /* HelloChlorine */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 5ABF78C420D1A0BA00C9E778 /* Build configuration list for PBXNativeTarget "GLFWHeightFieldWaterSim" */;
+			buildConfigurationList = 5A6471A8210817BC00BC3264 /* Build configuration list for PBXNativeTarget "HelloChlorine" */;
 			buildPhases = (
-				5ABF78B920D1A0BA00C9E778 /* Sources */,
-				5ABF78BA20D1A0BA00C9E778 /* Frameworks */,
-				5ABF78BB20D1A0BA00C9E778 /* CopyFiles */,
+				5A64719D210817BC00BC3264 /* Sources */,
+				5A64719E210817BC00BC3264 /* Frameworks */,
+				5A64719F210817BC00BC3264 /* CopyFiles */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = GLFWHeightFieldWaterSim;
-			productName = GLFWHeightFieldWaterSim;
-			productReference = 5ABF78BD20D1A0BA00C9E778 /* GLFWHeightFieldWaterSim */;
+			name = HelloChlorine;
+			productName = HelloChlorine;
+			productReference = 5A6471A1210817BC00BC3264 /* HelloChlorine */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		5ABF78B520D1A0BA00C9E778 /* Project object */ = {
+		5A647199210817BC00BC3264 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = "Jack Armstrong";
 				TargetAttributes = {
-					5ABF78BC20D1A0BA00C9E778 = {
+					5A6471A0210817BC00BC3264 = {
 						CreatedOnToolsVersion = 9.3;
 					};
 				};
 			};
-			buildConfigurationList = 5ABF78B820D1A0BA00C9E778 /* Build configuration list for PBXProject "GLFWHeightFieldWaterSim" */;
+			buildConfigurationList = 5A64719C210817BC00BC3264 /* Build configuration list for PBXProject "HelloChlorine" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 			);
-			mainGroup = 5ABF78B420D1A0BA00C9E778;
-			productRefGroup = 5ABF78BE20D1A0BA00C9E778 /* Products */;
+			mainGroup = 5A647198210817BC00BC3264;
+			productRefGroup = 5A6471A2210817BC00BC3264 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				5ABF78BC20D1A0BA00C9E778 /* GLFWHeightFieldWaterSim */,
+				5A6471A0210817BC00BC3264 /* HelloChlorine */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		5ABF78B920D1A0BA00C9E778 /* Sources */ = {
+		5A64719D210817BC00BC3264 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5ABF78C120D1A0BA00C9E778 /* main.cpp in Sources */,
+				5A6471A5210817BC00BC3264 /* main.cpp in Sources */,
+				5A6471B3210818B300BC3264 /* square.cl in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		5ABF78C220D1A0BA00C9E778 /* Debug */ = {
+		5A6471A6210817BC00BC3264 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -221,7 +205,7 @@
 			};
 			name = Debug;
 		};
-		5ABF78C320D1A0BA00C9E778 /* Release */ = {
+		5A6471A7210817BC00BC3264 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -272,28 +256,18 @@
 			};
 			name = Release;
 		};
-		5ABF78C520D1A0BA00C9E778 /* Debug */ = {
+		5A6471A9210817BC00BC3264 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				HEADER_SEARCH_PATHS = (
-					"/usr/local/Cellar/glfw/3.2.1/include/**",
-					"/usr/local/Cellar/glm/0.9.8.5/include/**",
-				);
-				LIBRARY_SEARCH_PATHS = "/usr/local/Cellar/glfw/3.2.1/lib/**";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
 		};
-		5ABF78C620D1A0BA00C9E778 /* Release */ = {
+		5A6471AA210817BC00BC3264 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				HEADER_SEARCH_PATHS = (
-					"/usr/local/Cellar/glfw/3.2.1/include/**",
-					"/usr/local/Cellar/glm/0.9.8.5/include/**",
-				);
-				LIBRARY_SEARCH_PATHS = "/usr/local/Cellar/glfw/3.2.1/lib/**";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -301,25 +275,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		5ABF78B820D1A0BA00C9E778 /* Build configuration list for PBXProject "GLFWHeightFieldWaterSim" */ = {
+		5A64719C210817BC00BC3264 /* Build configuration list for PBXProject "HelloChlorine" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				5ABF78C220D1A0BA00C9E778 /* Debug */,
-				5ABF78C320D1A0BA00C9E778 /* Release */,
+				5A6471A6210817BC00BC3264 /* Debug */,
+				5A6471A7210817BC00BC3264 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		5ABF78C420D1A0BA00C9E778 /* Build configuration list for PBXNativeTarget "GLFWHeightFieldWaterSim" */ = {
+		5A6471A8210817BC00BC3264 /* Build configuration list for PBXNativeTarget "HelloChlorine" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				5ABF78C520D1A0BA00C9E778 /* Debug */,
-				5ABF78C620D1A0BA00C9E778 /* Release */,
+				5A6471A9210817BC00BC3264 /* Debug */,
+				5A6471AA210817BC00BC3264 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 5ABF78B520D1A0BA00C9E778 /* Project object */;
+	rootObject = 5A647199210817BC00BC3264 /* Project object */;
 }
