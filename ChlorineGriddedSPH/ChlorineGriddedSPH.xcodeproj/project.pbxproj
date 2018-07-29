@@ -1,0 +1,305 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5A6471FF2108F36000BC3264 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A6471FE2108F36000BC3264 /* main.cpp */; };
+		5A6472072108F36E00BC3264 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A6472062108F36E00BC3264 /* GLUT.framework */; };
+		5A6472092108F37200BC3264 /* OpenCL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A6472082108F37200BC3264 /* OpenCL.framework */; };
+		5A64720B2108F37500BC3264 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A64720A2108F37500BC3264 /* OpenGL.framework */; };
+		5A64720F2108F38C00BC3264 /* gridded-sph.cl in Sources */ = {isa = PBXBuildFile; fileRef = 5A64720C2108F38C00BC3264 /* gridded-sph.cl */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		5A6471F92108F36000BC3264 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		5A6471FB2108F36000BC3264 /* ChlorineGriddedSPH */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ChlorineGriddedSPH; sourceTree = BUILT_PRODUCTS_DIR; };
+		5A6471FE2108F36000BC3264 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		5A6472062108F36E00BC3264 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = System/Library/Frameworks/GLUT.framework; sourceTree = SDKROOT; };
+		5A6472082108F37200BC3264 /* OpenCL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenCL.framework; path = System/Library/Frameworks/OpenCL.framework; sourceTree = SDKROOT; };
+		5A64720A2108F37500BC3264 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
+		5A64720C2108F38C00BC3264 /* gridded-sph.cl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.opencl; path = "gridded-sph.cl"; sourceTree = "<group>"; };
+		5A64720D2108F38C00BC3264 /* chlorine.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = chlorine.hpp; sourceTree = "<group>"; };
+		5A64720E2108F38C00BC3264 /* cl.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = cl.hpp; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5A6471F82108F36000BC3264 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5A64720B2108F37500BC3264 /* OpenGL.framework in Frameworks */,
+				5A6472092108F37200BC3264 /* OpenCL.framework in Frameworks */,
+				5A6472072108F36E00BC3264 /* GLUT.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5A6471F22108F36000BC3264 = {
+			isa = PBXGroup;
+			children = (
+				5A6471FD2108F36000BC3264 /* ChlorineGriddedSPH */,
+				5A6471FC2108F36000BC3264 /* Products */,
+				5A6472052108F36E00BC3264 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		5A6471FC2108F36000BC3264 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5A6471FB2108F36000BC3264 /* ChlorineGriddedSPH */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5A6471FD2108F36000BC3264 /* ChlorineGriddedSPH */ = {
+			isa = PBXGroup;
+			children = (
+				5A64720D2108F38C00BC3264 /* chlorine.hpp */,
+				5A64720E2108F38C00BC3264 /* cl.hpp */,
+				5A64720C2108F38C00BC3264 /* gridded-sph.cl */,
+				5A6471FE2108F36000BC3264 /* main.cpp */,
+			);
+			path = ChlorineGriddedSPH;
+			sourceTree = "<group>";
+		};
+		5A6472052108F36E00BC3264 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5A64720A2108F37500BC3264 /* OpenGL.framework */,
+				5A6472082108F37200BC3264 /* OpenCL.framework */,
+				5A6472062108F36E00BC3264 /* GLUT.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5A6471FA2108F36000BC3264 /* ChlorineGriddedSPH */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5A6472022108F36000BC3264 /* Build configuration list for PBXNativeTarget "ChlorineGriddedSPH" */;
+			buildPhases = (
+				5A6471F72108F36000BC3264 /* Sources */,
+				5A6471F82108F36000BC3264 /* Frameworks */,
+				5A6471F92108F36000BC3264 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ChlorineGriddedSPH;
+			productName = ChlorineGriddedSPH;
+			productReference = 5A6471FB2108F36000BC3264 /* ChlorineGriddedSPH */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5A6471F32108F36000BC3264 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0930;
+				ORGANIZATIONNAME = "Jack Armstrong";
+				TargetAttributes = {
+					5A6471FA2108F36000BC3264 = {
+						CreatedOnToolsVersion = 9.3;
+					};
+				};
+			};
+			buildConfigurationList = 5A6471F62108F36000BC3264 /* Build configuration list for PBXProject "ChlorineGriddedSPH" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 5A6471F22108F36000BC3264;
+			productRefGroup = 5A6471FC2108F36000BC3264 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5A6471FA2108F36000BC3264 /* ChlorineGriddedSPH */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5A6471F72108F36000BC3264 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5A64720F2108F38C00BC3264 /* gridded-sph.cl in Sources */,
+				5A6471FF2108F36000BC3264 /* main.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		5A6472002108F36000BC3264 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		5A6472012108F36000BC3264 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		5A6472032108F36000BC3264 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		5A6472042108F36000BC3264 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5A6471F62108F36000BC3264 /* Build configuration list for PBXProject "ChlorineGriddedSPH" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5A6472002108F36000BC3264 /* Debug */,
+				5A6472012108F36000BC3264 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5A6472022108F36000BC3264 /* Build configuration list for PBXNativeTarget "ChlorineGriddedSPH" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5A6472032108F36000BC3264 /* Debug */,
+				5A6472042108F36000BC3264 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 5A6471F32108F36000BC3264 /* Project object */;
+}
