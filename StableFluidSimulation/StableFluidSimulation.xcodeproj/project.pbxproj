@@ -25,6 +25,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		5AAECC1721165AB2004A566C /* HSB.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = HSB.hpp; sourceTree = "<group>"; };
 		5AC96A4421154FB500EA14B6 /* StableFluidSimulation */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = StableFluidSimulation; sourceTree = BUILT_PRODUCTS_DIR; };
 		5AC96A4721154FB500EA14B6 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		5AC96A4F21154FBE00EA14B6 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = System/Library/Frameworks/GLUT.framework; sourceTree = SDKROOT; };
@@ -69,6 +70,7 @@
 				5AC96A4721154FB500EA14B6 /* main.cpp */,
 				5AC96A54211550F400EA14B6 /* Grid.hpp */,
 				5AC96A562115533700EA14B6 /* Update.hpp */,
+				5AAECC1721165AB2004A566C /* HSB.hpp */,
 			);
 			path = StableFluidSimulation;
 			sourceTree = "<group>";
