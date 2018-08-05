@@ -30,8 +30,8 @@ const int DENS_VEL_OVERLAY=4;
 const bool DENS_HSB=false;
 
 const bool VEL_OVERLAY_HSB=true;
-const int VEL_OVERLAY_SPACING=2;
-const float VEL_OVERLAY_MULT=4;
+const int VEL_OVERLAY_SPACING=4;
+const float VEL_OVERLAY_MULT=8;
 
 const bool VEL_HSB=true;
 
@@ -139,8 +139,8 @@ void displayVelOverlay(){
             float velMag=sqrt(sq(vx(x,y))+sq(vy(x,y)));
             if(VEL_OVERLAY_HSB)glColor3f(thetaToR(velMag), thetaToG(velMag), thetaToB(velMag));
             else glColor3f(fmod(velMag,1),fmod(velMag,1),fmod(velMag,1));
-            glVertex2f(x, y);
-            glVertex2f(x+vx(x,y)*VEL_OVERLAY_MULT, y+vy(x,y)*VEL_OVERLAY_MULT);
+            glVertex2f(x+WINDOW_SCALE/2, y+WINDOW_SCALE/2);
+            glVertex2f(x+WINDOW_SCALE/2+vx(x,y)*VEL_OVERLAY_MULT, y+WINDOW_SCALE/2+vy(x,y)*VEL_OVERLAY_MULT);
         }
     }
     glEnd();
@@ -266,14 +266,14 @@ int main(int argc,char*argv[]){
     divergence.init();
     
     
-    int spacing=50;
+    int spacing=20;
     float TWO_PI=6.2831853072;
     for(int x=0;x<GRIDSIZE;x++){
         for(int y=0;y<GRIDSIZE;y++){
             float fx=(1.0*x)/GRIDSIZE;
             float fy=(1.0*y)/GRIDSIZE;
-            vx.set(x,y, cos(fy*TWO_PI));
-            vy.set(x,y, sin(fx*TWO_PI));
+//            vx.set(x,y, cos(fy*TWO_PI));
+//            vy.set(x,y, sin(fx*TWO_PI));
 //            vx.set(x,y,  fx-0.5);
 //            vy.set(x,y,  fy-0.5);
 //            vx.set(x,y,  1);
