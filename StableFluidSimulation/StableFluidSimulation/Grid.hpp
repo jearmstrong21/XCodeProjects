@@ -11,7 +11,7 @@
 
 #include <stdio.h>
 
-#define GRIDSIZE 100
+#define GRIDSIZE 125
 
 class Grid{
 public:

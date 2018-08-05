@@ -13,7 +13,7 @@
 #include "Grid.hpp"
 
 const float dt=1;
-const int PRESSURE_SOLVE_ITERS=80;
+const int PRESSURE_SOLVE_ITERS=50;
 const bool DO_DIFFUSE=false;
 
 void diffuse(Grid &from, Grid &to){
@@ -147,42 +147,48 @@ void update(Grid &vx, Grid &vy, Grid &density, Grid &pressure, Grid &divergence)
             if(density(x,y)<0)density.set(x,y,  0);
         }
     }
-    doBounds(vx,vy,density,pressure,divergence);
+//    doBounds(vx,vy,density,pressure,divergence);
     
+    if(DO_DIFFUSE){
+        Grid density0=density.copy();
+        diffuse(density0,density);
+        
+//        doBounds(vx,vy,density,pressure,divergence);
+    }
     
     Grid density0=density.copy();
     advect(density0,density,vx,vy);
     
-    doBounds(vx,vy,density,pressure,divergence);
+//    doBounds(vx,vy,density,pressure,divergence);
     
     Grid vx0=vx.copy();
     Grid vy0=vy.copy();
     
-    doBounds(vx,vy,density,pressure,divergence);
+//    doBounds(vx,vy,density,pressure,divergence);
     
     advect(vx0,vx,vx0,vy0);
     
-    doBounds(vx,vy,density,pressure,divergence);
+//    doBounds(vx,vy,density,pressure,divergence);
     
     advect(vy0,vy,vx0,vy0);
     
-    doBounds(vx,vy,density,pressure,divergence);
+//    doBounds(vx,vy,density,pressure,divergence);
     
     calcDivergence(density, divergence, vx, vy);
     
-    doBounds(vx,vy,density,pressure,divergence);
+//    doBounds(vx,vy,density,pressure,divergence);
 
     solvePressure(divergence, pressure);
     
-    doBounds(vx,vy,density,pressure,divergence);
+//    doBounds(vx,vy,density,pressure,divergence);
 
     fixDivergence(pressure, vx, vy);
     
-    doBounds(vx,vy,density,pressure,divergence);
+//    doBounds(vx,vy,density,pressure,divergence);
 
 
 //    printf("Pressure solver accuracy: %f\n",pressureAccuracy(divergence, pressure));
-    printf("Density average: %f\n", avg(density));
+//    printf("Density average: %f\n", avg(density));
     
 }
 

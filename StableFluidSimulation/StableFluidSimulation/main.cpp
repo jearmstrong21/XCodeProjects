@@ -44,6 +44,7 @@ const int VEL=1;
 const int DENS=2;
 const int PRES=3;
 const int DENS_VEL_OVERLAY=4;
+const int NONE=-1;
 
 const bool DENS_HSB=false;
 
@@ -75,6 +76,10 @@ void keyPress(unsigned char key,int x,int y){
     else if(key=='3')drawMode=VEL;
     else if(key=='4')drawMode=PRES;
     else if(key=='5')drawMode=DIVERGENCE;
+    
+    
+    
+    else if(key=='0')drawMode=NONE;
 }
 
 void mousePress(int btn,int state,int x,int y){
@@ -280,7 +285,7 @@ int main(int argc,char*argv[]){
     pressure.init();
     divergence.init();
     
-    for(int i=0;i<100*1000;i++){//fix vel on corners AND dens on corners
+    for(int i=0;i<200*1000;i++){//fix vel on corners AND dens on corners
         particle p;
         p.x=rand(0,GRIDSIZE);
         p.y=rand(0,GRIDSIZE);
