@@ -15,11 +15,29 @@
 #include "Update.hpp"
 #include "HSB.hpp"
 
+#include <vector>
+
 Grid vx;
 Grid vy;
 Grid density;
 Grid pressure;
 Grid divergence;
+
+struct particle{
+    float x;
+    float y;
+};
+
+float rand(float a,float b){
+    int i=rand();
+    i=i%10000;
+    float f=((float)i)/10000.0;
+    return f*(b-a)+a;
+}
+
+typedef std::vector<particle> plist; // plist is a particle list
+
+plist particles;
 
 const int DIVERGENCE=0;
 const int VEL=1;
@@ -113,6 +131,21 @@ void idle(){
         }
     }
     
+    float m=3;
+    for(int i=0;i<particles.size();i++){
+        particle &p=particles[i];
+        p.x+=vx(p.x,p.y);
+        p.y+=vy(p.x,p.y);
+//        if(p.x<m||p.y<m||p.x>=GRIDSIZE-m||p.y>=GRIDSIZE-m){
+//            p.x=rand(0,GRIDSIZE);
+//            p.y=rand(0,GRIDSIZE);
+//        }
+        while(p.x<0)p.x+=GRIDSIZE;
+        while(p.y<0)p.y+=GRIDSIZE;
+        while(p.x>=GRIDSIZE)p.x-=GRIDSIZE;
+        while(p.y>=GRIDSIZE)p.y-=GRIDSIZE;
+    }
+    
     glutPostRedisplay();
 }
 
@@ -194,6 +227,19 @@ void displayDivergence(){
     glEnd();
 }
 
+void displayParticles(){
+    glPointSize(2);
+    glEnable(GL_POINT_SMOOTH);
+    glBegin(GL_POINTS);
+    for(int i=0;i<particles.size();i++){
+        particle &p=particles[i];
+        float d=density(p.x,p.y);
+        glColor3f(1*d,0,0);
+        glVertex2f(p.x, p.y);
+    }
+    glEnd();
+}
+
 void display(){
     glClearColor(1, 1, 1, 1);
     glClear(GL_COLOR_BUFFER_BIT);
@@ -201,40 +247,6 @@ void display(){
     glLoadIdentity();
     
     glOrtho(0, GRIDSIZE, 0, GRIDSIZE, 0, 1);
-    
-//
-//
-//    glBegin(GL_QUADS);
-//    for(int x=0;x<GRIDSIZE;x++){
-//        for(int y=0;y<GRIDSIZE;y++){
-//            float f=density(x,y);
-//            glColor3f(f,f,f);
-//            glVertex2f(x,y);
-//            glVertex2f(x+1,y);
-//            glVertex2f(x+1,y+1);
-//            glVertex2f(x,y+1);
-//        }
-//    }
-//    glEnd();
-//
-//    int spacing=1;
-//    float mag=2;
-////    glBegin(GL_LINES);
-//    glBegin(GL_QUADS);
-//    for(int x=0;x<GRIDSIZE;x+=spacing){
-//        for(int y=0;y<GRIDSIZE;y+=spacing){
-//            float f=density(x,y);
-//            float m=sqrt(sq(vx(x,y))+sq(vy(x,y)));
-//            glColor3f(thetaToR(m)*f,thetaToG(m)*f,thetaToB(m)*f);
-////            glVertex2f(x, y);
-////            glVertex2f(x+mag*vx(x,y),y+mag*vy(x,y));
-//            glVertex2f(x,y);
-//            glVertex2f(x+1,y);
-//            glVertex2f(x+1,y+1);
-//            glVertex2f(x,y+1);
-//        }
-//    }
-//    glEnd();
     
     if(drawMode==DENS){
         displayDens();
@@ -253,8 +265,11 @@ void display(){
         displayDivergence();
     }
     
+    displayParticles();
+    
     glutSwapBuffers();
 }
+
 
 int main(int argc,char*argv[]){
     glutInit(&argc, argv);
@@ -265,6 +280,13 @@ int main(int argc,char*argv[]){
     pressure.init();
     divergence.init();
     
+    for(int i=0;i<100*1000;i++){//fix vel on corners AND dens on corners
+        particle p;
+        p.x=rand(0,GRIDSIZE);
+        p.y=rand(0,GRIDSIZE);
+        particles.push_back(p);
+    }
+    
     
     int spacing=20;
     float TWO_PI=6.2831853072;
@@ -272,8 +294,8 @@ int main(int argc,char*argv[]){
         for(int y=0;y<GRIDSIZE;y++){
             float fx=(1.0*x)/GRIDSIZE;
             float fy=(1.0*y)/GRIDSIZE;
-//            vx.set(x,y, cos(fy*TWO_PI));
-//            vy.set(x,y, sin(fx*TWO_PI));
+            vx.set(x,y, cos(fy*TWO_PI));
+            vy.set(x,y, sin(fx*TWO_PI));
 //            vx.set(x,y,  fx-0.5);
 //            vy.set(x,y,  fy-0.5);
 //            vx.set(x,y,  1);
