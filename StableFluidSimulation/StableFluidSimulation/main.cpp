@@ -58,9 +58,12 @@ const bool PRES_HSB=true;
 
 const bool DIVERG_HSB=true;
 
+
+bool drawParticles=false;
+
 int drawMode=DENS_VEL_OVERLAY;
 
-#define WINDOW_SCALE 5
+#define WINDOW_SCALE 2
 float sq(float f){
     return f*f;
 }
@@ -77,7 +80,7 @@ void keyPress(unsigned char key,int x,int y){
     else if(key=='4')drawMode=PRES;
     else if(key=='5')drawMode=DIVERGENCE;
     
-    
+    else if(key=='6')drawParticles=!drawParticles;
     
     else if(key=='0')drawMode=NONE;
 }
@@ -135,20 +138,35 @@ void idle(){
             }
         }
     }
+    float totalDens=0;
+    int n=0;
+    for(int x=1;x<GRIDSIZE-1;x++){
+        for(int y=1;y<GRIDSIZE-1;y++){
+            n++;
+            totalDens+=density(x,y);
+            if(x>GRIDSIZE/2-10&&x<GRIDSIZE/2+10&&y<5){
+//                vy.set(x,y,1);
+                vy.data[x][y]+=1;
+            }
+        }
+    }
+    float avgDens=totalDens/n;
+    printf("Average density: %f\n", avgDens);
     
-    float m=3;
+    
+    float m=2;
     for(int i=0;i<particles.size();i++){
         particle &p=particles[i];
         p.x+=vx(p.x,p.y);
         p.y+=vy(p.x,p.y);
-//        if(p.x<m||p.y<m||p.x>=GRIDSIZE-m||p.y>=GRIDSIZE-m){
-//            p.x=rand(0,GRIDSIZE);
-//            p.y=rand(0,GRIDSIZE);
-//        }
-        while(p.x<0)p.x+=GRIDSIZE;
-        while(p.y<0)p.y+=GRIDSIZE;
-        while(p.x>=GRIDSIZE)p.x-=GRIDSIZE;
-        while(p.y>=GRIDSIZE)p.y-=GRIDSIZE;
+        while(p.x<m||p.y<m||p.x>=GRIDSIZE-m||p.y>=GRIDSIZE-m){
+            p.x=rand(0,GRIDSIZE);
+            p.y=rand(0,GRIDSIZE);
+        }
+//        while(p.x<0)p.x+=GRIDSIZE;
+//        while(p.y<0)p.y+=GRIDSIZE;
+//        while(p.x>=GRIDSIZE)p.x-=GRIDSIZE;
+//        while(p.y>=GRIDSIZE)p.y-=GRIDSIZE;
     }
     
     glutPostRedisplay();
@@ -270,7 +288,9 @@ void display(){
         displayDivergence();
     }
     
-    displayParticles();
+    if(drawParticles){
+        displayParticles();
+    }
     
     glutSwapBuffers();
 }
@@ -293,14 +313,14 @@ int main(int argc,char*argv[]){
     }
     
     
-    int spacing=20;
+    int spacing=10;
     float TWO_PI=6.2831853072;
-    for(int x=0;x<GRIDSIZE;x++){
-        for(int y=0;y<GRIDSIZE;y++){
+    for(int x=1;x<GRIDSIZE-1;x++){
+        for(int y=1;y<GRIDSIZE-1;y++){
             float fx=(1.0*x)/GRIDSIZE;
             float fy=(1.0*y)/GRIDSIZE;
-            vx.set(x,y, cos(fy*TWO_PI));
-            vy.set(x,y, sin(fx*TWO_PI));
+//            vx.set(x,y, cos(4*fy*TWO_PI));
+//            vy.set(x,y, sin(4*fx*TWO_PI));
 //            vx.set(x,y,  fx-0.5);
 //            vy.set(x,y,  fy-0.5);
 //            vx.set(x,y,  1);
