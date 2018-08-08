@@ -42,15 +42,20 @@ void init(){
 //    gridB=(float*)malloc(sizeof(float)*SIMSIZE*SIMSIZE);
     for(int i=0;i<SIMSIZE*SIMSIZE;i++){
         gridA.push_back(1);
-        int x=i/SIMSIZE;
-        int y=i%SIMSIZE;
-        if(x>SIMSIZE/2-10&&x<SIMSIZE/2+10)gridB.push_back(1);
-        else gridB.push_back(0);
+        int x=i%SIMSIZE;
+        int y=i/SIMSIZE;
+//        if(x>SIMSIZE/2-10&&x<SIMSIZE/2+10)gridB.push_back(1);
+//        else gridB.push_back(0);
+        if(sqrt(  (x-SIMSIZE/2)*(x-SIMSIZE/2)+(y-SIMSIZE/2)*(y-SIMSIZE/2)  )<10){
+            gridB.push_back(1);
+        }else{
+            gridB.push_back(0);
+        }
     }
     paramDa=1.0;
     paramDb=0.5;
-    paramF=0.0367;
-    paramK=0.0649;
+    paramF=0.0545;
+    paramK=0.062;
     paramDt=1.0;
 }
 
@@ -58,9 +63,16 @@ int frames=0;
 
 void update(){
     frames++;
-    if(frames%1==0)
-    cl::Event evt=kernel.call("reactiondiffusion",gridA,gridB,paramDa,paramDb,paramF,paramK,paramDt,SIMSIZE);
-    //why is it fading?
+//    if(frames%1==0)
+    flist newA,newB;
+    for(int i=0;i<SIMSIZE*SIMSIZE;i++){
+        newA.push_back(0);
+        newB.push_back(0);
+    }
+    for(int i=0;i<10;i++){
+        cl::Event evt1=kernel.call("reactiondiffusion",gridA,gridB,newA,newB,paramDa,paramDb,paramF,paramK,paramDt,SIMSIZE);
+        cl::Event evt2=kernel.call("swap",gridA,gridB,newA,newB);
+    }
     glutPostRedisplay();
 }
 
@@ -76,7 +88,8 @@ void render(){
         for(int y=0;y<SIMSIZE;y++){
             float a=gridA[ind(x,y)];
             float b=gridB[ind(x,y)];
-            glColor3f(a,b,0);
+            float f=a-b;
+            glColor3f(f,f,f);
             glVertex3f(x,y,0);
             glVertex3f(x+1,y,0);
             glVertex3f(x+1,y+1,0);
