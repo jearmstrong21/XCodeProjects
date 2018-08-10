@@ -35,7 +35,7 @@ void update();
 void display();
 
 //global constants
-const int GRIDSIZE=300;
+const int GRIDSIZE=500;
 
 //global variables
 Device device;
@@ -70,37 +70,37 @@ string read(string const & filename){//Taken from Chlorine
     // Read Contents of Kernel
     ifstream fd(filename);
     return string(istreambuf_iterator<char>(fd),
-                       (istreambuf_iterator<char>()));
+                  (istreambuf_iterator<char>()));
 }
 
 void init(){
     vector<Platform> platforms=printPlatformInfo();
-
+    
     vector<Device> gpus=printDeviceInfo(platforms[0], CL_DEVICE_TYPE_GPU);
-
+    
     int deviceInd=1;//change here?
-
+    
     device=gpus[deviceInd];
-
+    
     context=Context({device});
-
+    
     string kernelFilename="conway.cl";//change here?
     source=read(kernelFilename);
-
+    
     sources.push_back({source.c_str(),source.length()});
-
+    
     program=Program(context,sources);
     if(program.build({device})!=CL_SUCCESS){
         printf("Error building:\n%s\n",program.getBuildInfo<CL_PROGRAM_BUILD_LOG>(device).c_str());
         exit(EXIT_FAILURE);
     }
-
+    
     int i=0;
     for(int x=0;x<GRIDSIZE;x++){
         for(int y=0;y<GRIDSIZE;y++){
             if(rand()%100<20)gridFrom[i]=true;
             else gridFrom[i]=false;
-//            gridFrom[i]=true;
+            //            gridFrom[i]=true;
             gridTo[i]=false;
             i++;
         }
@@ -108,13 +108,13 @@ void init(){
     
     bufFrom=Buffer(context,CL_MEM_READ_WRITE,sizeof(bool)*GRIDSIZE*GRIDSIZE);
     bufTo=Buffer(context,CL_MEM_READ_WRITE,sizeof(bool)*GRIDSIZE*GRIDSIZE);
-
+    
     cq=CommandQueue(context,device);
-
+    
     cq.enqueueWriteBuffer(bufFrom, CL_TRUE, 0, sizeof(bool)*GRIDSIZE*GRIDSIZE, gridFrom);
     cq.enqueueWriteBuffer(bufTo, CL_TRUE, 0, sizeof(bool)*GRIDSIZE*GRIDSIZE, gridTo);
     cq.flush();
-
+    
     kernelCalc=Kernel(program,"conway");
     kernelTransfer=Kernel(program,"transfer");
 }
@@ -127,30 +127,19 @@ void update(){
         kernelCalc.setArg(0,bufFrom);
         kernelCalc.setArg(1,bufTo);
         kernelCalc.setArg(2,GRIDSIZE);
-
+        
         cq.enqueueNDRangeKernel(kernelCalc, NullRange, NDRange(GRIDSIZE,GRIDSIZE));
-        cq.enqueueReadBuffer(bufFrom, CL_TRUE, 0, sizeof(bool)*GRIDSIZE*GRIDSIZE, gridFrom);
-        cq.enqueueReadBuffer(bufTo  , CL_TRUE, 0, sizeof(bool)*GRIDSIZE*GRIDSIZE, gridTo);
-        cq.flush();
+//        cq.flush();
         
         kernelTransfer.setArg(0,bufFrom);
         kernelTransfer.setArg(1,bufTo);
         cq.enqueueNDRangeKernel(kernelTransfer, NullRange, NDRange(GRIDSIZE*GRIDSIZE));
-        cq.flush();
-
+//        cq.flush();
+        
         cq.enqueueReadBuffer(bufFrom, CL_TRUE, 0, sizeof(bool)*GRIDSIZE*GRIDSIZE, gridFrom);
         cq.enqueueReadBuffer(bufTo  , CL_TRUE, 0, sizeof(bool)*GRIDSIZE*GRIDSIZE, gridTo  );
         cq.flush();
-
-//        for(int i=0;i<GRIDSIZE*GRIDSIZE;i++){
-//            gridFrom[i]=gridTo[i];
-//        }
-    
-        //call transfer kernel
         
-        cq.enqueueWriteBuffer(bufFrom, CL_TRUE, 0, sizeof(bool)*GRIDSIZE*GRIDSIZE, gridFrom);
-        cq.enqueueWriteBuffer(bufTo  , CL_TRUE, 0, sizeof(bool)*GRIDSIZE*GRIDSIZE, gridTo  );
-        cq.flush();
     }
     glutPostRedisplay();
 }
@@ -174,33 +163,33 @@ void update(){
 //    glVertex3f(coordX(u,v),coordY(u,v),coordZ(u,v));
 //}
 void display(){
-//    rot+=1;
+    //    rot+=1;
     glClearColor(1,1,1,1);
     glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
     
     glLoadIdentity();
-//    glEnable(GL_DEPTH_TEST);
-//    gluPerspective(80, 1, 0.01, 100);
-//    gluLookAt(10,10,10,  0,0,0,  0,1,0);
-//
-//    glRotatef(rot, 0, 1, 0);
-//    glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-//    glBegin(GL_QUADS);
-//    for(int x=0;x<GRIDSIZE;x++){
-//        for(int y=0;y<GRIDSIZE;y++){
-//            if(gridFrom[ind(x,y)])glColor3f(1.0*x/GRIDSIZE,1.0*y/GRIDSIZE,0);
-//            else glColor3f(0,0,0);
-//            float u=((float)x)*TWO_PI/GRIDSIZE;
-//            float v=((float)y)*TWO_PI/GRIDSIZE;
-//            torusVertex(u,v);
-//            torusVertex(u,v+TWO_PI/GRIDSIZE);
-//            torusVertex(u+TWO_PI/GRIDSIZE,v+TWO_PI/GRIDSIZE);
-//            torusVertex(u,v+TWO_PI/GRIDSIZE);
-//        }
-//    }
+    //    glEnable(GL_DEPTH_TEST);
+    //    gluPerspective(80, 1, 0.01, 100);
+    //    gluLookAt(10,10,10,  0,0,0,  0,1,0);
+    //
+    //    glRotatef(rot, 0, 1, 0);
+    //    glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+    //    glBegin(GL_QUADS);
+    //    for(int x=0;x<GRIDSIZE;x++){
+    //        for(int y=0;y<GRIDSIZE;y++){
+    //            if(gridFrom[ind(x,y)])glColor3f(1.0*x/GRIDSIZE,1.0*y/GRIDSIZE,0);
+    //            else glColor3f(0,0,0);
+    //            float u=((float)x)*TWO_PI/GRIDSIZE;
+    //            float v=((float)y)*TWO_PI/GRIDSIZE;
+    //            torusVertex(u,v);
+    //            torusVertex(u,v+TWO_PI/GRIDSIZE);
+    //            torusVertex(u+TWO_PI/GRIDSIZE,v+TWO_PI/GRIDSIZE);
+    //            torusVertex(u,v+TWO_PI/GRIDSIZE);
+    //        }
+    //    }
     
     glOrtho(0, GRIDSIZE, 0, GRIDSIZE, 0, 1);
-
+    
     glBegin(GL_QUADS);
     int i=0;
     for(int x=0;x<GRIDSIZE;x++){
@@ -208,7 +197,7 @@ void display(){
             if(gridFrom[i]){
                 glColor3f(1.0*x/GRIDSIZE,1.0*y/GRIDSIZE,0);
             } else {
-                glColor3f(0.25,0.25,0.25);
+                glColor3f(0.5,0.5,0.5);
             }
             i++;
             glVertex2f(x,y);
