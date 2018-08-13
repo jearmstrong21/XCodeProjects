@@ -35,7 +35,7 @@ void update();
 void display();
 
 //global constants
-const int GRIDSIZE=200;
+const int GRIDSIZE=201;
 
 //global variables
 Device device;
@@ -103,7 +103,7 @@ void init(){
             i++;
         }
     }
-    gridFrom[ind(GRIDSIZE/2,GRIDSIZE/2)]=1410065408;
+    gridFrom[ind(GRIDSIZE/2,GRIDSIZE/2)]=5*GRIDSIZE*GRIDSIZE;
     
     bufFrom=Buffer(context,CL_MEM_READ_WRITE,sizeof(int)*GRIDSIZE*GRIDSIZE);
     bufTo=Buffer(context,CL_MEM_READ_WRITE,sizeof(int)*GRIDSIZE*GRIDSIZE);
@@ -122,7 +122,7 @@ int iters=0;
 void update(){
     frames++;
     if(frames%1==0){
-        for(int i=0;i<1;i++){
+        for(int i=0;i<1000;i++){
             iters++;
             kernelCalc.setArg(0,bufFrom);
             kernelCalc.setArg(1,bufTo);
@@ -201,6 +201,7 @@ void display(){
             else if(gridFrom[i]==3)glColor3f(0,0,1);
             else if(gridFrom[i]==4)glColor3f(1,1,1);
             else glColor3f(0.5,0.5,0.5);
+            glColor3f(gridFrom[i]*0.25,gridFrom[i]*0.25,gridFrom[i]*0.25);
             i++;
             glVertex2f(x,y);
             glVertex2f(x+1,y);
