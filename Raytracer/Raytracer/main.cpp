@@ -31,7 +31,9 @@ int main(int argc, const char * argv[]) {
             float d=1000000;
             for(;i<max;i++){
                 if(c.r>40)break;
-                c=c*c+c0;
+//                c=c*c+c0;
+                c*=c;
+                c+=c0;
                 d=math::min(d,complex::length(c-complex::to_polar(0.4,0.2)));
             }
             

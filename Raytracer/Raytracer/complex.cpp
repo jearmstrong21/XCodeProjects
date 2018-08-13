@@ -76,5 +76,55 @@ namespace math{
     complex operator / (float a,complex b){
         return complex(a/b.r,-b.theta);
     }
+    
+    complex& complex::operator += (complex rhs){
+        complex c=complex::to_polar(complex::get_x(*this)+complex::get_x(rhs),complex::get_y(*this)+complex::get_y(rhs));
+        r=c.r;
+        theta=c.theta;
+        return *this;
+    }
+    
+    complex& complex::operator -= (complex rhs){
+        complex c=complex::to_polar(complex::get_x(*this)-complex::get_x(rhs),complex::get_y(*this)-complex::get_y(rhs));
+        r=c.r;
+        theta=c.theta;
+        return *this;
+    }
+    
+    complex& complex::operator *= (complex rhs){
+        r*=rhs.r;
+        theta+=rhs.theta;
+        return *this;
+    }
+    
+    complex& complex::operator /= (complex rhs){
+        r/=rhs.r;
+        theta-=rhs.theta;
+        return *this;
+    }
+    
+    complex& complex::operator += (float rhs){
+        complex c=complex::to_polar(complex::get_x(*this)+rhs,complex::get_y(*this));
+        r=c.r;
+        theta=c.theta;
+        return *this;
+    }
+    
+    complex& complex::operator -= (float rhs){
+        complex c=complex::to_polar(complex::get_x(*this)-rhs,complex::get_y(*this));
+        r=c.r;
+        theta=c.theta;
+        return *this;
+    }
+    
+    complex& complex::operator *= (float rhs){
+        r*=rhs;
+        return *this;
+    }
+    
+    complex& complex::operator /= (float rhs){
+        r/=rhs;
+        return *this;
+    }
 
 };

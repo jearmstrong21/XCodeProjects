@@ -23,6 +23,16 @@ namespace math{
         static float get_x(complex c);
         static float get_y(complex c);
         static float length(complex c);
+        
+        complex& operator += (const complex rhs);
+        complex& operator -= (const complex rhs);
+        complex& operator *= (const complex rhs);
+        complex& operator /= (const complex rhs);
+        
+        complex& operator += (const float rhs);
+        complex& operator -= (const float rhs);
+        complex& operator *= (const float rhs);
+        complex& operator /= (const float rhs);
     };
     
     complex operator + (complex, complex);
@@ -39,6 +49,7 @@ namespace math{
     complex operator - (float, complex);
     complex operator * (float, complex);
     complex operator / (float, complex);
+    
     
     
 };
