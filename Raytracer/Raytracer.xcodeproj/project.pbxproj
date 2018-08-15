@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5A54BC3C212356A3005CB1E0 /* vec3.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A54BC3A212356A3005CB1E0 /* vec3.cpp */; };
 		5A69ECB22120CB4300DA1CE3 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A69ECB12120CB4300DA1CE3 /* main.cpp */; };
 		5A69ECC12120CB5000DA1CE3 /* hsv.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A69ECB92120CB5000DA1CE3 /* hsv.cpp */; };
 		5A69ECC22120CB5000DA1CE3 /* math.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A69ECBA2120CB5000DA1CE3 /* math.cpp */; };
@@ -28,6 +29,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		5A54BC3A212356A3005CB1E0 /* vec3.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = vec3.cpp; sourceTree = "<group>"; };
+		5A54BC3B212356A3005CB1E0 /* vec3.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = vec3.hpp; sourceTree = "<group>"; };
 		5A69ECAE2120CB4300DA1CE3 /* Raytracer */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Raytracer; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A69ECB12120CB4300DA1CE3 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		5A69ECB82120CB5000DA1CE3 /* math.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = math.hpp; sourceTree = "<group>"; };
@@ -83,6 +86,8 @@
 				5A69ECB12120CB4300DA1CE3 /* main.cpp */,
 				5A69ECC5212113C000DA1CE3 /* vec2.cpp */,
 				5A69ECC6212113C000DA1CE3 /* vec2.hpp */,
+				5A54BC3A212356A3005CB1E0 /* vec3.cpp */,
+				5A54BC3B212356A3005CB1E0 /* vec3.hpp */,
 			);
 			path = Raytracer;
 			sourceTree = "<group>";
@@ -148,6 +153,7 @@
 				5A69ECB22120CB4300DA1CE3 /* main.cpp in Sources */,
 				5A69ECC12120CB5000DA1CE3 /* hsv.cpp in Sources */,
 				5A69ECC22120CB5000DA1CE3 /* math.cpp in Sources */,
+				5A54BC3C212356A3005CB1E0 /* vec3.cpp in Sources */,
 				5A69ECC7212113C000DA1CE3 /* vec2.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

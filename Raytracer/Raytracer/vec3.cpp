@@ -1,0 +1,112 @@
+//
+//  vec3.cpp
+//  Raytracer
+//
+//  Created by Jack Armstrong on 8/14/18.
+//  Copyright © 2018 Jack Armstrong. All rights reserved.
+//
+
+#include "vec3.hpp"
+
+namespace math{
+    
+    vec3::vec3(){
+        this->x=0;
+        this->y=0;
+        this->z=0;
+    }
+
+    vec3::vec3(float xyz){
+        this->x=xyz;
+        this->y=xyz;
+        this->z=xyz;
+    }
+
+    vec3::vec3(float x,float y,float z){
+        this->x=x;
+        this->y=y;
+        this->z=z;
+    }
+
+    float vec3::length(vec3 v){
+        return sqrt(v.x*v.x+v.y*v.y+v.z*v.z);
+    }
+
+    float vec3::dot(vec3 a,vec3 b){
+        return a.x*b.x+a.y*b.y+a.z*b.z;
+    }
+
+    vec3 vec3::cross(vec3 a,vec3 b){
+        return vec3(a.y*b.z-a.z*b.y,a.x*b.z-a.z*b.x,a.x*b.y-a.y*b.x);
+    }
+    
+    vec3& vec3::operator += (const vec3 rhs){
+        x+=rhs.x;
+        y+=rhs.y;
+        z+=rhs.z;
+        return *this;
+    }
+    
+    vec3& vec3::operator -= (const vec3 rhs){
+        x-=rhs.x;
+        y-=rhs.y;
+        z-=rhs.z;
+        return *this;
+    }
+    
+    vec3& vec3::operator *= (const vec3 rhs){
+        x*=rhs.x;
+        y*=rhs.y;
+        z*=rhs.z;
+        return *this;
+    }
+    
+    vec3& vec3::operator /= (const vec3 rhs){
+        x/=rhs.x;
+        y/=rhs.y;
+        z/=rhs.z;
+        return *this;
+    }
+    
+    vec3& vec3::operator *= (const float rhs){
+        x*=rhs;
+        y*=rhs;
+        z*=rhs;
+        return *this;
+    }
+    
+    vec3& vec3::operator /= (const float rhs){
+        x/=rhs;
+        y/=rhs;
+        z/=rhs;
+        return *this;
+    }
+    
+    vec3 operator + (vec3 a, vec3 b){
+        return vec3(a.x+b.x,a.y+b.y,a.z+b.z);
+    }
+    
+    vec3 operator - (vec3 a,vec3 b){
+        return vec3(a.x-b.x,a.y-b.y,a.z-b.z);
+    }
+    
+    vec3 operator * (vec3 a,vec3 b){
+        return vec3(a.x*b.x,a.y*b.y,a.z*b.z);
+    }
+    
+    vec3 operator / (vec3 a,vec3 b){
+        return vec3(a.x/b.x,a.y/b.y,a.z/b.z);
+    }
+    
+    vec3 operator * (vec3 a,float b){
+        return vec3(a.x*b,a.y*b,a.z*b);
+    }
+    vec3 operator / (vec3 a,float b){
+        return vec3(a.x/b,a.y/b,a.z/b);
+    }
+    
+    vec3 operator * (float a,vec3 b){
+        return vec3(a*b.x,a*b.y,a*b.z);
+    }
+
+}
