@@ -23,6 +23,7 @@ namespace sdf {
     //https://www.iquilezles.org/www/articles/distfunctions/distfunctions.htm
     float sdSphere(vec3 p,float s);
     float udBox(vec3 p,vec3 b);
+    float udRoundBox(vec3 p,vec3 b,float r);
     float sdBox(vec3 p,vec3 b);
     float sdTorus(vec3 p,vec2 t);
     float sdCylinder(vec3 p,vec3 c);

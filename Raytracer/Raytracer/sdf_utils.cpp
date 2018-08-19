@@ -45,13 +45,13 @@ namespace sdf{
         for(;trace.iters<MAX_ITERS&&trace.final_d<MAX_DIST;){
             trace.final_d=scene(trace.end);
             trace.total_d+=trace.final_d;
-            trace.min_d=math::min(trace.final_d,trace.min_d);
             trace.end+=trace.dir*trace.final_d;
             trace.iters++;
             if(trace.final_d<EPSILON){
                 trace.completed=true;
                 return trace;
             }
+            trace.min_d=math::min(trace.final_d,trace.min_d);
         }
         return trace;
     }
