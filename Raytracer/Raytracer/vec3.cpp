@@ -27,6 +27,22 @@ namespace math{
         this->y=y;
         this->z=z;
     }
+    
+    float vec3::dot2(vec3 v){
+        return v.x*v.x+v.y*v.y+v.z*v.z;
+    }
+    
+    vec3 vec3::max(vec3 a,vec3 b){
+        return vec3(math::max(a.x,b.x),math::max(a.y,b.y),math::max(a.z,b.z));
+    }
+    
+    vec3 vec3::min(vec3 a,vec3 b){
+        return vec3(math::min(a.x,b.x),math::min(a.y,b.y),math::min(a.z,b.z));
+    }
+    
+    vec3 vec3::abs(vec3 p){
+        return vec3(math::abs(p.x),math::abs(p.y),math::abs(p.z));
+    }
 
     float vec3::length(vec3 v){
         return sqrt(v.x*v.x+v.y*v.y+v.z*v.z);

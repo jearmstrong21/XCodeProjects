@@ -28,8 +28,32 @@ namespace sdf{
         return vec3::normalize(vec3(
                               scene(vec3(p.x + EPSILON, p.y, p.z)) - scene(vec3(p.x - EPSILON, p.y, p.z)),
                               scene(vec3(p.x, p.y + EPSILON, p.z)) - scene(vec3(p.x, p.y - EPSILON, p.z)),
-                              scene(vec3(p.x, p.y, p.z  + EPSILON)) - scene(vec3(p.x, p.y, p.z - EPSILON))
+                              scene(vec3(p.x, p.y, p.z + EPSILON)) - scene(vec3(p.x, p.y, p.z - EPSILON))
                               ));
+    }
+    
+    trace raymarch(sdf_scene scene,vec3 p,vec3 d){
+        trace trace;
+        trace.pos=p;
+        trace.dir=d;
+        trace.end=p;
+        trace.total_d=0;
+        trace.min_d=100000;
+        trace.final_d=0;
+        trace.iters=0;
+        trace.completed=false;
+        for(;trace.iters<MAX_ITERS&&trace.final_d<MAX_DIST;){
+            trace.final_d=scene(trace.end);
+            trace.total_d+=trace.final_d;
+            trace.min_d=math::min(trace.final_d,trace.min_d);
+            trace.end+=trace.dir*trace.final_d;
+            trace.iters++;
+            if(trace.final_d<EPSILON){
+                trace.completed=true;
+                return trace;
+            }
+        }
+        return trace;
     }
     
 }

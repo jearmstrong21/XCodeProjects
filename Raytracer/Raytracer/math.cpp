@@ -9,6 +9,17 @@
 #include "math.hpp"
 
 namespace math{
+    
+    int sign(float a){
+        if(a<0)return -1;
+        if(a==0)return 0;
+        return 1;
+    }
+    
+    float abs(float a){
+        return a<0?-a:a;
+    }
+    
     float min(float a,float b){
         if(a<b)return a;
         return b;

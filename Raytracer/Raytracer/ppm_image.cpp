@@ -44,6 +44,17 @@ void ppm_image::set_pixel(int x,int y, vec3 p){
     set_pixel(x,y, p.x,p.y,p.z );
 }
 
+void ppm_image::clamp(){
+    for(int x=0;x<width;x++){
+        for(int y=0;y<height;y++){
+            int i=get_ind(x, y);
+            r_comp[i]=math::clamp(r_comp[i],0,1);
+            g_comp[i]=math::clamp(g_comp[i],0,1);
+            b_comp[i]=math::clamp(b_comp[i],0,1);
+        }
+    }
+}
+
 void ppm_image::save(std::string fn){
     std::ofstream file;
     file.open(fn.c_str());

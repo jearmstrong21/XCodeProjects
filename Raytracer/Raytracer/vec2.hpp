@@ -11,6 +11,7 @@
 
 #include <stdio.h>
 #include <cmath>
+#include "math.hpp"
 
 namespace math{
     
@@ -22,6 +23,11 @@ namespace math{
         vec2();
         static float length(vec2 v);
         static float dot(vec2 a,vec2 b);
+        static vec2 normalize(vec2 v);
+        static vec2 abs(vec2 v);
+        static vec2 max(vec2 a,vec2 b);
+        static float dot2(vec2 v);
+        static float length8(vec2 v);
         
         vec2& operator += (const vec2 rhs);
         vec2& operator -= (const vec2 rhs);

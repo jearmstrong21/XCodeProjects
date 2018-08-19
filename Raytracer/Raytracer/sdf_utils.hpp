@@ -18,6 +18,7 @@ namespace sdf{
     
     vec3 estimateNormal(sdf_scene scene,vec3 p);
     
+    trace raymarch(sdf_scene scene,vec3 p,vec3 d);
 }
 
 #endif /* sdf_utils_hpp */

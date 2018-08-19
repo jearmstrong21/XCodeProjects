@@ -11,6 +11,7 @@
 
 #include <stdio.h>
 #include <cmath>
+#include "math.hpp"
 
 namespace math{
     struct vec3{
@@ -25,6 +26,10 @@ namespace math{
         static float dot(vec3 a,vec3 b);
         static vec3 cross(vec3 a,vec3 b);
         static vec3 normalize(vec3 v);
+        static vec3 abs(vec3 p);
+        static vec3 max(vec3 a,vec3 b);
+        static float dot2(vec3 v);
+        static vec3 min(vec3 a,vec3 b);
         
         vec3& operator += (const vec3 rhs);
         vec3& operator -= (const vec3 rhs);

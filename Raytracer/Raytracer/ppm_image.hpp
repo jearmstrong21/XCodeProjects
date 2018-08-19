@@ -6,6 +6,7 @@
 #include <fstream>
 #include <string>
 #include "vec3.hpp"
+#include "math.hpp"
 
 #define ppm_image_PRECISION 1000
 
@@ -33,6 +34,8 @@ class ppm_image {
     void set_size(int w, int h);
     
     void alloc_mem();
+    
+    void clamp();
     
     void set_pixel(int x,int y, float r,float g,float b);//0 to 1 rnage
     void set_pixel(int x,int y, vec3 p);

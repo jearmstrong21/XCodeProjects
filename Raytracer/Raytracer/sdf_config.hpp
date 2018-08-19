@@ -9,6 +9,9 @@
 #ifndef sdf_config_hpp
 #define sdf_config_hpp
 
-#define EPSILON 0.0001
+#define EPSILON 0.01
+#define SQRT_EPSILON sqrt(EPSILON)
+#define MAX_ITERS 500
+#define MAX_DIST 20
 
 #endif /* sdf_config_hpp */

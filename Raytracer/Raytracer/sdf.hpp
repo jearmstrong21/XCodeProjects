@@ -27,6 +27,17 @@ namespace sdf{
         ray(vec3 p,vec3 d);
     };
     
+    struct trace {
+        vec3 pos;
+        vec3 dir;
+        vec3 end;
+        float total_d;
+        float final_d;
+        float min_d;
+        int iters;
+        bool completed;
+    };
+    
     typedef ray camera;
     
     typedef float (*sdf_scene)(vec3);

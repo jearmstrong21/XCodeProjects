@@ -13,6 +13,8 @@
 #include <cmath>
 
 namespace math{
+    int sign(float a);
+    float abs(float a);
     float min(float a,float b);
     float max(float a,float b);
     float lerp(float t,float a,float b);
