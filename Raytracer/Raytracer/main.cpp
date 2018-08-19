@@ -59,7 +59,7 @@ vec3 getColor(sdf::ray camera,int iters,sdf::trace& mainTrace){
     
 //    vec3 colNormal=0.5+0.5*normal;
     
-    vec3 color=shade(mainTrace.end,camera.pos,normal,  vec3(1,0,0),vec3(0,1,0),10);
+    vec3 color=shade(mainTrace.end,camera.pos,normal,  vec3(1,1,1),vec3(1,1,1),10);
     
     sdf::trace shadowTrace=sdf::raymarch(scene, lightPos, vec3::normalize(mainTrace.end-lightPos));
     if(vec3::length(shadowTrace.end-mainTrace.end)>SQRT_EPSILON){
