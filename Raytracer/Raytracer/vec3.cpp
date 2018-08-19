@@ -40,6 +40,10 @@ namespace math{
         return vec3(a.y*b.z-a.z*b.y,a.x*b.z-a.z*b.x,a.x*b.y-a.y*b.x);
     }
     
+    vec3 vec3::normalize(vec3 v){
+        return v/length(v);
+    }
+    
     vec3& vec3::operator += (const vec3 rhs){
         x+=rhs.x;
         y+=rhs.y;
@@ -65,6 +69,20 @@ namespace math{
         x/=rhs.x;
         y/=rhs.y;
         z/=rhs.z;
+        return *this;
+    }
+    
+    vec3& vec3::operator += (const float rhs){
+        x+=rhs;
+        y+=rhs;
+        z+=rhs;
+        return *this;
+    }
+    
+    vec3& vec3::operator -= (const float rhs){
+        x-=rhs;
+        y-=rhs;
+        z-=rhs;
         return *this;
     }
     
@@ -98,6 +116,14 @@ namespace math{
         return vec3(a.x/b.x,a.y/b.y,a.z/b.z);
     }
     
+    vec3 operator + (vec3 a,float b){
+        return vec3(a.x+b,a.y+b,a.z+b);
+    }
+    
+    vec3 operator - (vec3 a,float b){
+        return vec3(a.x-b,a.y-b,a.z-b);
+    }
+    
     vec3 operator * (vec3 a,float b){
         return vec3(a.x*b,a.y*b,a.z*b);
     }
@@ -105,8 +131,20 @@ namespace math{
         return vec3(a.x/b,a.y/b,a.z/b);
     }
     
+    vec3 operator + (float a,vec3 b){
+        return vec3(a+b.x,a+b.y,a+b.z);
+    }
+    
+    vec3 operator - (float a,vec3 b){
+        return vec3(a-b.x,a-b.y,a-b.z);
+    }
+    
     vec3 operator * (float a,vec3 b){
         return vec3(a*b.x,a*b.y,a*b.z);
+    }
+    
+    vec3 operator / (float a,vec3 b){
+        return vec3(a/b.x,a/b.y,a/b.z);
     }
 
 }

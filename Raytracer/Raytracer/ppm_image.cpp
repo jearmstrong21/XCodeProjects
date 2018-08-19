@@ -40,6 +40,10 @@ void ppm_image::set_pixel(int x, int y, float r, float g, float b){
     b_comp[i]=b;
 }
 
+void ppm_image::set_pixel(int x,int y, vec3 p){
+    set_pixel(x,y, p.x,p.y,p.z );
+}
+
 void ppm_image::save(std::string fn){
     std::ofstream file;
     file.open(fn.c_str());
