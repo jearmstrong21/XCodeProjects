@@ -22,17 +22,25 @@ using math::vec2;
 
 float scene(vec3 p){
     float walls=math::min(sdf::sdPlane(p,vec4(1,0,0,0)),math::min(sdf::sdPlane(p,vec4(0,1,0,0)),sdf::sdPlane(p,vec4(0,0,1,0))));
-    float sphere=sdf::sdSphere(p-vec3(2,0,2),1.0);
-    float box=sdf::udRoundBox(p, 1.25, 0.25);
-    float content=math::min(sphere,box);
-    return math::min(content, walls);
+    vec3 modded=p;
+    modded.x=fmod(p.x,1)-0.5;
+    modded.y=fmod(p.y,1)-0.5;
+    modded.z=fmod(p.z,1)-0.5;
+    float content=vec3::length(p-vec3(5,2,3))-0.5;
+    return math::min(walls, content);
 }
 
 
-vec3 camPos=vec3(7,3,4);
+vec3 camPos=vec3(6,3,3);
 vec3 camLookAt=vec3(0);
 
-vec3 lightPos=vec3(1,2,1);
+vec3 lightPos=vec3(1);
+
+float sceneDiffuse=0.4;
+float sceneSpecular=0.4;
+float sceneShininess=30;
+float sceneReflect=0; //portion of reflect color that is mixed into current color
+float sceneAmbient=1-sceneDiffuse-sceneSpecular;
 
 vec3 shade(vec3 pos,vec3 eye,vec3 n, vec3 diffuse,vec3 specular,float shininess){
     
@@ -59,24 +67,20 @@ vec3 getColor(sdf::ray camera,int iters,sdf::trace& mainTrace){
     
 //    vec3 colNormal=0.5+0.5*normal;
     
-    vec3 color=shade(mainTrace.end,camera.pos,normal,  vec3(1,1,1),vec3(1,1,1),10);
+    vec3 color=shade(mainTrace.end,camera.pos,normal,  vec3(sceneDiffuse),vec3(sceneSpecular),sceneShininess);
     
     sdf::trace shadowTrace=sdf::raymarch(scene, lightPos, vec3::normalize(mainTrace.end-lightPos));
     if(vec3::length(shadowTrace.end-mainTrace.end)>SQRT_EPSILON){
         color*=0.25;
 //        color*=vec3(0.1*shadowTrace.min_d/shadowTrace.final_d);
     }
+    color+=vec3(sceneAmbient);
 
 //    if(sdf::sdSphere(mainTrace.end-vec3(2,0,2),0.5)<EPSILON&&iters<5){
-    if(iters<1){
+    if(iters<4){
         sdf::trace reflection;
         vec3 c=getColor(sdf::ray(mainTrace.end+EPSILON*normal,normal),iters+1,reflection);
-        float t=0.1;
-        if(reflection.completed){
-            color=c*0.5+color*0.5;
-        }else{
-//            color=t*color;
-        }
+        color=color*(1-sceneReflect)+c*sceneReflect;
     }
 
     return color;
@@ -85,7 +89,7 @@ vec3 getColor(sdf::ray camera,int iters,sdf::trace& mainTrace){
 
 int main(int argc, const char * argv[]) {
     ppm_image img;
-    img.set_size(1000, 1000);
+    img.set_size(500, 500);
     img.alloc_mem();
 
     printf("Starting loop\n");
