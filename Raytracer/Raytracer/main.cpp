@@ -12,88 +12,61 @@
 #include "vec2.hpp"
 #include "hsv.hpp"
 
-#include "sdf.hpp"
-#include "sdf_utils.hpp"
-#include "sdf_shapes.hpp"
-#include "sdf_config.hpp"
+#include "rm.hpp"
+
+//#include "sdf.hpp"
+//#include "sdf_utils.hpp"
+//#include "sdf_shapes.hpp"
+//#include "sdf_config.hpp"
+
+//#include "scene_infinite_spheres.hpp"
+//#define scene scene_infinite_spheres
 
 using math::complex;
 using math::vec2;
+using math::vec3;
 
 float scene(vec3 p){
-    float walls=math::min(sdf::sdPlane(p,vec4(1,0,0,0)),math::min(sdf::sdPlane(p,vec4(0,1,0,0)),sdf::sdPlane(p,vec4(0,0,1,0))));
-    vec3 modded=p;
-    modded.x=fmod(p.x,1)-0.5;
-    modded.y=fmod(p.y,1)-0.5;
-    modded.z=fmod(p.z,1)-0.5;
-    float content=vec3::length(p-vec3(5,2,3))-0.5;
-    return math::min(walls, content);
+    vec3 mp=p;
+    mp.x=fmod(mp.x,1)-0.5;
+    mp.y=fmod(mp.y,3)-1.5;
+    mp.z=fmod(mp.z,1)-0.5;
+    if(p.y<0.5)mp.y=-10;
+    return math::min(math::min(math::min(p.x,p.y),p.z),vec3::length(mp)-0.3);
 }
+vec3 cam_pos=vec3(5,3,4);
+vec3 look_at=vec3(0,0,0);
+vec3 light_pos=vec3(2,3,2);
 
-
-vec3 camPos=vec3(6,3,3);
-vec3 camLookAt=vec3(0);
-
-vec3 lightPos=vec3(1);
-
-float sceneDiffuse=0.4;
-float sceneSpecular=0.4;
-float sceneShininess=30;
-float sceneReflect=0; //portion of reflect color that is mixed into current color
-float sceneAmbient=1-sceneDiffuse-sceneSpecular;
-
-vec3 shade(vec3 pos,vec3 eye,vec3 n, vec3 diffuse,vec3 specular,float shininess){
+void get_color(vec3 pos, float& main_dist, vec3& cam_dir, vec3& ray_end, vec3& normal, vec3& result){
+    main_dist=rm::trace_scene(scene, pos, cam_dir, RM_EPSILON, 100);
     
-    vec3 s=-1*vec3::normalize(pos-lightPos);
-    vec3 r=vec3::normalize(-1*s+2.0*vec3::dot(s,n)*n);
-    vec3 v=vec3::normalize(eye-pos);
+    ray_end=pos+cam_dir*main_dist;
     
-    vec3 lightDiffuse=diffuse*vec3::dot(s,n);
-    vec3 f=vec3(0);
-    float dotted=vec3::dot(r,v);
-    vec3 lightSpecular=specular*pow(dotted,shininess);
-    if(dotted<0.0)lightSpecular=vec3(0.0);
+    normal=rm::estimate_normal(scene, ray_end);
     
-    f+=lightDiffuse;
-    f+=lightSpecular;
+    result=0.5+0.5*normal;
     
-    return f;
-}
-
-vec3 getColor(sdf::ray camera,int iters,sdf::trace& mainTrace){
-    mainTrace=sdf::raymarch(scene, camera.pos, camera.dir);
+    vec3 l=vec3::normalize(light_pos-ray_end);
+    float diffuse=vec3::dot(l,normal);
+    vec3 r=2*vec3::dot(l,normal)*normal-l;
+    vec3 v=vec3::normalize(pos-ray_end);
+    float specular=pow(vec3::dot(r,v),20);
     
-    vec3 normal=sdf::estimateNormal(scene, mainTrace.end);
+    float shadow=rm::shadow_res(scene, ray_end, light_pos, RM_EPSILON);
     
-//    vec3 colNormal=0.5+0.5*normal;
-    
-    vec3 color=shade(mainTrace.end,camera.pos,normal,  vec3(sceneDiffuse),vec3(sceneSpecular),sceneShininess);
-    
-    sdf::trace shadowTrace=sdf::raymarch(scene, lightPos, vec3::normalize(mainTrace.end-lightPos));
-    if(vec3::length(shadowTrace.end-mainTrace.end)>SQRT_EPSILON){
-        color*=0.25;
-//        color*=vec3(0.1*shadowTrace.min_d/shadowTrace.final_d);
-    }
-    color+=vec3(sceneAmbient);
-
-//    if(sdf::sdSphere(mainTrace.end-vec3(2,0,2),0.5)<EPSILON&&iters<5){
-    if(iters<4){
-        sdf::trace reflection;
-        vec3 c=getColor(sdf::ray(mainTrace.end+EPSILON*normal,normal),iters+1,reflection);
-        color=color*(1-sceneReflect)+c*sceneReflect;
-    }
-
-    return color;
-    
+    result*=diffuse+specular;
+    result*=shadow;
 }
 
 int main(int argc, const char * argv[]) {
     ppm_image img;
-    img.set_size(500, 500);
+    img.set_size(10000, 10000);
     img.alloc_mem();
 
     printf("Starting loop\n");
 
+    
     for(int x=0;x<img.get_w();x++){
         for(int y=0;y<img.get_h();y++){
             img.set_pixel(x,y, 0,0,0 );
@@ -103,10 +76,33 @@ int main(int argc, const char * argv[]) {
             uv-=0.5;
             uv.x*=img.get_w()/img.get_h();
             
-            sdf::ray camera=sdf::createCamera(uv, camPos, camLookAt, 1);
+            float main_dist;
+            vec3 cam_dir=rm::cam_dir(uv, cam_pos, look_at, 1);
+            vec3 ray_end;
+            vec3 normal;
+            vec3 result;
+            
+            get_color(cam_pos, main_dist,cam_dir,ray_end,normal,result);
+            for(int i=0;i<3;i++){
+                float sec_dist;
+                vec3 sec_cam_dir=normal;
+                vec3 sec_ray_end;
+                vec3 sec_normal;
+                vec3 sec_result;
 
-            sdf::trace mainTrace;
-            img.set_pixel(x,y, getColor(camera,0,mainTrace) );
+                get_color(ray_end, sec_dist, sec_cam_dir, sec_ray_end, sec_normal, sec_result);
+                float reflect=0.25;
+                result*=1-reflect;
+                result+=reflect*sec_result;
+                
+                main_dist=sec_dist;
+                cam_dir=sec_cam_dir;
+                ray_end=sec_ray_end;
+                normal=sec_normal;
+            }
+            img.set_pixel(x,y,  result );
+            
+//            img.set_pixel(x,y,result);
            
 //            img.set_pixel(x,y,  coord.x/img.get_w(),coord.y/img.get_h(),0);
         }
