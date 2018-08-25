@@ -30,6 +30,7 @@ namespace math{
         static vec3 max(vec3 a,vec3 b);
         static float dot2(vec3 v);
         static vec3 min(vec3 a,vec3 b);
+        static vec3 reflect(vec3 i,vec3 n);
         
         vec3& operator += (const vec3 rhs);
         vec3& operator -= (const vec3 rhs);

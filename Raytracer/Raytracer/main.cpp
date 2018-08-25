@@ -39,17 +39,19 @@ vec3 look_at=vec3(0,0,0);
 vec3 light_pos=vec3(2,3,2);
 
 void get_color(vec3 pos, float& main_dist, vec3& cam_dir, vec3& ray_end, vec3& normal, vec3& result){
-    main_dist=rm::trace_scene(scene, pos, cam_dir, RM_EPSILON, 100);
+    main_dist=rm::trace_scene(scene, pos, cam_dir, RM_EPSILON, 1000);
     
     ray_end=pos+cam_dir*main_dist;
     
     normal=rm::estimate_normal(scene, ray_end);
     
     result=0.5+0.5*normal;
+//    result=vec3(1);
     
     vec3 l=vec3::normalize(light_pos-ray_end);
     float diffuse=vec3::dot(l,normal);
-    vec3 r=2*vec3::dot(l,normal)*normal-l;
+//    vec3 r=2*vec3::dot(l,normal)*normal-l;
+    vec3 r=vec3::reflect(l,normal);
     vec3 v=vec3::normalize(pos-ray_end);
     float specular=pow(vec3::dot(r,v),20);
     
@@ -59,9 +61,43 @@ void get_color(vec3 pos, float& main_dist, vec3& cam_dir, vec3& ray_end, vec3& n
     result*=shadow;
 }
 
+void final_color(vec3 &result,int x,int y,int w,int h){
+    vec2 coord=vec2(x,y);
+    vec2 uv=coord/vec2(w,h);
+    uv-=0.5;
+    uv.x*=w/h;
+    
+    float main_dist;
+    vec3 cam_dir=rm::cam_dir(uv, cam_pos, look_at, 1);
+    vec3 ray_end;
+    vec3 normal;
+    result=vec3(0);
+    
+    get_color(cam_pos, main_dist,cam_dir,ray_end,normal,result);
+    float reflect_mult=0.25;
+    for(int i=0;i<1;i++){
+        float sec_dist;
+        vec3 sec_cam_dir=vec3::reflect(vec3::normalize(cam_pos-ray_end),normal);
+        vec3 sec_ray_end;
+        vec3 sec_normal;
+        vec3 sec_result;
+        
+        get_color(ray_end, sec_dist, sec_cam_dir, sec_ray_end, sec_normal, sec_result);
+        
+        result*=1-reflect_mult;
+        result+=reflect_mult*sec_result;
+        reflect_mult*=0.2;
+        
+        main_dist=sec_dist;
+        cam_dir=sec_cam_dir;
+        ray_end=sec_ray_end;
+        normal=sec_normal;
+    }
+}
+
 int main(int argc, const char * argv[]) {
     ppm_image img;
-    img.set_size(10000, 10000);
+    img.set_size(1000, 1000);
     img.alloc_mem();
 
     printf("Starting loop\n");
@@ -69,37 +105,8 @@ int main(int argc, const char * argv[]) {
     
     for(int x=0;x<img.get_w();x++){
         for(int y=0;y<img.get_h();y++){
-            img.set_pixel(x,y, 0,0,0 );
-            
-            vec2 coord=vec2(x,y);
-            vec2 uv=coord/vec2(img.get_w(),img.get_h());
-            uv-=0.5;
-            uv.x*=img.get_w()/img.get_h();
-            
-            float main_dist;
-            vec3 cam_dir=rm::cam_dir(uv, cam_pos, look_at, 1);
-            vec3 ray_end;
-            vec3 normal;
             vec3 result;
-            
-            get_color(cam_pos, main_dist,cam_dir,ray_end,normal,result);
-            for(int i=0;i<3;i++){
-                float sec_dist;
-                vec3 sec_cam_dir=normal;
-                vec3 sec_ray_end;
-                vec3 sec_normal;
-                vec3 sec_result;
-
-                get_color(ray_end, sec_dist, sec_cam_dir, sec_ray_end, sec_normal, sec_result);
-                float reflect=0.25;
-                result*=1-reflect;
-                result+=reflect*sec_result;
-                
-                main_dist=sec_dist;
-                cam_dir=sec_cam_dir;
-                ray_end=sec_ray_end;
-                normal=sec_normal;
-            }
+            final_color(result, x,y, img.get_w(),img.get_h());
             img.set_pixel(x,y,  result );
             
 //            img.set_pixel(x,y,result);
