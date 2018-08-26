@@ -55,6 +55,12 @@ void ppm_image::clamp(){
     }
 }
 
+void ppm_image::dealloc(){
+    delete [] r_comp;
+    delete [] g_comp;
+    delete [] b_comp;
+}
+
 void ppm_image::save(std::string fn){
     std::ofstream file;
     file.open(fn.c_str());

@@ -5,8 +5,8 @@
 
 #include <fstream>
 #include <string>
-#include "math/vec3.hpp"
-#include "math/math.hpp"
+#include "vec3.hpp"
+#include "math.hpp"
 
 #define ppm_image_PRECISION 1000
 
@@ -39,7 +39,10 @@ public:
     
     void set_pixel(int x,int y, float r,float g,float b);//0 to 1 rnage
     void set_pixel(int x,int y, vec3 p);
+    
     void save(std::string fn);
+    
+    void dealloc();
 };
 
 #endif

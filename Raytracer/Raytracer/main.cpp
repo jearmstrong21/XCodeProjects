@@ -122,6 +122,7 @@ int main(int argc, const char * argv[]) {
 
     img.clamp();
     img.save("result-1.ppm");
+    img.dealloc();
 
     printf("Saved to disk\n");
 
