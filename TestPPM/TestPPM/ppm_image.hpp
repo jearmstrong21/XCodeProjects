@@ -5,15 +5,15 @@
 
 #include <fstream>
 #include <string>
-#include "vec3.hpp"
-#include "math.hpp"
+#include "math/vec3.hpp"
+#include "math/math.hpp"
 
 #define ppm_image_PRECISION 1000
 
 using math::vec3;
 
 class ppm_image {
-    private:
+private:
     
     int width;
     int height;
@@ -24,7 +24,7 @@ class ppm_image {
     
     int get_ind(int x,int y);
     
-    public:
+public:
     
     int get_w();
     int get_h();

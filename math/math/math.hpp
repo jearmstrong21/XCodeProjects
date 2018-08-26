@@ -1,6 +1,6 @@
 //
 //  math.hpp
-//  Raytracer1
+//  math
 //
 //  Created by Jack Armstrong on 8/12/18.
 //  Copyright © 2018 Jack Armstrong. All rights reserved.

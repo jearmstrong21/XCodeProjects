@@ -1,6 +1,6 @@
 //
 //  vec2.hpp
-//  Raytracer
+//  math
 //
 //  Created by Jack Armstrong on 8/12/18.
 //  Copyright © 2018 Jack Armstrong. All rights reserved.
@@ -34,8 +34,8 @@ namespace math{
         vec2& operator *= (const vec2 rhs);
         vec2& operator /= (const vec2 rhs);
         
-//        vec2& operator += (const float rhs);
-//        vec2& operator -= (const float rhs);
+        //        vec2& operator += (const float rhs);
+        //        vec2& operator -= (const float rhs);
         vec2& operator *= (const float rhs);
         vec2& operator /= (const float rhs);
     };
@@ -45,15 +45,15 @@ namespace math{
     vec2 operator * (vec2 a,vec2 b);
     vec2 operator / (vec2 a,vec2 b);
     
-//    vec2 operator + (vec2 a,float b);
-//    vec2 operator - (vec2 a,float b);
+    //    vec2 operator + (vec2 a,float b);
+    //    vec2 operator - (vec2 a,float b);
     vec2 operator * (vec2 a,float b);
     vec2 operator / (vec2 a,float b);
     
-//    vec2 operator + (float a,vec2 b);
-//    vec2 operator - (float a,vec2 b);
+    //    vec2 operator + (float a,vec2 b);
+    //    vec2 operator - (float a,vec2 b);
     vec2 operator * (float a,vec2 b);
-//    vec2 operator / (float a,vec2 b);
+    //    vec2 operator / (float a,vec2 b);
     
 };
 

@@ -11,7 +11,7 @@
 
 #include <stdio.h>
 
-#include "math.hpp"
+#include "math/math.hpp"
 
 namespace colors{
     float h2r(float h);

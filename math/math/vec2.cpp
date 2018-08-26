@@ -1,6 +1,6 @@
 //
 //  vec2.cpp
-//  Raytracer
+//  math
 //
 //  Created by Jack Armstrong on 8/12/18.
 //  Copyright © 2018 Jack Armstrong. All rights reserved.
@@ -46,7 +46,7 @@ namespace math{
     vec2 vec2::max(vec2 a,vec2 b){
         return vec2(math::max(a.x,b.x),math::max(a.y,b.y));
     }
-
+    
     float vec2::length(vec2 v){
         return sqrt(v.x*v.x+v.y*v.y);
     }

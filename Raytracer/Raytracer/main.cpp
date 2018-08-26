@@ -8,9 +8,8 @@
 
 #include "ppm_image.hpp"
 
-#include "complex.hpp"
-#include "vec2.hpp"
-#include "hsv.hpp"
+#include "math/complex.hpp"
+#include "math/vec2.hpp"
 
 #include "rm.hpp"
 

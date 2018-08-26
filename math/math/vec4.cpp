@@ -1,6 +1,6 @@
 //
 //  vec4.cpp
-//  Raytracer
+//  math
 //
 //  Created by Jack Armstrong on 8/14/18.
 //  Copyright © 2018 Jack Armstrong. All rights reserved.

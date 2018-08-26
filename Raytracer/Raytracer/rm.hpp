@@ -10,8 +10,8 @@
 #define rm_hpp
 
 #include <stdio.h>
-#include "vec3.hpp"
-#include "vec2.hpp"
+#include "math/vec3.hpp"
+#include "math/vec2.hpp"
 
 using math::vec3;
 using math::vec2;
