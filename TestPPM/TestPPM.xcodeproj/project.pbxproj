@@ -20,6 +20,7 @@
 
 /* Begin PBXFileReference section */
 		5A2C112B2133131400A7345D /* ppm_image.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ppm_image.hpp; sourceTree = "<group>"; };
+		5A2C117721335ED500A7345D /* stb_image.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = stb_image.h; sourceTree = "<group>"; };
 		5A51F1EC2114B9A2004A2199 /* TestPPM */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = TestPPM; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A51F1F72114B9B4004A2199 /* ppm_image.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ppm_image.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -54,6 +55,7 @@
 		5A51F1EE2114B9A2004A2199 /* TestPPM */ = {
 			isa = PBXGroup;
 			children = (
+				5A2C117721335ED500A7345D /* stb_image.h */,
 				5A2C112B2133131400A7345D /* ppm_image.hpp */,
 				5A51F1F72114B9B4004A2199 /* ppm_image.cpp */,
 			);

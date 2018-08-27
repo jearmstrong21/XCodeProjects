@@ -13,6 +13,11 @@
 #include <cmath>
 #include "math.hpp"
 
+#define X_AXIS3 vec3(1,0,0)
+#define Y_AXIS3 vec3(0,1,0)
+#define Z_AXIS3 vec3(0,0,1)
+#define ORIGIN3 vec3(0)
+
 namespace math{
     struct vec3{
         float x;

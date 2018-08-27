@@ -1,6 +1,8 @@
 
 
 #include "ppm_image.hpp"
+#define STB_IMAGE_IMPLEMENTATION
+#include "stb_image.h"
 
 ppm_image::ppm_image(){
     
@@ -33,6 +35,44 @@ void ppm_image::alloc_mem(){
     }
 }
 
+void ppm_image::load_from_file(std::string fn){
+    std::ifstream file(fn);
+    std::string header;
+    file>>header;
+    int _1,_2;
+    file>>_1;//w
+    file>>_2;//h
+    float prec;
+    file>>prec;
+    
+    int w;
+    int h;
+    int channels;
+    unsigned char* data=stbi_load(fn.c_str(),&w,&h,&channels,3);
+//    printf("Channels: %i\n",channels);
+//    printf("W: %i\nH: %i\n",w,h);
+    set_size(w,h);
+    alloc_mem();
+    int i=0;
+    for(int x=0;x<w;x++){
+        for(int y=0;y<h;y++){
+            unsigned bytePerPixel = channels;
+            unsigned char* pixelOffset = data + (x + w * y) * bytePerPixel;
+            unsigned char r = pixelOffset[0];
+            unsigned char g = pixelOffset[1];
+            unsigned char b = pixelOffset[2];
+            set_pixel(x,y, vec3(r,g,b)/prec  );
+            i++;
+        }
+    }
+
+    clamp();
+}
+
+vec3 ppm_image::get_pixel(vec2 uv){
+    return get_pixel(uv.x*width,uv.y*height);
+}
+
 void ppm_image::set_pixel(int x, int y, float r, float g, float b){
     int i=get_ind(x, y);
     r_comp[i]=r;
@@ -53,6 +93,12 @@ void ppm_image::clamp(){
             b_comp[i]=math::clamp(b_comp[i],0,1);
         }
     }
+    
+}
+
+vec3 ppm_image::get_pixel(int x,int y){
+    int i=get_ind(math::clamp(x,0,width-1),math::clamp(y,0,height-1));
+    return vec3(r_comp[i],g_comp[i],b_comp[i]);
 }
 
 void ppm_image::dealloc(){

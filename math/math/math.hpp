@@ -12,6 +12,10 @@
 #include <stdio.h>
 #include <cmath>
 
+#define PI 3.1415926536
+#define TWO_PI 6.2831853072
+#define HALF_PI 1.5707963268
+
 namespace math{
     int sign(float a);
     float abs(float a);
@@ -22,6 +26,7 @@ namespace math{
     float lin_norm(float t,float a,float b);
     float lin_remap(float t,float s1,float e1,float s2,float e2);
     bool is_in_range(float t,float a,float b);
+    bool solve_quadratic(float a,float b,float c,float&r1,float&r2);
 };
 
 #endif /* math_hpp */

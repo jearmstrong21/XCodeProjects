@@ -13,6 +13,10 @@
 #include <cmath>
 #include "math.hpp"
 
+#define X_AXIS2 vec2(1,0)
+#define Y_AXIS2 vec2(0,1)
+#define ORIGIN2 vec2(0)
+
 namespace math{
     
     struct vec2{

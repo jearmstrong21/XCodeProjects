@@ -52,4 +52,16 @@ namespace math{
     float lin_remap(float t,float s1,float e1,float s2,float e2) {
         return lerp(lin_norm(t,s1,e1),s2,e2);
     }
+    
+    bool solve_quadratic(float a,float b,float c,float&r1,float&r2){
+        float discr=b*b-4*a*c;
+        if(discr<0)return false;
+        else if(discr==0)r1=r2=-b/a/2;
+        else{
+            float q=sqrt(discr);
+            r1=(-b-q)/2/a;
+            r2=(-b+q)/2/a;
+        }
+        return true;
+    }
 }

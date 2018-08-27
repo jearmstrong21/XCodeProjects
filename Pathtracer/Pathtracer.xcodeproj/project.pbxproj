@@ -21,6 +21,10 @@
 		5A2C11722133148C00A7345D /* ppm_image.hpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A2C11702133148C00A7345D /* ppm_image.hpp */; };
 		5A2C11732133148C00A7345D /* ppm_image.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A2C11712133148C00A7345D /* ppm_image.cpp */; };
 		5A2C11762133153E00A7345D /* pt.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A2C11742133153E00A7345D /* pt.cpp */; };
+		5A2C117A213366FC00A7345D /* pt_obj.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A2C1178213366FC00A7345D /* pt_obj.cpp */; };
+		5A2C117D213367B800A7345D /* pt_sphere.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A2C117B213367B800A7345D /* pt_sphere.cpp */; };
+		5A2C1180213368DD00A7345D /* pt_list.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A2C117E213368DD00A7345D /* pt_list.cpp */; };
+		5A2C11832133793000A7345D /* pt_plane.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A2C11812133793000A7345D /* pt_plane.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -52,6 +56,14 @@
 		5A2C11712133148C00A7345D /* ppm_image.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = ppm_image.cpp; path = ../TestPPM/TestPPM/ppm_image.cpp; sourceTree = "<group>"; };
 		5A2C11742133153E00A7345D /* pt.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = pt.cpp; sourceTree = "<group>"; };
 		5A2C11752133153E00A7345D /* pt.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = pt.hpp; sourceTree = "<group>"; };
+		5A2C1178213366FC00A7345D /* pt_obj.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = pt_obj.cpp; sourceTree = "<group>"; };
+		5A2C1179213366FC00A7345D /* pt_obj.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = pt_obj.hpp; sourceTree = "<group>"; };
+		5A2C117B213367B800A7345D /* pt_sphere.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = pt_sphere.cpp; sourceTree = "<group>"; };
+		5A2C117C213367B800A7345D /* pt_sphere.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = pt_sphere.hpp; sourceTree = "<group>"; };
+		5A2C117E213368DD00A7345D /* pt_list.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = pt_list.cpp; sourceTree = "<group>"; };
+		5A2C117F213368DD00A7345D /* pt_list.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = pt_list.hpp; sourceTree = "<group>"; };
+		5A2C11812133793000A7345D /* pt_plane.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = pt_plane.cpp; sourceTree = "<group>"; };
+		5A2C11822133793000A7345D /* pt_plane.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = pt_plane.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +111,14 @@
 				5A2C11552133147600A7345D /* main.cpp */,
 				5A2C11742133153E00A7345D /* pt.cpp */,
 				5A2C11752133153E00A7345D /* pt.hpp */,
+				5A2C1178213366FC00A7345D /* pt_obj.cpp */,
+				5A2C1179213366FC00A7345D /* pt_obj.hpp */,
+				5A2C117B213367B800A7345D /* pt_sphere.cpp */,
+				5A2C117C213367B800A7345D /* pt_sphere.hpp */,
+				5A2C117E213368DD00A7345D /* pt_list.cpp */,
+				5A2C117F213368DD00A7345D /* pt_list.hpp */,
+				5A2C11812133793000A7345D /* pt_plane.cpp */,
+				5A2C11822133793000A7345D /* pt_plane.hpp */,
 			);
 			path = Pathtracer;
 			sourceTree = "<group>";
@@ -164,13 +184,17 @@
 				5A2C11662133148300A7345D /* vec2.hpp in Sources */,
 				5A2C11672133148300A7345D /* vec3.cpp in Sources */,
 				5A2C11682133148300A7345D /* vec3.hpp in Sources */,
+				5A2C117A213366FC00A7345D /* pt_obj.cpp in Sources */,
 				5A2C11692133148300A7345D /* complex.hpp in Sources */,
 				5A2C116A2133148300A7345D /* vec4.cpp in Sources */,
+				5A2C117D213367B800A7345D /* pt_sphere.cpp in Sources */,
 				5A2C116B2133148300A7345D /* vec4.hpp in Sources */,
 				5A2C116C2133148300A7345D /* complex.cpp in Sources */,
 				5A2C116D2133148300A7345D /* vec2.cpp in Sources */,
+				5A2C11832133793000A7345D /* pt_plane.cpp in Sources */,
 				5A2C116E2133148300A7345D /* math.cpp in Sources */,
 				5A2C11762133153E00A7345D /* pt.cpp in Sources */,
+				5A2C1180213368DD00A7345D /* pt_list.cpp in Sources */,
 				5A2C116F2133148300A7345D /* math.hpp in Sources */,
 				5A2C11562133147600A7345D /* main.cpp in Sources */,
 			);
@@ -292,6 +316,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				HEADER_SEARCH_PATHS = "/usr/local/Cellar/netpbm/10.73.20/include/**";
+				LIBRARY_SEARCH_PATHS = "/usr/local/Cellar/netpbm/10.73.20/lib/**";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -300,6 +326,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				HEADER_SEARCH_PATHS = "/usr/local/Cellar/netpbm/10.73.20/include/**";
+				LIBRARY_SEARCH_PATHS = "/usr/local/Cellar/netpbm/10.73.20/lib/**";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

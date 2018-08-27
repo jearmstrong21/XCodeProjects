@@ -11,6 +11,12 @@
 
 #include <cmath>
 
+#define X_AXIS4 vec4(1,0,0,0)
+#define Y_AXIS4 vec4(0,1,0,0)
+#define Z_AXIS4 vec4(0,0,1,0)
+#define W_AXIS4 vec4(0,0,0,1)
+#define ORIGIN4 vec4(0)
+
 namespace math{
     struct vec4{
         float x;
