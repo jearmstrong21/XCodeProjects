@@ -24,6 +24,7 @@
 		5A2C11462133137800A7345D /* vec2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A2C113C2133137800A7345D /* vec2.cpp */; };
 		5A2C11472133137800A7345D /* math.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A2C113D2133137800A7345D /* math.cpp */; };
 		5A2C11482133137800A7345D /* math.hpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A2C113E2133137800A7345D /* math.hpp */; };
+		5A2C11892134912800A7345D /* rm_modular.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A2C11872134912800A7345D /* rm_modular.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -53,6 +54,8 @@
 		5A2C113C2133137800A7345D /* vec2.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = vec2.cpp; path = ../math/math/vec2.cpp; sourceTree = "<group>"; };
 		5A2C113D2133137800A7345D /* math.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = math.cpp; path = ../math/math/math.cpp; sourceTree = "<group>"; };
 		5A2C113E2133137800A7345D /* math.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = math.hpp; path = ../math/math/math.hpp; sourceTree = "<group>"; };
+		5A2C11872134912800A7345D /* rm_modular.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = rm_modular.cpp; sourceTree = "<group>"; };
+		5A2C11882134912800A7345D /* rm_modular.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = rm_modular.hpp; sourceTree = "<group>"; };
 		5A69ECAE2120CB4300DA1CE3 /* Raytracer */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Raytracer; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A69ECB12120CB4300DA1CE3 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		5A69ECB92120CB5000DA1CE3 /* hsv.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = hsv.cpp; sourceTree = "<group>"; };
@@ -108,6 +111,8 @@
 				5A73FFA421291D7200D06BF5 /* TODO.txt */,
 				5A2B2DF7212F9B4200151528 /* rm.cpp */,
 				5A2B2DF8212F9B4200151528 /* rm.hpp */,
+				5A2C11872134912800A7345D /* rm_modular.cpp */,
+				5A2C11882134912800A7345D /* rm_modular.hpp */,
 			);
 			path = Raytracer;
 			sourceTree = "<group>";
@@ -181,6 +186,7 @@
 				5A2C11332133136E00A7345D /* ppm_image.hpp in Sources */,
 				5A2C11342133136E00A7345D /* ppm_image.cpp in Sources */,
 				5A2C112F2133135700A7345D /* rm.cpp in Sources */,
+				5A2C11892134912800A7345D /* rm_modular.cpp in Sources */,
 				5A2C11302133135700A7345D /* rm.hpp in Sources */,
 				5A2C112C2133135300A7345D /* hsv.cpp in Sources */,
 				5A2C112D2133135300A7345D /* hsv.hpp in Sources */,

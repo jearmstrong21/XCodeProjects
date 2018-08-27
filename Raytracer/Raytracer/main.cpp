@@ -12,6 +12,7 @@
 #include "math/vec2.hpp"
 
 #include "rm.hpp"
+#include "rm_modular.hpp"
 
 //#include "sdf.hpp"
 //#include "sdf_utils.hpp"
@@ -25,15 +26,18 @@ using math::complex;
 using math::vec2;
 using math::vec3;
 
+rm::modular* scene_obj;
+
 float scene(vec3 p){
-    vec3 mp=p;
-    mp.x=fmod(mp.x,1)-0.5;
-    mp.y=fmod(mp.y,3)-1.5;
-    mp.z=fmod(mp.z,1)-0.5;
-    if(p.y<0.5)mp.y=-10;
-    return math::min(math::min(math::min(p.x,p.y),p.z),vec3::length(mp)-0.3);
+//    vec3 mp=p;
+//    mp.x=fmod(mp.x,1)-0.5;
+//    mp.y=fmod(mp.y,3)-1.5;
+//    mp.z=fmod(mp.z,1)-0.5;
+//    if(p.y<0.5)mp.y=-10;
+//    return math::min(math::min(math::min(p.x,p.y),p.z),vec3::length(mp)-0.3);
+    return scene_obj->distance(p);
 }
-vec3 cam_pos=vec3(5,3,4);
+vec3 cam_pos=vec3(5,2,4);
 vec3 look_at=vec3(0,0,0);
 vec3 light_pos=vec3(2,3,2);
 
@@ -54,7 +58,7 @@ void get_color(vec3 pos, float& main_dist, vec3& cam_dir, vec3& ray_end, vec3& n
     vec3 v=vec3::normalize(pos-ray_end);
     float specular=pow(vec3::dot(r,v),20);
     
-    float shadow=rm::shadow_res(scene, ray_end, light_pos, RM_EPSILON);
+    float shadow=math::lin_remap(rm::shadow_res(scene, ray_end, light_pos, RM_EPSILON),0,1,   0.5,1);
     
     result*=diffuse+specular;
     result*=shadow;
@@ -74,7 +78,7 @@ void final_color(vec3 &result,int x,int y,int w,int h){
     
     get_color(cam_pos, main_dist,cam_dir,ray_end,normal,result);
     float reflect_mult=0.25;
-    for(int i=0;i<1;i++){
+    for(int i=0;i<0;i++){
         float sec_dist;
         vec3 sec_cam_dir=vec3::reflect(vec3::normalize(cam_pos-ray_end),normal);
         vec3 sec_ray_end;
@@ -96,11 +100,13 @@ void final_color(vec3 &result,int x,int y,int w,int h){
 
 int main(int argc, const char * argv[]) {
     ppm_image img;
-    img.set_size(1000, 1000);
+    img.set_size(300, 300);
     img.alloc_mem();
 
     printf("Starting loop\n");
 
+    
+    scene_obj=new rm::min(new rm::plane(vec3(0),vec3(0,1,0)), new rm::sphere(vec3(1),1)   );
     
     for(int x=0;x<img.get_w();x++){
         for(int y=0;y<img.get_h();y++){
