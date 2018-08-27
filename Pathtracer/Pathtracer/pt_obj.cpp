@@ -9,11 +9,11 @@
 #include "pt_obj.hpp"
 
 namespace pt {
-//    obj::obj(){
-//
-//    }
+    obj::obj(){
+
+    }
     
-//    obj::~obj(){
-//
-//    }
+    obj::~obj(){
+
+    }
 }

@@ -21,8 +21,8 @@ namespace pt {
     
     class list : public obj {
     public:
-//        list();
-//        ~list();
+        list();
+        ~list();
         vector<std::unique_ptr<obj>>inner;
         void clear();
         int size()const;

@@ -10,13 +10,13 @@
 
 namespace pt{
     
-//    list::list(){
-//
-//    }
+    list::list(){
+
+    }
     
-//    list::~list(){
-//
-//    }
+    list::~list(){
+
+    }
     
     void list::clear(){
         inner.clear();

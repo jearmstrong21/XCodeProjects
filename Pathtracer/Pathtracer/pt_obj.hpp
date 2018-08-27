@@ -17,8 +17,8 @@ namespace pt {
 
     class obj {
     public:
-//        obj();
-//        ~obj();
+        obj();
+        ~obj();
         virtual bool intersect(ray ray,float &t,vec3&n,pt::obj*o) const = 0;
     };
 

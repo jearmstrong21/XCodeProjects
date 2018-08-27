@@ -17,6 +17,9 @@ namespace pt{
         this->n=n;
         this->p0=p0;
     }
+    plane::~plane(){
+        
+    }
     bool plane::intersect(ray ray,float&t,vec3&out_n,pt::obj*out_o)const{
         out_n=n;
         out_o=(pt::obj*)this;

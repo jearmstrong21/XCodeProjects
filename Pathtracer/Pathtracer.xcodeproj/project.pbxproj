@@ -25,6 +25,7 @@
 		5A2C117D213367B800A7345D /* pt_sphere.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A2C117B213367B800A7345D /* pt_sphere.cpp */; };
 		5A2C1180213368DD00A7345D /* pt_list.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A2C117E213368DD00A7345D /* pt_list.cpp */; };
 		5A2C11832133793000A7345D /* pt_plane.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A2C11812133793000A7345D /* pt_plane.cpp */; };
+		5A2C11862134507100A7345D /* pt_aabb.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A2C11842134507100A7345D /* pt_aabb.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -64,6 +65,8 @@
 		5A2C117F213368DD00A7345D /* pt_list.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = pt_list.hpp; sourceTree = "<group>"; };
 		5A2C11812133793000A7345D /* pt_plane.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = pt_plane.cpp; sourceTree = "<group>"; };
 		5A2C11822133793000A7345D /* pt_plane.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = pt_plane.hpp; sourceTree = "<group>"; };
+		5A2C11842134507100A7345D /* pt_aabb.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = pt_aabb.cpp; sourceTree = "<group>"; };
+		5A2C11852134507100A7345D /* pt_aabb.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = pt_aabb.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +122,8 @@
 				5A2C117F213368DD00A7345D /* pt_list.hpp */,
 				5A2C11812133793000A7345D /* pt_plane.cpp */,
 				5A2C11822133793000A7345D /* pt_plane.hpp */,
+				5A2C11842134507100A7345D /* pt_aabb.cpp */,
+				5A2C11852134507100A7345D /* pt_aabb.hpp */,
 			);
 			path = Pathtracer;
 			sourceTree = "<group>";
@@ -184,6 +189,7 @@
 				5A2C11662133148300A7345D /* vec2.hpp in Sources */,
 				5A2C11672133148300A7345D /* vec3.cpp in Sources */,
 				5A2C11682133148300A7345D /* vec3.hpp in Sources */,
+				5A2C11862134507100A7345D /* pt_aabb.cpp in Sources */,
 				5A2C117A213366FC00A7345D /* pt_obj.cpp in Sources */,
 				5A2C11692133148300A7345D /* complex.hpp in Sources */,
 				5A2C116A2133148300A7345D /* vec4.cpp in Sources */,
