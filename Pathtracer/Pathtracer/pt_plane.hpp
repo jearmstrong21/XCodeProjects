@@ -23,7 +23,7 @@ namespace pt {
         plane(vec3 n,vec3 p0);
         ~plane();
         
-        bool intersect(ray ray,float&t,vec3&out_n,pt::obj*out_o)const;
+        bool intersect(ray ray,float&t,surface_data&sd,pt::obj*out_o)const;
     };
     
 };

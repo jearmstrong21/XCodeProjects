@@ -27,7 +27,7 @@ namespace pt {
         void clear();
         int size()const;
         void add(obj *o);
-        bool intersect(ray ray,float &t,vec3&n,pt::obj*o) const;
+        bool intersect(ray ray,float &t,surface_data&sd,pt::obj*o) const;
     };
     
 }

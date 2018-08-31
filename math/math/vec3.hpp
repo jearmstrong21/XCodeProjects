@@ -36,6 +36,7 @@ namespace math{
         static float dot2(vec3 v);
         static vec3 min(vec3 a,vec3 b);
         static vec3 reflect(vec3 i,vec3 n);
+        static vec3 sphere_coords(float theta,float phi);
         
         vec3& operator += (const vec3 rhs);
         vec3& operator -= (const vec3 rhs);

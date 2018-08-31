@@ -25,6 +25,11 @@ namespace pt {
         ray(vec3 p,vec3 d);
     };
     
+    struct surface_data{
+        vec3 normal;
+        vec2 uv;
+    };
+    
     ray cam_ray(vec2 uv, vec3 camPos, vec3 lookAt, float zoom);
 }
 

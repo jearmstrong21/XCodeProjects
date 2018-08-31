@@ -22,7 +22,7 @@ namespace pt {
         aabb();
         aabb(vec3 a,vec3 b);
         ~aabb();
-        bool intersect(ray ray,float&t,vec3&n,obj*out_o)const;
+        bool intersect(ray ray,float&t,surface_data&sd,obj*out_o)const;
     };
     
 }

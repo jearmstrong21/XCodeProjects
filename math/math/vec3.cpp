@@ -32,6 +32,10 @@ namespace math{
         return v.x*v.x+v.y*v.y+v.z*v.z;
     }
     
+    vec3 vec3::sphere_coords(float theta,float phi){
+        return vec3(sin(theta)*cos(phi),sin(theta)*sin(phi),cos(theta));
+    }
+    
     vec3 vec3::reflect(vec3 i,vec3 n){
         return 2*dot(n,i)*n-i;
     }

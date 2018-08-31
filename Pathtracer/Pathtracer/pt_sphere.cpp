@@ -24,7 +24,7 @@ namespace pt {
         rad=r;
     }
     
-    bool sphere::intersect(ray ray,float&t,vec3&n,pt::obj*out_o) const{
+    bool sphere::intersect(ray ray,float&t,surface_data&sd,pt::obj*out_o) const{
         out_o=(pt::obj*)this;
         float t0,t1;
         vec3 L=center-ray.pos;
@@ -47,7 +47,10 @@ namespace pt {
             }
         }
         t=math::min(t0,t1);
-        n=vec3::normalize(ray.pos+ray.dir*t-center);
+        sd.normal=vec3::normalize(ray.pos+ray.dir*t-center);
+        float u=math::lin_remap(acos(sd.normal.z),-1,1,0,1);
+        float v=math::lin_remap(atan2(sd.normal.y,sd.normal.x),-PI,PI,0,1);
+        sd.uv=vec2(u,v);
         return true;
     }
     

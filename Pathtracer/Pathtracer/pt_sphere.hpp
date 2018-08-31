@@ -25,7 +25,7 @@ namespace pt {
         ~sphere();
         sphere(vec3 c,float r);
         
-        bool intersect(ray ray,float&t,vec3&n,pt::obj*out_o) const;
+        bool intersect(ray ray,float&t,surface_data&sd,pt::obj*out_o) const;
     };
     
 }

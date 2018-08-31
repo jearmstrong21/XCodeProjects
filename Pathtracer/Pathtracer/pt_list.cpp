@@ -30,19 +30,19 @@ namespace pt{
         return (int)inner.size();
     }
     
-    bool list::intersect(ray ray,float &t,vec3&n,pt::obj*o) const{
+    bool list::intersect(ray ray,float &t,surface_data&sd,obj*o) const{
         
         t=10000000;
         bool found=false;
-        pt::obj*dummy_o;
+        obj*dummy_o;
         float dummy_t;
-        vec3 dummy_n;
+        surface_data dummy_sd;
         for(int i=0;i<size();i++){
-            if(inner[i].get()->intersect(ray,dummy_t,dummy_n,dummy_o)){
+            if(inner[i].get()->intersect(ray,dummy_t,dummy_sd,dummy_o)){
                 if(dummy_t<t){
                     t=dummy_t;
                     o=dummy_o;
-                    n=dummy_n;
+                    sd=dummy_sd;
                     found=true;
                 }
             }

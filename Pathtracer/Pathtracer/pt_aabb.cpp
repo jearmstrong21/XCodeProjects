@@ -23,9 +23,10 @@ namespace pt {
         
     }
     
-    bool aabb::intersect(ray ray,float&t,vec3&out_n,pt::obj*out_o)const{
+    bool aabb::intersect(ray ray,float&t,surface_data&sd,pt::obj*out_o)const{
         out_o=(pt::obj*)this;
-        out_n=vec3(0);
+        sd.normal=vec3(0);
+        sd.uv=vec2(0);
         t=0;
         
         
@@ -75,13 +76,17 @@ namespace pt {
             if(t<0)return false;
         }
         
+        
         vec3 end=ray.pos+(t-1e-6)*ray.dir;
-        if(end.x<min.x)out_n=vec3(-1,0,0);
-        if(end.x>max.x)out_n=vec3(1,0,0);
-        if(end.y<min.y)out_n=vec3(0,-1,0);
-        if(end.y>max.y)out_n=vec3(0,1,0);
-        if(end.z<min.z)out_n=vec3(0,0,-1);
-        if(end.z>max.z)out_n=vec3(0,0,1);
+        float u=math::lin_remap(end.x,min.x,max.x,0,1);
+        float v=math::lin_remap(end.y,min.y,max.y,0,1);
+        float w=math::lin_remap(end.z,min.z,max.z,0,1);
+        if(end.x<min.x){sd.normal=vec3(-1,0,0);sd.uv=vec2(v,w);}
+        if(end.x>max.x){sd.normal=vec3(1,0,0) ;sd.uv=vec2(v,w);}
+        if(end.y<min.y){sd.normal=vec3(0,-1,0);sd.uv=vec2(u,w);}
+        if(end.y>max.y){sd.normal=vec3(0,1,0) ;sd.uv=vec2(u,w);}
+        if(end.z<min.z){sd.normal=vec3(0,0,-1);sd.uv=vec2(u,v);}
+        if(end.z>max.z){sd.normal=vec3(0,0,1) ;sd.uv=vec2(u,v);}
         
         return true;
     }
