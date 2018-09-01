@@ -2,26 +2,25 @@
 //  glarr.c
 //  c-gl-lib
 //
-//  Created by Jack Armstrong on 7/15/18.
+//  Created by Jack Armstrong on 9/1/18.
 //  Copyright © 2018 Jack Armstrong. All rights reserved.
 //
 
 #include "glarr.h"
 
-glarr glarr_gen(void){
-    glarr arr;
-    glGenVertexArrays(1, &arr);
-    return arr;
+glarr glarr_create(void){
+    glarr gla;
+    glGenVertexArrays(1,&gla);
+    return gla;
 }
 
-void glarr_bind(glarr arr){
-    glBindVertexArray(arr);
+void glarr_bind(glarr gla){
+    glBindVertexArray(gla);
 }
-
 void glarr_unbind(void){
     glBindVertexArray(0);
 }
 
-void glarr_delete(glarr arr){
-    glDeleteVertexArrays(1, &arr);
+void glarr_delete(glarr gla){
+    glDeleteVertexArrays(1, &gla);
 }

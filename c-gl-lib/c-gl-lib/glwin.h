@@ -2,7 +2,7 @@
 //  glwin.h
 //  c-gl-lib
 //
-//  Created by Jack Armstrong on 7/14/18.
+//  Created by Jack Armstrong on 8/31/18.
 //  Copyright © 2018 Jack Armstrong. All rights reserved.
 //
 
@@ -10,37 +10,39 @@
 #define glwin_h
 
 #include <stdio.h>
-#include <stdbool.h>
+
 #include <GLFW/glfw3.h>
+#include <stdbool.h>
 
-typedef GLFWwindow glwin;
+typedef GLFWwindow* glwin;
 
-#define CORE GLFW_OPENGL_CORE_PROFILE
+#define PROFILE_CORE GLFW_OPENGL_CORE_PROFILE
+#define PROFILE_COMPAT GLFW_OPENGL_COMPAT_PROFILE
+#define PROFILE_ANY GLFW_OPENGL_ANY_PROFILE
 
 void glwin_init(void);
 
+glwin glwin_create(void);
+
+float glwin_get_time(void);
+
+void glwin_set_size(glwin win,int w,int h);
+void glwin_set_title(glwin win,char*title);
+
+void glwin_hints_version(int major,int minor);
+void glwin_hints_forward_compat(bool forwardCompat);
+void glwin_hints_profile(int profile);
+
 void glwin_default_hints(void);
-void glwin_hint_version(int major,int minor);
-void glwin_hint_profile(int profile);
-void glwin_hint_forward_compat(bool forward_compat);
 
-glwin* glwin_create(void);
+void glwin_destroy(glwin win);
 
-void glwin_set_size(glwin* win,const int w,const int h);
-void glwin_set_title(glwin* win,const char* title);
+bool glwin_is_open(glwin win);
 
-void glwin_init_gl(glwin*win);
+void glwin_bind(glwin win);
 
-void glwin_set_visible(glwin*win, bool visible);
-void glwin_show(glwin*win);
-void glwin_hide(glwin*win);
-
-bool glwin_should_close(glwin*win);
-
-void glwin_swap_buffers(glwin*win);
+void glwin_swap_buffers(glwin win);
 void glwin_poll_events(void);
-
-void glwin_delete(glwin*win);
 
 void glwin_end(void);
 

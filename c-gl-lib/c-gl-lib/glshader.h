@@ -2,7 +2,7 @@
 //  glshader.h
 //  c-gl-lib
 //
-//  Created by Jack Armstrong on 7/14/18.
+//  Created by Jack Armstrong on 9/1/18.
 //  Copyright © 2018 Jack Armstrong. All rights reserved.
 //
 
@@ -10,32 +10,26 @@
 #define glshader_h
 
 #include <stdio.h>
-#include <stdbool.h>
 #include <OpenGL/gl3.h>
-#include "glutil.h"
+#include "utils.h"
+#include <stdbool.h>
 
-typedef GLuint glshader;
-typedef GLuint glshader_program;
+//glshader_DEBUG_ERR_LOG
 
-typedef GLuint glshader_type;
+#define SHADER_VERTEX GL_VERTEX_SHADER
+#define SHADER_FRAGMENT GL_FRAGMENT_SHADER
 
-#define VERTEX GL_VERTEX_SHADER
-#define FRAGMENT GL_FRAGMENT_SHADER
+typedef int glshader;
+typedef int glshader_type;
 
-glshader glshader_compile(const_glstr_c source,glshader_type type);
+glshader glshader_create(void);
+void glshader_attach_file(glshader gls,const_char_str filename,glshader_type type);
+void glshader_attach_code(glshader gls,const_char_str code,glshader_type type);
+void glshader_link(glshader gls);
 
-glshader_program glshader_program_gen(void);
+void glshader_bind(glshader gls);
+void glshader_unbind(void);
 
-int glshader_compiled(glshader s);
-cstr glshader_error_log(glshader s);
-
-glshader_program glshader_program_attach(glshader_program p,glshader s);
-
-glshader_program glshader_program_link(glshader_program p);
-
-void glshader_program_bind(glshader_program sp);
-void glshader_program_unbind(void);
-
-void glshader_program_delete(glshader_program p);
+void glshader_delete(glshader gls);
 
 #endif /* glshader_h */

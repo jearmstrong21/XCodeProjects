@@ -7,18 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5A2C118C2139AAFA00A7345D /* glwin.c in Sources */ = {isa = PBXBuildFile; fileRef = 5A2C118B2139AAFA00A7345D /* glwin.c */; };
+		5A2C118F2139AD9600A7345D /* glutils.c in Sources */ = {isa = PBXBuildFile; fileRef = 5A2C118E2139AD9600A7345D /* glutils.c */; };
+		5A2C11922139AFB800A7345D /* utils.c in Sources */ = {isa = PBXBuildFile; fileRef = 5A2C11912139AFB800A7345D /* utils.c */; };
+		5A2C1195213AF57C00A7345D /* glshader.c in Sources */ = {isa = PBXBuildFile; fileRef = 5A2C1194213AF57C00A7345D /* glshader.c */; };
+		5A2C1199213AF80A00A7345D /* glarr.c in Sources */ = {isa = PBXBuildFile; fileRef = 5A2C1198213AF80A00A7345D /* glarr.c */; };
+		5A2C119C213AF8CB00A7345D /* glbuf.c in Sources */ = {isa = PBXBuildFile; fileRef = 5A2C119B213AF8CB00A7345D /* glbuf.c */; };
 		5AA5CE6920FA985B0086AC54 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 5AA5CE6820FA985B0086AC54 /* main.c */; };
-		5AA5CE7220FA98C10086AC54 /* glwin.c in Sources */ = {isa = PBXBuildFile; fileRef = 5AA5CE7120FA98C10086AC54 /* glwin.c */; };
 		5AA5CE7520FA98DC0086AC54 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AA5CE7420FA98DC0086AC54 /* IOKit.framework */; };
 		5AA5CE7720FA98EE0086AC54 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AA5CE7620FA98EE0086AC54 /* CoreVideo.framework */; };
 		5AA5CE7B20FA98FD0086AC54 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AA5CE7A20FA98FD0086AC54 /* Cocoa.framework */; };
 		5AA5CE7D20FA99020086AC54 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AA5CE7C20FA99020086AC54 /* OpenGL.framework */; };
 		5AA5CE7F20FA99190086AC54 /* libglfw.3.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AA5CE7E20FA99190086AC54 /* libglfw.3.2.dylib */; };
-		5AA5CE8220FAC82F0086AC54 /* glutil.c in Sources */ = {isa = PBXBuildFile; fileRef = 5AA5CE8120FAC82F0086AC54 /* glutil.c */; };
-		5AA5CE8520FACE1D0086AC54 /* util.c in Sources */ = {isa = PBXBuildFile; fileRef = 5AA5CE8420FACE1D0086AC54 /* util.c */; };
-		5AA5CE8820FAD1000086AC54 /* glshader.c in Sources */ = {isa = PBXBuildFile; fileRef = 5AA5CE8720FAD1000086AC54 /* glshader.c */; };
-		5AA5CE9220FB9AF60086AC54 /* glarr.c in Sources */ = {isa = PBXBuildFile; fileRef = 5AA5CE9120FB9AF60086AC54 /* glarr.c */; };
-		5AA5CE9520FC36A50086AC54 /* glbuf.c in Sources */ = {isa = PBXBuildFile; fileRef = 5AA5CE9420FC36A50086AC54 /* glbuf.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -34,29 +34,30 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		5A2C118A2139AAFA00A7345D /* glwin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = glwin.h; sourceTree = "<group>"; };
+		5A2C118B2139AAFA00A7345D /* glwin.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = glwin.c; sourceTree = "<group>"; };
+		5A2C118D2139AD9600A7345D /* glutils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = glutils.h; sourceTree = "<group>"; };
+		5A2C118E2139AD9600A7345D /* glutils.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = glutils.c; sourceTree = "<group>"; };
+		5A2C11902139AFB800A7345D /* utils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = utils.h; sourceTree = "<group>"; };
+		5A2C11912139AFB800A7345D /* utils.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = utils.c; sourceTree = "<group>"; };
+		5A2C1193213AF57C00A7345D /* glshader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = glshader.h; sourceTree = "<group>"; };
+		5A2C1194213AF57C00A7345D /* glshader.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = glshader.c; sourceTree = "<group>"; };
+		5A2C1196213AF62400A7345D /* glconfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = glconfig.h; sourceTree = "<group>"; };
+		5A2C1197213AF80A00A7345D /* glarr.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = glarr.h; sourceTree = "<group>"; };
+		5A2C1198213AF80A00A7345D /* glarr.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = glarr.c; sourceTree = "<group>"; };
+		5A2C119A213AF8CB00A7345D /* glbuf.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = glbuf.h; sourceTree = "<group>"; };
+		5A2C119B213AF8CB00A7345D /* glbuf.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = glbuf.c; sourceTree = "<group>"; };
 		5AA5CE6520FA985B0086AC54 /* c-gl-lib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "c-gl-lib"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5AA5CE6820FA985B0086AC54 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
-		5AA5CE7020FA98C10086AC54 /* glwin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = glwin.h; sourceTree = "<group>"; };
-		5AA5CE7120FA98C10086AC54 /* glwin.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = glwin.c; sourceTree = "<group>"; };
 		5AA5CE7420FA98DC0086AC54 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
 		5AA5CE7620FA98EE0086AC54 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		5AA5CE7820FA98F30086AC54 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
 		5AA5CE7A20FA98FD0086AC54 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		5AA5CE7C20FA99020086AC54 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		5AA5CE7E20FA99190086AC54 /* libglfw.3.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libglfw.3.2.dylib; path = ../../../../../usr/local/lib/libglfw.3.2.dylib; sourceTree = "<group>"; };
-		5AA5CE8020FAC82F0086AC54 /* glutil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = glutil.h; sourceTree = "<group>"; };
-		5AA5CE8120FAC82F0086AC54 /* glutil.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = glutil.c; sourceTree = "<group>"; };
-		5AA5CE8320FACE1D0086AC54 /* util.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = util.h; sourceTree = "<group>"; };
-		5AA5CE8420FACE1D0086AC54 /* util.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = util.c; sourceTree = "<group>"; };
-		5AA5CE8620FAD1000086AC54 /* glshader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = glshader.h; sourceTree = "<group>"; };
-		5AA5CE8720FAD1000086AC54 /* glshader.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = glshader.c; sourceTree = "<group>"; };
 		5AA5CE8A20FAF4D60086AC54 /* shader.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = shader.vert; sourceTree = "<group>"; };
 		5AA5CE8B20FAF5A80086AC54 /* shader.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = shader.frag; sourceTree = "<group>"; };
 		5AA5CE8F20FB9AC80086AC54 /* glinfo.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = glinfo.txt; sourceTree = "<group>"; };
-		5AA5CE9020FB9AF60086AC54 /* glarr.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = glarr.h; sourceTree = "<group>"; };
-		5AA5CE9120FB9AF60086AC54 /* glarr.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = glarr.c; sourceTree = "<group>"; };
-		5AA5CE9320FC36A50086AC54 /* glbuf.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = glbuf.h; sourceTree = "<group>"; };
-		5AA5CE9420FC36A50086AC54 /* glbuf.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = glbuf.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,21 +97,22 @@
 			isa = PBXGroup;
 			children = (
 				5AA5CE6820FA985B0086AC54 /* main.c */,
-				5AA5CE7020FA98C10086AC54 /* glwin.h */,
-				5AA5CE7120FA98C10086AC54 /* glwin.c */,
-				5AA5CE8020FAC82F0086AC54 /* glutil.h */,
-				5AA5CE8120FAC82F0086AC54 /* glutil.c */,
-				5AA5CE8320FACE1D0086AC54 /* util.h */,
-				5AA5CE8420FACE1D0086AC54 /* util.c */,
-				5AA5CE8620FAD1000086AC54 /* glshader.h */,
-				5AA5CE8720FAD1000086AC54 /* glshader.c */,
-				5AA5CE9020FB9AF60086AC54 /* glarr.h */,
-				5AA5CE9120FB9AF60086AC54 /* glarr.c */,
+				5A2C1196213AF62400A7345D /* glconfig.h */,
 				5AA5CE8A20FAF4D60086AC54 /* shader.vert */,
 				5AA5CE8B20FAF5A80086AC54 /* shader.frag */,
 				5AA5CE8F20FB9AC80086AC54 /* glinfo.txt */,
-				5AA5CE9320FC36A50086AC54 /* glbuf.h */,
-				5AA5CE9420FC36A50086AC54 /* glbuf.c */,
+				5A2C118A2139AAFA00A7345D /* glwin.h */,
+				5A2C118B2139AAFA00A7345D /* glwin.c */,
+				5A2C118D2139AD9600A7345D /* glutils.h */,
+				5A2C118E2139AD9600A7345D /* glutils.c */,
+				5A2C11902139AFB800A7345D /* utils.h */,
+				5A2C11912139AFB800A7345D /* utils.c */,
+				5A2C1193213AF57C00A7345D /* glshader.h */,
+				5A2C1194213AF57C00A7345D /* glshader.c */,
+				5A2C1197213AF80A00A7345D /* glarr.h */,
+				5A2C1198213AF80A00A7345D /* glarr.c */,
+				5A2C119A213AF8CB00A7345D /* glbuf.h */,
+				5A2C119B213AF8CB00A7345D /* glbuf.c */,
 			);
 			path = "c-gl-lib";
 			sourceTree = "<group>";
@@ -184,13 +186,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5AA5CE9220FB9AF60086AC54 /* glarr.c in Sources */,
+				5A2C1199213AF80A00A7345D /* glarr.c in Sources */,
+				5A2C118F2139AD9600A7345D /* glutils.c in Sources */,
+				5A2C11922139AFB800A7345D /* utils.c in Sources */,
+				5A2C1195213AF57C00A7345D /* glshader.c in Sources */,
 				5AA5CE6920FA985B0086AC54 /* main.c in Sources */,
-				5AA5CE8520FACE1D0086AC54 /* util.c in Sources */,
-				5AA5CE8820FAD1000086AC54 /* glshader.c in Sources */,
-				5AA5CE7220FA98C10086AC54 /* glwin.c in Sources */,
-				5AA5CE9520FC36A50086AC54 /* glbuf.c in Sources */,
-				5AA5CE8220FAC82F0086AC54 /* glutil.c in Sources */,
+				5A2C119C213AF8CB00A7345D /* glbuf.c in Sources */,
+				5A2C118C2139AAFA00A7345D /* glwin.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

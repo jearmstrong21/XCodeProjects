@@ -6,104 +6,134 @@
 //  Copyright © 2018 Jack Armstrong. All rights reserved.
 //
 
-#define glshader_CHECK_FOR_ERRORS
-
 #include <stdio.h>
 #include <stdbool.h>
 #include <math.h>
+
+#include "glconfig.h"
+
 #include "glwin.h"
-#include "glutil.h"
+#include "glutils.h"
 #include "glshader.h"
 #include "glarr.h"
 #include "glbuf.h"
+#include "utils.h"
+
+void error_func(int i,const_char_str str){
+    printf("ERROR\n");
+    switch(i){
+        case GLFW_NOT_INITIALIZED:
+            printf("Not initialized: %s\n",str);
+            break;
+        case GLFW_NO_CURRENT_CONTEXT:
+            printf("No current context: %s\n",str);
+            break;
+        case GLFW_INVALID_ENUM:
+            printf("Invalid enum: %s\n",str);
+            break;
+        case GLFW_INVALID_VALUE:
+            printf("Invalid value: %s\n",str);
+            break;
+        case GLFW_OUT_OF_MEMORY:
+            printf("Out of memory: %s\n",str);
+            break;
+        case GLFW_API_UNAVAILABLE:
+            printf("API Unavailable: %s\n",str);
+            break;
+        case GLFW_VERSION_UNAVAILABLE:
+            printf("Version unavailable: %s\n",str);
+            break;
+        case GLFW_PLATFORM_ERROR:
+            printf("Platform error: %s\n",str);
+            break;
+        case GLFW_FORMAT_UNAVAILABLE:
+            printf("Format unavailable: %s\n",str);
+            break;
+    }
+    printf("Press any key to continue\n");
+    getchar();
+}
 
 int main(int argc, const char * argv[]) {
+    
     glwin_init();
+    glfwSetErrorCallback(error_func);
+    
     glwin_default_hints();
-    glwin_hint_version(4,1);
-    glwin_hint_profile(CORE);
-    glwin_hint_forward_compat(true);
+    glwin_hints_version(4,1);
+    glwin_hints_forward_compat(true);
+    glwin_hints_profile(PROFILE_CORE);
+    glwin win=glwin_create();
+    glwin_set_size(win, 500,500);
+    glwin_set_title(win, "Title");
+    glwin_bind(win);
     
-    glwin*win=glwin_create();
-    glwin_set_title(win, "c-gl-lib");
-    glwin_set_size(win, 500, 500);
-    glwin_show(win);
-    glwin_init_gl(win);
+    const_byte_str version=glutils_get_string(GL_VERSION);
+    int major=glutils_get_integer(GL_MAJOR_VERSION);
+    int minor=glutils_get_integer(GL_MINOR_VERSION);
     
-    glutil_print_ext();
-    printf("\n");
-    glutil_print_info();
-    printf("\n");
-
-    const_glstr_c vertCode=util_load_file("shader.vert");
-    const_glstr_c fragCode=util_load_file("shader.frag");
+    printf("Version: %s\n",version);
+    printf("Major version: %i\nMinor version: %i\n",major,minor);
     
-//    printf("fragCode: %s\n",fragCode);
+    glshader shader=glshader_create();
+    glshader_attach_file(shader, "shader.vert", SHADER_VERTEX);
+    glshader_attach_file(shader, "shader.frag", SHADER_FRAGMENT);
+    glshader_link(shader);
     
-    glshader vertShader=glshader_compile(vertCode, VERTEX);
-    glshader fragShader=glshader_compile(fragCode, FRAGMENT);
+    glarr array=glarr_create();
     
-    if(!glshader_compiled(vertShader))printf("Vertex shader failed: %s\n",glshader_error_log(vertShader));
-    if(!glshader_compiled(fragShader))printf("Fragment shader failed: %s\n",glshader_error_log(fragShader));
+    glarr_bind(array);
     
-    glshader_program sp=glshader_program_gen();
-    glshader_program_attach(sp, vertShader);
-    glshader_program_attach(sp, fragShader);
-    glshader_program_link(sp);
+    float posData[]={
+        0,0,0,
+        1,0,0,
+        0,1,0
+    };
+    glbuf bufPos=glbuf_create(glbuf_usage_STATIC_DRAW, glbuf_target_ARRAY);
+    glbuf_bind(bufPos);
+    glbuf_set_data(bufPos, posData, sizeof(posData));
+    glbuf_add_attrib(0, 3, glbuf_type_FLOAT, false, 3*sizeof(float), 0);
+    glbuf_unbind(bufPos);
     
-    printf("Shader program id: %i\n",sp);
-    
-    glarr arr=glarr_gen();
-    glarr_bind(arr);
-    
-    float*fdata=(float*)malloc(sizeof(float)*9);
-    fdata[0]=0;fdata[1]=0;fdata[2]=0;
-    fdata[3]=1;fdata[4]=0;fdata[5]=0;
-    fdata[6]=0;fdata[7]=1;fdata[8]=0;
-    
-    glbuf buf=glbuf_gen(GL_ARRAY_BUFFER, GL_STATIC_DRAW);
-    glbuf_bind(buf);
-    glbuf_set_data(buf, fdata, 9);
-    glbuf_add_attrib(buf, 0, 9*sizeof(float), GL_FLOAT, false, 3*sizeof(float), 0*sizeof(float));
-    glbuf_unbind(buf);
+    float colData[]={
+        1,0,0,
+        0,1,0,
+        0,0,1
+    };
+    glbuf bufCol=glbuf_create(glbuf_usage_STATIC_DRAW,glbuf_target_ARRAY);
+    glbuf_bind(bufCol);
+    glbuf_set_data(bufCol,colData,sizeof(colData));
+    glbuf_add_attrib(1,3,glbuf_type_FLOAT,false,3*sizeof(float),0);
+    glbuf_unbind(bufCol);
     
     glarr_unbind();
     
-    printf("VAO id: %i\n",arr);
-    printf("VBO id: %i\n",buf.buf);
+    printf("Shader id: %i\n",shader);
+    printf("Array id: %i\n",array);
     
-    while(!glwin_should_close(win)){
-        float time=glutil_get_time();
-        float gray=0.5*cos(time)+0.5;
-        glutil_clear_screen(gray,gray,gray);
+    while(glwin_is_open(win)){
+        glwin_bind(win);
+//        float gray=0.5+0.5*cos(glwin_get_time());
+//        glutils_set_clear_color(gray,gray,gray);
+        glutils_set_clear_color(1,1,1);
+        glutils_clear_screen();
         
-        glshader_program_bind(sp);
+        glshader_bind(shader);
         
-        glarr_bind(arr);
+        glarr_bind(array);
         
-        glbuf_bind(buf);
-        glbuf_render_array(buf, 0, 3);
-        glbuf_unbind(buf);
+        glDrawArrays(GL_TRIANGLES, 0, 3);
         
         glarr_unbind();
         
-        glshader_program_unbind();
+        glshader_unbind();
         
         glwin_swap_buffers(win);
         glwin_poll_events();
     }
+//    while(true){}
     
-    glarr_delete(arr);
-    
-    glwin_delete(win);
     glwin_end();
-    
-    //glvertarr
-    //glvertbuf
-    //gledgebuf
-    //glframebuf
-    //gltex
-    //stb_image
     
     return 0;
 }

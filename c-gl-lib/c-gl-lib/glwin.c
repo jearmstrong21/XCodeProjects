@@ -2,7 +2,7 @@
 //  glwin.c
 //  c-gl-lib
 //
-//  Created by Jack Armstrong on 7/14/18.
+//  Created by Jack Armstrong on 8/31/18.
 //  Copyright © 2018 Jack Armstrong. All rights reserved.
 //
 
@@ -12,66 +12,55 @@ void glwin_init(void){
     glfwInit();
 }
 
-glwin* glwin_create(void){
-    return glfwCreateWindow(100, 100, "Default title", NULL, NULL);
+glwin glwin_create(void){
+    return glfwCreateWindow(100, 100, "Default Title", 0, 0);
+}
+
+float glwin_get_time(void){
+    return glfwGetTime();
+}
+
+void glwin_hints_version(int major,int minor){
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, major);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, minor);
+}
+
+void glwin_hints_forward_compat(bool forwardCompat){
+    glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, forwardCompat);
+}
+
+void glwin_hints_profile(int profile){
+    glfwWindowHint(GLFW_OPENGL_PROFILE, profile);
+}
+
+void glwin_set_size(glwin win,int w,int h){
+    glfwSetWindowSize(win, w, h);
+}
+void glwin_set_title(glwin win,char*title){
+    glfwSetWindowTitle(win, title);
 }
 
 void glwin_default_hints(void){
     glfwDefaultWindowHints();
 }
 
-void glwin_hint_version(int major,int minor){
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, major);
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, minor);
+void glwin_destroy(glwin win){
+    glfwDestroyWindow(win);
 }
 
-void glwin_hint_profile(int profile){
-    glfwWindowHint(GLFW_OPENGL_PROFILE,profile);
+bool glwin_is_open(glwin win){
+    return !glfwWindowShouldClose(win);
 }
 
-void glwin_hint_forward_compat(bool forward_compat){
-    glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, forward_compat);
-}
-
-void glwin_set_size(glwin*win,const int w,const int h){
-    glfwSetWindowSize(win, w, h);
-}
-
-void glwin_set_title(glwin*win,const char* title){
-    glfwSetWindowTitle(win, title);
-}
-
-void glwin_init_gl(glwin*win){
+void glwin_bind(glwin win){
     glfwMakeContextCurrent(win);
 }
 
-void glwin_set_visible(glwin*win,bool visible){
-    if(visible)glwin_show(win);
-    else glwin_hide(win);
-}
-
-void glwin_show(glwin*win){
-    glfwShowWindow(win);
-}
-
-void glwin_hide(glwin*win){
-    glfwHideWindow(win);
-}
-
-bool glwin_should_close(glwin*win){
-    return glfwWindowShouldClose(win);
-}
-
-void glwin_swap_buffers(glwin* win){
+void glwin_swap_buffers(glwin win){
     glfwSwapBuffers(win);
 }
-
 void glwin_poll_events(void){
     glfwPollEvents();
-}
-
-void glwin_delete(glwin*win){
-    glfwDestroyWindow(win);
 }
 
 void glwin_end(void){
