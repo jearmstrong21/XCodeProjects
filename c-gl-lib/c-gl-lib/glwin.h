@@ -12,6 +12,7 @@
 #include <stdio.h>
 
 #include <GLFW/glfw3.h>
+#include "utils.h"
 #include <stdbool.h>
 
 typedef GLFWwindow* glwin;
@@ -32,6 +33,9 @@ void glwin_set_title(glwin win,char*title);
 void glwin_hints_version(int major,int minor);
 void glwin_hints_forward_compat(bool forwardCompat);
 void glwin_hints_profile(int profile);
+
+void glwin_default_error_func(int i,const_char_str str);
+void glwin_set_error_func(GLFWerrorfun ef);
 
 void glwin_default_hints(void);
 

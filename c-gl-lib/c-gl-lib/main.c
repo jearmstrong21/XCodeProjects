@@ -19,45 +19,9 @@
 #include "glbuf.h"
 #include "utils.h"
 
-void error_func(int i,const_char_str str){
-    printf("ERROR\n");
-    switch(i){
-        case GLFW_NOT_INITIALIZED:
-            printf("Not initialized: %s\n",str);
-            break;
-        case GLFW_NO_CURRENT_CONTEXT:
-            printf("No current context: %s\n",str);
-            break;
-        case GLFW_INVALID_ENUM:
-            printf("Invalid enum: %s\n",str);
-            break;
-        case GLFW_INVALID_VALUE:
-            printf("Invalid value: %s\n",str);
-            break;
-        case GLFW_OUT_OF_MEMORY:
-            printf("Out of memory: %s\n",str);
-            break;
-        case GLFW_API_UNAVAILABLE:
-            printf("API Unavailable: %s\n",str);
-            break;
-        case GLFW_VERSION_UNAVAILABLE:
-            printf("Version unavailable: %s\n",str);
-            break;
-        case GLFW_PLATFORM_ERROR:
-            printf("Platform error: %s\n",str);
-            break;
-        case GLFW_FORMAT_UNAVAILABLE:
-            printf("Format unavailable: %s\n",str);
-            break;
-    }
-    printf("Press any key to continue\n");
-    getchar();
-}
-
 int main(int argc, const char * argv[]) {
     
     glwin_init();
-    glfwSetErrorCallback(error_func);
     
     glwin_default_hints();
     glwin_hints_version(4,1);
@@ -67,6 +31,7 @@ int main(int argc, const char * argv[]) {
     glwin_set_size(win, 500,500);
     glwin_set_title(win, "Title");
     glwin_bind(win);
+    
     
     const_byte_str version=glutils_get_string(GL_VERSION);
     int major=glutils_get_integer(GL_MAJOR_VERSION);
@@ -110,6 +75,8 @@ int main(int argc, const char * argv[]) {
     
     printf("Shader id: %i\n",shader);
     printf("Array id: %i\n",array);
+    printf("VBO pos id: %i\n",bufPos.internal);
+    printf("VBO col id: %i\n",bufCol.internal);
     
     while(glwin_is_open(win)){
         glwin_bind(win);

@@ -33,6 +33,44 @@ void glwin_hints_profile(int profile){
     glfwWindowHint(GLFW_OPENGL_PROFILE, profile);
 }
 
+void glwin_default_error_func(int i,const_char_str str){
+    printf("ERROR\n");
+    switch(i){
+        case GLFW_NOT_INITIALIZED:
+            printf("Not initialized: %s\n",str);
+            break;
+        case GLFW_NO_CURRENT_CONTEXT:
+            printf("No current context: %s\n",str);
+            break;
+        case GLFW_INVALID_ENUM:
+            printf("Invalid enum: %s\n",str);
+            break;
+        case GLFW_INVALID_VALUE:
+            printf("Invalid value: %s\n",str);
+            break;
+        case GLFW_OUT_OF_MEMORY:
+            printf("Out of memory: %s\n",str);
+            break;
+        case GLFW_API_UNAVAILABLE:
+            printf("API Unavailable: %s\n",str);
+            break;
+        case GLFW_VERSION_UNAVAILABLE:
+            printf("Version unavailable: %s\n",str);
+            break;
+        case GLFW_PLATFORM_ERROR:
+            printf("Platform error: %s\n",str);
+            break;
+        case GLFW_FORMAT_UNAVAILABLE:
+            printf("Format unavailable: %s\n",str);
+            break;
+    }
+    printf("Press any key to continue\n");
+    getchar();
+}
+void glwin_set_error_func(GLFWerrorfun ef){
+    glfwSetErrorCallback(ef);
+}
+
 void glwin_set_size(glwin win,int w,int h){
     glfwSetWindowSize(win, w, h);
 }
