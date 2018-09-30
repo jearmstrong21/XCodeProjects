@@ -69,7 +69,7 @@ void update(){
         newA.push_back(0);
         newB.push_back(0);
     }
-    for(int i=0;i<10;i++){
+    for(int i=0;i<200;i++){
         cl::Event evt1=kernel.call("reactiondiffusion",gridA,gridB,newA,newB,paramDa,paramDb,paramF,paramK,paramDt,SIMSIZE);
         cl::Event evt2=kernel.call("swap",gridA,gridB,newA,newB);
     }
