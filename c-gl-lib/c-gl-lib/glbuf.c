@@ -28,8 +28,12 @@ void glbuf_add_attrib(int attrib,int size,int type,bool norm,int stride,int star
     glVertexAttribPointer(attrib, size, type, norm, stride, (const GLvoid*)start);
 }
 
-void glbuf_set_data(glbuf glb,const void*data,size_t length){
-    glBufferData(glb.target, length, data, glb.usage);
+void glbuf_set_data(glbuf glb,size_t size,const void*data){
+    glBufferData(glb.target, size, data, glb.usage);
+}
+
+void glbuf_modify_data(glbuf glb,const void*data,int start,int dist){
+    glBufferSubData(glb.target, start, dist, data);
 }
 
 void glbuf_delete(glbuf glb){

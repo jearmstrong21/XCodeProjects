@@ -50,13 +50,13 @@ int main(int argc, const char * argv[]) {
     glarr_bind(array);
     
     float posData[]={
-        0,0,0,
+        -1,0,0,
         1,0,0,
         0,1,0
     };
     glbuf bufPos=glbuf_create(glbuf_usage_STATIC_DRAW, glbuf_target_ARRAY);
     glbuf_bind(bufPos);
-    glbuf_set_data(bufPos, posData, sizeof(posData));
+    glbuf_set_data(bufPos, sizeof(posData), posData);
     glbuf_add_attrib(0, 3, glbuf_type_FLOAT, false, 3*sizeof(float), 0);
     glbuf_unbind(bufPos);
     
@@ -67,7 +67,7 @@ int main(int argc, const char * argv[]) {
     };
     glbuf bufCol=glbuf_create(glbuf_usage_STATIC_DRAW,glbuf_target_ARRAY);
     glbuf_bind(bufCol);
-    glbuf_set_data(bufCol,colData,sizeof(colData));
+    glbuf_set_data(bufCol,sizeof(colData),colData);
     glbuf_add_attrib(1,3,glbuf_type_FLOAT,false,3*sizeof(float),0);
     glbuf_unbind(bufCol);
     
@@ -89,9 +89,38 @@ int main(int argc, const char * argv[]) {
         
         glarr_bind(array);
         
+        glbuf_bind(bufPos);
+        
+        posData[0]=cos(glwin_get_time());
+        posData[3]=sin(glwin_get_time());
+        posData[4]=cos(glwin_get_time());
+        
+        glbuf_set_data(bufPos, sizeof(posData),posData);
+        glbuf_unbind(bufPos);
+        
+        
+        
+        glbuf_bind(bufCol);
+        
+        colData[0]=0.5+0.5*cos(glwin_get_time());
+        colData[1]=0.5+0.5*sin(glwin_get_time());
+        colData[2]=0;
+        colData[5]=0.5+0.5*cos(glwin_get_time());
+        colData[4]=0.5+0.5*sin(glwin_get_time());
+        colData[3]=0;
+        colData[7]=0.5+0.5*cos(glwin_get_time());
+        colData[6]=0.5+0.5*sin(glwin_get_time());
+        colData[8]=0;
+        
+        glbuf_set_data(bufCol, sizeof(float)*9, colData);
+        glbuf_unbind(bufCol);
+        
+        
+        
         glDrawArrays(GL_TRIANGLES, 0, 3);
         
         glarr_unbind();
+        
         
         glshader_unbind();
         

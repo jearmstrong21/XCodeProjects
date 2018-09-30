@@ -312,10 +312,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				HEADER_SEARCH_PATHS = (
-					"/usr/local/Cellar/glfw/3.2.1/include/**",
-					"/usr/local/Cellar/glm/0.9.8.5/include/**",
-				);
+				HEADER_SEARCH_PATHS = "/usr/local/Cellar/glfw/3.2.1/include/**";
 				LIBRARY_SEARCH_PATHS = "/usr/local/Cellar/glfw/3.2.1/lib/**";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -325,10 +322,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				HEADER_SEARCH_PATHS = (
-					"/usr/local/Cellar/glfw/3.2.1/include/**",
-					"/usr/local/Cellar/glm/0.9.8.5/include/**",
-				);
+				HEADER_SEARCH_PATHS = "/usr/local/Cellar/glfw/3.2.1/include/**";
 				LIBRARY_SEARCH_PATHS = "/usr/local/Cellar/glfw/3.2.1/lib/**";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

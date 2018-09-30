@@ -68,8 +68,8 @@ void glbuf_bind(glbuf glb);
 void glbuf_unbind(glbuf glb);
 
 void glbuf_add_attrib(int attrib,int size,int type,bool norm,int stride,int start);
-void glbuf_set_data(glbuf glb,const void*data,size_t length);
-
+void glbuf_set_data(glbuf glb,size_t size,const void*data);
+void glbuf_modify_data(glbuf glb,const void*data,int start,int dist);
 void glbuf_delete(glbuf glb);
 
 #endif /* glbuf_h */
