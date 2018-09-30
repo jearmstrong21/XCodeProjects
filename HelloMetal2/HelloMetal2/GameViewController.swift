@@ -41,5 +41,7 @@ class GameViewController: NSViewController {
         renderer.mtkView(mtkView, drawableSizeWillChange: mtkView.drawableSize)
 
         mtkView.delegate = renderer
+        mtkView.sampleCount = 4
+        mtkView.depthStencilPixelFormat = .depth32Float_stencil8
     }
 }
