@@ -27,6 +27,9 @@ class GameViewController: NSViewController {
     @IBOutlet weak var sliderYMult: NSSlider!
     @IBOutlet weak var sliderXOff: NSSlider!
     @IBOutlet weak var sliderYOff: NSSlider!
+    @IBOutlet weak var sliderIterations: NSSlider!
+    @IBOutlet weak var checkboxHSB: NSButton!
+    @IBOutlet weak var checkboxSmooth: NSButton!
     
     @IBAction func sliderXMultChanged(_ sender: Any) {
         renderer.xMult = sliderXMult.floatValue
@@ -39,6 +42,53 @@ class GameViewController: NSViewController {
     }
     @IBAction func sliderYOffChanged(_ sender: Any) {
         renderer.yOff = sliderYOff.floatValue
+    }
+    @IBAction func sliderIterationsChanged(_ sender: Any) {
+        renderer.iterations = Int(sliderIterations.intValue)
+    }
+    @IBAction func checkboxHSBChanged(_ sender: Any) {
+        renderer.doHSB = checkboxHSB.state.rawValue
+    }
+    @IBAction func checkboxSmoothChanged(_ sender: Any) {
+        renderer.doSmooth = checkboxSmooth.state.rawValue
+    }
+    @IBAction func resetXMultiplier(_ sender: Any) {
+        renderer.xMult = 0
+        sliderXMult.floatValue = 0
+    }
+    @IBAction func resetYMultiplier(_ sender: Any) {
+        renderer.yMult = 0
+        sliderYMult.floatValue = 0
+    }
+    @IBAction func resetXOffset(_ sender: Any) {
+        renderer.xOff = 0
+        sliderXOff.floatValue = 0
+    }
+    @IBAction func resetYOffset(_ sender: Any) {
+        renderer.yOff = 0
+        sliderYOff.floatValue = 0
+    }
+    @IBAction func resetMultipliers(_ sender: Any) {
+        renderer.xMult = 0
+        renderer.yMult = 0
+        sliderXMult.floatValue = 0
+        sliderYMult.floatValue = 0
+    }
+    @IBAction func resetOffsets(_ sender: Any) {
+        renderer.xOff = 0
+        renderer.yOff = 0
+        sliderXOff.floatValue = 0
+        sliderYOff.floatValue = 0
+    }
+    @IBAction func presetMandelbrot(_ sender: Any) {
+        renderer.xMult = 1
+        renderer.yMult = 1
+        renderer.xOff = 0
+        renderer.yOff = 0
+        sliderXMult.floatValue = 1
+        sliderYMult.floatValue = 1
+        sliderXOff.floatValue = 0
+        sliderYOff.floatValue = 0
     }
     
     override func viewDidLoad() {
@@ -59,6 +109,10 @@ class GameViewController: NSViewController {
         sliderYOff.minValue = -5
         sliderYOff.maxValue = 5
         sliderYOff.floatValue = 0
+        
+        sliderIterations.minValue = 3
+        sliderIterations.maxValue = 50
+        sliderIterations.intValue = 3
 
         guard let mtkView = self.view as? MTKView else {
             print("View attached to GameViewController is not an MTKView")

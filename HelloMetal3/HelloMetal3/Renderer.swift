@@ -24,6 +24,10 @@ class Renderer: NSObject, MTKViewDelegate {
     var yMult: Float = 0
     var xOff: Float = 0
     var yOff: Float = 0
+    var iterations: Int = 10
+    
+    var doHSB: Int = -1
+    var doSmooth: Int = 1
     
     //    var depthStencilState: MTLDepthStencilState! = nil
     
@@ -176,6 +180,9 @@ class Renderer: NSObject, MTKViewDelegate {
         renderEncoder?.setFragmentBytes(&yMult, length: MemoryLayout<Float>.size, index: 1)
         renderEncoder?.setFragmentBytes(&xOff, length: MemoryLayout<Float>.size, index: 2)
         renderEncoder?.setFragmentBytes(&yOff, length: MemoryLayout<Float>.size, index: 3)
+        renderEncoder?.setFragmentBytes(&doHSB, length: MemoryLayout<Int>.size, index: 4)
+        renderEncoder?.setFragmentBytes(&doSmooth, length: MemoryLayout<Int>.size, index: 5)
+        renderEncoder?.setFragmentBytes(&iterations, length: MemoryLayout<Int>.size, index: 6)
         renderEncoder?.drawPrimitives(type: .triangle, vertexStart: 0, vertexCount: 36)
         renderEncoder?.endEncoding()
         
