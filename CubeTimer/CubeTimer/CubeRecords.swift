@@ -90,13 +90,39 @@ func clearRecords() {
 }
 
 func printRecords(){
+    /*
+     Num records: 0
+     CUBETIMER_NumRecords = 0
+     CUBETIMER_dateStarted(Function) = 2018-10-05 03:08:07 +0000
+     CUBETIMER_timeOptional(1) = 0.5750401
+     CUBETIMER_dateEndedOptional(1) = 2018-10-05 03:15:13 +0000
+     CUBETIMER_cubeType(Function) = 3x3
+     CUBETIMER_dateStartedOptional(1) = 2018-10-05 03:15:11 +0000
+     CUBETIMER_cubeTypeOptional(1) = 3x3
+     CUBETIMER_time(Function) = 0.760874
+     CUBETIMER_dateEnded(Function) = 2018-10-05 03:08:09 +0000
+     Time added: 0.720392
+     Num records: 1
+     CUBETIMER_NumRecords = 1
+     CUBETIMER_dateStarted(Function) = 2018-10-05 03:08:07 +0000
+     CUBETIMER_timeOptional(1) = 0.720392
+     CUBETIMER_dateEndedOptional(1) = 2018-10-05 03:20:57 +0000
+     CUBETIMER_cubeType(Function) = 3x3
+     CUBETIMER_cubeTypeOptional(1) = 3x3
+     CUBETIMER_dateStartedOptional(1) = 2018-10-05 03:20:55 +0000
+     CUBETIMER_time(Function) = 0.760874
+     CUBETIMER_dateEnded(Function) = 2018-10-05 03:08:09 +0000
+     */
     let num: Int = getNumRecords()
     for index in 0..<num {
-        printCubeRecord(getCubeRecord(index))
+//        printCubeRecord(getCubeRecord(index))
     }
 //    let num: Int = getNumRecords()
     print("Num records: \(num)")
-//    for (key, value) in UserDefaults.standard.dictionaryRepresentation() {
-//        print("\(key) = \(value)")
-//    }
+    
+    for (key, value) in UserDefaults.standard.dictionaryRepresentation() {
+        if key.hasPrefix("CUBETIMER_") {
+            print("\(key) = \(value)")
+        }
+    }
 }
