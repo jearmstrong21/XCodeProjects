@@ -13,6 +13,7 @@ class ViewController: NSViewController {
     @IBOutlet weak var cbxCubeType: NSComboBox!
     @IBOutlet weak var lblCubeType: NSTextField!
     @IBOutlet weak var lblCurrentTime: NSTextField!
+    @IBOutlet weak var tblRecords: NSTableView!
     
     @IBAction func btnStartTiming(_ sender: Any) {
         startTime = nil
@@ -29,6 +30,7 @@ class ViewController: NSViewController {
         let cube = cbxCubeType.stringValue
         if confirmDialog(question: "Add time?", text: "Selected cube: \(cube)\nTime: \(time)") {
             let cr: CubeRecord = addCubeRecord(type: cube, time: time, dateStarted: startTime, dateEnded: NSDate())
+            tblRecords.reloadData()
             print("Time added: \(time)")
             printRecords()
         }
@@ -50,9 +52,14 @@ class ViewController: NSViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        clearRecords()
+//        clearRecords()
         printRecords()
+        
+//        tblRecords.delegate = self
+        tblRecords.dataSource = self
+        tblRecords.reloadData()
 
+        cbxCubeType.removeAllItems()
         cbxCubeType.addItem(withObjectValue: Cube2x2)
         cbxCubeType.addItem(withObjectValue: Cube3x3)
         cbxCubeType.addItem(withObjectValue: Cube4x4)
@@ -80,3 +87,36 @@ class ViewController: NSViewController {
 
 }
 
+extension ViewController : NSTableViewDataSource {
+    
+    func numberOfRows(in tableView: NSTableView) -> Int {
+        return getNumRecords()
+    }
+    
+    func tableView(_ tableView: NSTableView, objectValueFor tableColumn: NSTableColumn?, row: Int) -> Any? {
+        let cr = getCubeRecord(row)
+        let df = DateFormatter()
+        df.dateStyle = .short
+        df.timeStyle = .none
+        let nf = NumberFormatter()
+        nf.allowsFloats = true
+        nf.numberStyle = .decimal
+        if tableColumn == tblRecords.tableColumns[0] {
+            return "\(cr.index!+1)"
+        }
+        if tableColumn == tblRecords.tableColumns[1] {
+            return "\(cr.cubeType!)"
+        }
+        if tableColumn == tblRecords.tableColumns[2] {
+            return nf.string(from: cr.time as NSNumber)
+        }
+        if tableColumn == tblRecords.tableColumns[3] {
+            return df.string(from: cr.dateStarted as Date)
+        }
+        if tableColumn == tblRecords.tableColumns[4] {
+            return df.string(from: cr.dateEnded as Date)
+        }
+        return "hi"
+    }
+    
+}

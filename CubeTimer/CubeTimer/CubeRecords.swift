@@ -52,40 +52,45 @@ func getNumRecords() -> Int {
 func getCubeRecord(_ index: Int) -> CubeRecord {
     let cr: CubeRecord = CubeRecord()
     cr.index = index
-    cr.cubeType = getForKey("\(CubeStrings.prefixCubeType)\(cr.index)") as! CubeType
-    cr.time = getForKey("\(CubeStrings.prefixTime)\(cr.index)") as! Float
-    cr.dateStarted = getForKey("\(CubeStrings.prefixDateStarted)\(cr.index)") as! NSDate
-    cr.dateEnded = getForKey("\(CubeStrings.prefixDateEnded)\(cr.index)") as! NSDate
+    cr.cubeType = getForKey("\(CubeStrings.prefixCubeType)\(cr.index!)") as! CubeType
+    cr.time = getForKey("\(CubeStrings.prefixTime)\(cr.index!)") as! Float
+    cr.dateStarted = getForKey("\(CubeStrings.prefixDateStarted)\(cr.index!)") as! NSDate
+    cr.dateEnded = getForKey("\(CubeStrings.prefixDateEnded)\(cr.index!)") as! NSDate
     return cr
 }
 
 func addCubeRecord(type: CubeType, time: Float, dateStarted: NSDate, dateEnded: NSDate) -> CubeRecord {
     let cr: CubeRecord = CubeRecord()
-    cr.index = getNumRecords() + 1
+    cr.index = getNumRecords()
     setDefaults(CubeStrings.numRecords, getNumRecords() + 1)
     cr.cubeType = type
     cr.time = time
     cr.dateStarted = dateStarted
     cr.dateEnded = dateEnded
-    setDefaults("\(CubeStrings.prefixCubeType)\(cr.index)", type)
-    setDefaults("\(CubeStrings.prefixTime)\(cr.index)", time)
-    setDefaults("\(CubeStrings.prefixDateStarted)\(cr.index)", dateStarted)
-    setDefaults("\(CubeStrings.prefixDateEnded)\(cr.index)", dateEnded)
+    setDefaults("\(CubeStrings.prefixCubeType)\(cr.index!)", type)
+    setDefaults("\(CubeStrings.prefixTime)\(cr.index!)", time)
+    setDefaults("\(CubeStrings.prefixDateStarted)\(cr.index!)", dateStarted)
+    setDefaults("\(CubeStrings.prefixDateEnded)\(cr.index!)", dateEnded)
     return cr
 }
 
 func printCubeRecord(_ cr: CubeRecord) {
-    print("\(cr.index) ... \(cr.cubeType) ... \(cr.time)")
+    print("\(cr.index!) ... \(cr.cubeType!) ... \(cr.time!)")
 }
 
 func clearRecords() {
-    let num: Int = getNumRecords()
-    UserDefaults.standard.removeObject(forKey: "\(CubeStrings.numRecords)")
-    for index in 0..<num {
-        UserDefaults.standard.removeObject(forKey: "\(CubeStrings.prefixCubeType)\(index)")
-        UserDefaults.standard.removeObject(forKey: "\(CubeStrings.prefixTime)\(index)")
-        UserDefaults.standard.removeObject(forKey: "\(CubeStrings.prefixDateStarted)\(index)")
-        UserDefaults.standard.removeObject(forKey: "\(CubeStrings.prefixDateEnded)\(index)")
+//    let num: Int = getNumRecords()
+//    UserDefaults.standard.removeObject(forKey: "\(CubeStrings.numRecords)")
+//    for index in 0..<num {
+//        UserDefaults.standard.removeObject(forKey: "\(CubeStrings.prefixCubeType)\(index)")
+//        UserDefaults.standard.removeObject(forKey: "\(CubeStrings.prefixTime)\(index)")
+//        UserDefaults.standard.removeObject(forKey: "\(CubeStrings.prefixDateStarted)\(index)")
+//        UserDefaults.standard.removeObject(forKey: "\(CubeStrings.prefixDateEnded)\(index)")
+//    }
+    for (key, value) in UserDefaults.standard.dictionaryRepresentation() {
+        if key.hasPrefix("CUBETIMER_") {
+            UserDefaults.standard.removeObject(forKey: key)
+        }
     }
 }
 
@@ -113,16 +118,17 @@ func printRecords(){
      CUBETIMER_time(Function) = 0.760874
      CUBETIMER_dateEnded(Function) = 2018-10-05 03:08:09 +0000
      */
+    //Unwrap the \(index) into \(index?) or \(index!)
     let num: Int = getNumRecords()
     for index in 0..<num {
-//        printCubeRecord(getCubeRecord(index))
+        printCubeRecord(getCubeRecord(index))
     }
 //    let num: Int = getNumRecords()
-    print("Num records: \(num)")
-    
-    for (key, value) in UserDefaults.standard.dictionaryRepresentation() {
-        if key.hasPrefix("CUBETIMER_") {
-            print("\(key) = \(value)")
-        }
-    }
+//    print("Num records: \(num)")
+//
+//    for (key, value) in UserDefaults.standard.dictionaryRepresentation() {
+//        if key.hasPrefix("CUBETIMER_") {
+//            print("\(key) = \(value)")
+//        }
+//    }
 }
