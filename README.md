@@ -1,3 +1,3 @@
-# XCodeProjects
-My XCode projects
+# XcodeProjects
+My Xcode projects
 Most of them are C++/OpenGL/GLFW.
