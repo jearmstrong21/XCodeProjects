@@ -38,6 +38,12 @@ struct Plane {
     Plane(float3 p,float3 n){pos=p;normal=normalize(n);}
 };
 
+struct AABB {
+    float3 mi;
+    float3 ma;
+    AABB(float3 i,float3 a){mi=i;ma=a;}
+};
+
 struct RayHit {
     float t;
     float3 normal;
@@ -66,19 +72,88 @@ RayHit iPlane(Plane plane,Ray ray){
     return RayHit(t,plane.normal);
 }
 
+#define swap(a,b)  {float DEFINED_TEMP=a;a=b;b=DEFINED_TEMP;}
+
+RayHit iAABB(AABB aabb,Ray ray){
+    float3 mi=aabb.mi;
+    float3 ma=aabb.ma;
+    float tmin=(mi.x-ray.pos.x)/ray.dir.x;
+    float tmax=(ma.x-ray.pos.x)/ray.dir.x;
+    
+    if(tmin>tmax)swap(tmin,tmax);
+    
+    float tymin=(mi.y-ray.pos.y)/ray.dir.y;
+    float tymax=(ma.y-ray.pos.y)/ray.dir.y;
+    
+    if(tymin>tymax)swap(tymin,tymax);
+    
+    if(tmin>tymax||tymin>tmax){
+        return NO_HIT;
+    }
+    
+    if(tymin>tmin){
+        tmin=tymin;
+    }
+    
+    if(tymax<tmax){
+        tmax=tymax;
+    }
+    
+    float tzmin=(mi.z-ray.pos.z)/ray.dir.z;
+    float tzmax=(ma.z-ray.pos.z)/ray.dir.z;
+    
+    if(tzmin>tzmax)swap(tzmin,tzmax);
+    
+    if(tmin>tzmax||tzmin>tmax){
+        return NO_HIT;
+    }
+    
+    if(tzmin>tmin){
+        tmin=tzmin;
+    }
+    
+    if(tzmax<tmax){
+        tmax=tzmax;
+    }
+    
+    float t=tmin;
+    
+    if(t<0){
+        t=tmax;
+        if(t<0)return NO_HIT;
+    }
+    
+    RayHit hit=NO_HIT;
+    hit.hit=true;
+    hit.t=t;
+    
+    float3 end=ray.pos+(hit.t-0.0001f)*ray.dir;
+    if(end.x<mi.x)hit.normal=float3(-1,0,0);
+    if(end.x>ma.x)hit.normal=float3( 1,0,0);
+    if(end.y<mi.y)hit.normal=float3(0,-1,0);
+    if(end.y>ma.y)hit.normal=float3(0, 1,0);
+    if(end.z<mi.z)hit.normal=float3(0,0,-1);
+    if(end.z>ma.z)hit.normal=float3(0,0, 1);
+    return hit;
+}
+
 RayHit minHit(RayHit a,RayHit b){
     if(!a.hit)return b;
     if(!b.hit)return a;
     if(a.t<b.t)return a;
     return b;
 }
-
 RayHit minHit(RayHit a,RayHit b,RayHit c){
     return minHit(a,minHit(b,c));
 }
-
 RayHit minHit(RayHit a,RayHit b,RayHit c,RayHit d){
     return minHit(a,minHit(b,c,d));
+}
+RayHit minHit(RayHit a,RayHit b,RayHit c,RayHit d,RayHit e){
+    return minHit(a,minHit(b,c,d,e));
+}
+RayHit minHit(RayHit a,RayHit b,RayHit c,RayHit d,RayHit e,RayHit f){
+    return minHit(a,minHit(b,c,d,e,f));
 }
 
 float3 phong(float3 ambient,float3 diffuse,float3 specular,float shininess,float3 camPos,float3 pos,float3 normal,float3 light){
@@ -87,17 +162,34 @@ float3 phong(float3 ambient,float3 diffuse,float3 specular,float shininess,float
     return ambient+diffuseMult*diffuse+specularMult*specular;
 }
 
+float3 clampColor(float3 c){
+    if(all(c==clamp(c,float3(0),float3(1))))return c;
+    c/=max(c.x,max(c.y,c.z));
+//    c/=length(c);
+    return c;
+}
+
 fragment float4 fragmentShader(VertexOut vout [[stage_in]], const device float& width [[buffer(0)]], const device float& height [[buffer(1)]], const device float& time [[buffer(2)]]){
     float2 uv = vout.uv;
     uv*=2;
     uv-=1;
     uv.x*=width/height;
     
-    float3 camPos = float3(4*cos(time*.3),2,3*sin(time*.6));
+    float3 camPos = float3(4*cos(time*.3),2+cos(time),3*sin(time*.3));
     float3 lookAt = float3(0,0,0);
     float zoom = 1;
     
-    float3 lightPos = float3(8,3,5);
+    Sphere sphere1=Sphere(float3(0,2+1.5*sin(time),0),0.5);lookAt=sphere1.pos;
+    Plane plane1=Plane(float3(0,0,0),float3(0,1,0));
+    Plane plane2=Plane(float3(-5,0,0),float3(1,0,0));
+    Plane plane3=Plane(float3(0,0,-5),float3(0,0,1));
+    AABB aabb1=AABB(float3(-.1,0,-.1),float3(0.1,5,0.1));
+    AABB aabb2=AABB(float3(-1.4,0,-.7),float3(-.6,1,0.3));
+    
+#define intersectScene(r) (minHit(iSphere(sphere1,r),iPlane(plane1,r),iPlane(plane2,r),iPlane(plane3,r),iAABB(aabb1,r),iAABB(aabb2,r)))
+    
+    float3 lightPos = float3(8,5,2);
+//    camPos=lightPos;
 
     Ray ray;
     ray.pos=camPos;
@@ -110,20 +202,23 @@ fragment float4 fragmentShader(VertexOut vout [[stage_in]], const device float& 
     float3 i=c+uv.x*r+uv.y*u;
     ray.dir=normalize(i-camPos);
     
-    Sphere sphere=Sphere(float3(0,0,0),1);
-    Plane plane1=Plane(float3(0,0,0),float3(0,1,0));
-    Plane plane2=Plane(float3(-5,0,0),float3(1,0,0));
-    Plane plane3=Plane(float3(0,0,-5),float3(0,0,1));
-    RayHit hit=minHit(iSphere(sphere,ray),iPlane(plane1,ray),iPlane(plane2,ray),iPlane(plane3,ray));
+    RayHit hit=intersectScene(ray);
+    float3 rayEnd=ray.pos+hit.t*ray.dir;
     
-    float3 ambient=float3(0);
-    float3 diffuse=float3(0.75);
-    float3 specular=float3(0.25);
-    float shininess=100;
+    float3 ambient=0.3*float3(1,1,1);
+    float3 diffuse=0.5*float3(1,0,0);
+    float3 specular=float3(1,1,0);
+    float shininess=400;
     
-    float3 phongRes=phong(ambient,diffuse,specular,shininess,camPos,ray.pos+hit.t*ray.dir,hit.normal,lightPos);
-//    return float4(uv,0,1);
-    if(hit.hit)return float4(phongRes,1);
+    float3 phongRes=phong(ambient,diffuse,specular,shininess,camPos,rayEnd,hit.normal,lightPos);
+    Ray shadowRay;
+    shadowRay.pos=lightPos;
+    shadowRay.dir=normalize(rayEnd-lightPos);
+    shadowRay.pos+=0.0001*shadowRay.dir;
+    RayHit shadowHit=intersectScene(shadowRay);
+    float3 shadowEnd=shadowRay.pos+shadowHit.t*shadowRay.dir;
+    if(abs(shadowHit.t-length(rayEnd-lightPos))>0.001)phongRes=ambient;
+//    if(true)return 0.05f*float4(shadowHit.t);
+    if(hit.hit)return float4(clampColor(phongRes),1);
     else return float4(ambient,1);
-//    return float4(.5*hit.normal+.5,1);
 }
