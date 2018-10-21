@@ -15,6 +15,8 @@ class ViewController: NSViewController {
     @IBOutlet weak var lblCurrentTime: NSTextField!
     @IBOutlet weak var tblRecords: NSTableView!
     
+    var timingNow: Bool = false
+    
     @IBAction func btnStartTiming(_ sender: Any) {
         startTime = nil
         timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: (#selector(ViewController.updateTimer)),userInfo: nil,repeats: true)
@@ -54,6 +56,7 @@ class ViewController: NSViewController {
         super.viewDidLoad()
 //        clearRecords()
         printRecords()
+        //Add pause button
         
 //        tblRecords.delegate = self
         tblRecords.dataSource = self
