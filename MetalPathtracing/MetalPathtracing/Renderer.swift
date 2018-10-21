@@ -31,8 +31,11 @@ class Renderer: NSObject, MTKViewDelegate {
     var windowH: Float
     
     var floatSize: Int
+    var   intSize: Int
     
     let startTime: NSDate = NSDate()
+    
+    var frames: Int = 0
     
     var vertexData:[Float] = [
         -1,-1,0,
@@ -61,6 +64,7 @@ class Renderer: NSObject, MTKViewDelegate {
         metalLayer = metalKitView.layer as! CAMetalLayer
         
         floatSize=MemoryLayout<Float>.size
+        intSize=MemoryLayout<Int>.size
         
         let vertSize = vertexData.count*floatSize
         vertexBuffer = device.makeBuffer(bytes: vertexData, length: vertSize, options: [])
@@ -91,6 +95,7 @@ class Renderer: NSObject, MTKViewDelegate {
 
 
     func draw(in view: MTKView) {
+        frames += 1
         var currentTime = Float(NSDate().timeIntervalSince(startTime as Date))
         
         let renderPassDescriptor = MTLRenderPassDescriptor()
@@ -108,6 +113,7 @@ class Renderer: NSObject, MTKViewDelegate {
         renderEncoder?.setFragmentBytes(&windowW    , length: floatSize, index: 0)
         renderEncoder?.setFragmentBytes(&windowH    , length: floatSize, index: 1)
         renderEncoder?.setFragmentBytes(&currentTime, length: floatSize, index: 2)
+        renderEncoder?.setFragmentBytes(&frames     , length:   intSize, index: 3)
         renderEncoder?.drawPrimitives(type: .triangle, vertexStart: 0, vertexCount: 12)
         renderEncoder?.endEncoding()
         

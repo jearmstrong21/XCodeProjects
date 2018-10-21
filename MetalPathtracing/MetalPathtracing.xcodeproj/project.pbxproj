@@ -12,6 +12,8 @@
 		5A3ED814217058D9006FD630 /* Renderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3ED813217058D9006FD630 /* Renderer.swift */; };
 		5A3ED819217058DC006FD630 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A3ED818217058DC006FD630 /* Assets.xcassets */; };
 		5A3ED81C217058DC006FD630 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5A3ED81A217058DC006FD630 /* Main.storyboard */; };
+		5A5DE9B6217CE0EE000BF726 /* loki_header.metal in Sources */ = {isa = PBXBuildFile; fileRef = 5A5DE9B4217CE0EE000BF726 /* loki_header.metal */; };
+		5A5DE9B7217CE0EE000BF726 /* loki.metal in Sources */ = {isa = PBXBuildFile; fileRef = 5A5DE9B5217CE0EE000BF726 /* loki.metal */; };
 		5AA5011A2176354A008BB0C9 /* Shaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = 5AA501192176354A008BB0C9 /* Shaders.metal */; };
 /* End PBXBuildFile section */
 
@@ -24,6 +26,8 @@
 		5A3ED81B217058DC006FD630 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5A3ED81D217058DC006FD630 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5A3ED81E217058DC006FD630 /* MetalPathtracing.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MetalPathtracing.entitlements; sourceTree = "<group>"; };
+		5A5DE9B4217CE0EE000BF726 /* loki_header.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = loki_header.metal; sourceTree = "<group>"; };
+		5A5DE9B5217CE0EE000BF726 /* loki.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = loki.metal; sourceTree = "<group>"; };
 		5AA501192176354A008BB0C9 /* Shaders.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Shaders.metal; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -57,6 +61,8 @@
 		5A3ED80E217058D9006FD630 /* MetalPathtracing */ = {
 			isa = PBXGroup;
 			children = (
+				5A5DE9B4217CE0EE000BF726 /* loki_header.metal */,
+				5A5DE9B5217CE0EE000BF726 /* loki.metal */,
 				5A3ED80F217058D9006FD630 /* AppDelegate.swift */,
 				5A3ED811217058D9006FD630 /* GameViewController.swift */,
 				5A3ED813217058D9006FD630 /* Renderer.swift */,
@@ -140,8 +146,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				5AA5011A2176354A008BB0C9 /* Shaders.metal in Sources */,
+				5A5DE9B6217CE0EE000BF726 /* loki_header.metal in Sources */,
 				5A3ED812217058D9006FD630 /* GameViewController.swift in Sources */,
 				5A3ED814217058D9006FD630 /* Renderer.swift in Sources */,
+				5A5DE9B7217CE0EE000BF726 /* loki.metal in Sources */,
 				5A3ED810217058D9006FD630 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

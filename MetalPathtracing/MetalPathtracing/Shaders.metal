@@ -9,6 +9,10 @@
 #include <metal_stdlib>
 using namespace metal;
 
+#include "loki_header.metal"
+
+#define PI 3.14159265359
+
 struct VertexOut {
     float4 position [[position]];
     float2 uv;
@@ -156,10 +160,10 @@ RayHit minHit(RayHit a,RayHit b,RayHit c,RayHit d,RayHit e,RayHit f){
     return minHit(a,minHit(b,c,d,e,f));
 }
 
-float3 phong(float3 ambient,float3 diffuse,float3 specular,float shininess,float3 camPos,float3 pos,float3 normal,float3 light){
+float3 phong(float3 diffuse,float3 specular,float shininess,float3 camPos,float3 pos,float3 normal,float3 light){
     float diffuseMult=clamp(dot(normal,normalize(light-pos)),0.0f,1.0f);
     float specularMult=clamp( pow(  dot(normalize(light-pos),reflect(normalize(pos-camPos),normal))  , shininess)  ,0.0f, 1.0f);
-    return ambient+diffuseMult*diffuse+specularMult*specular;
+    return diffuseMult*diffuse+specularMult*specular;
 }
 
 float3 clampColor(float3 c){
@@ -169,24 +173,58 @@ float3 clampColor(float3 c){
     return c;
 }
 
-fragment float4 fragmentShader(VertexOut vout [[stage_in]], const device float& width [[buffer(0)]], const device float& height [[buffer(1)]], const device float& time [[buffer(2)]]){
+fragment float4 fragmentShader(VertexOut vout [[stage_in]], const device float& width [[buffer(0)]], const device float& height [[buffer(1)]], const device float& time [[buffer(2)]],const device int& frames [[buffer(3)]]){
+    int seedX=(int)(vout.uv.x*width);
+    int seedY=(int)(vout.uv.y*height);
+    Loki rng=Loki(seedX,seedY,frames);
     float2 uv = vout.uv;
     uv*=2;
     uv-=1;
     uv.x*=width/height;
     
-    float3 camPos = float3(4*cos(time*.3),2+cos(time),3*sin(time*.3));
+    float3 camPos = float3(4*cos(time*.3),1,3*sin(time*.3));
     float3 lookAt = float3(0,0,0);
     float zoom = 1;
     
+#define SCENE 4
+    
+#if SCENE == 1
+    //Scene 1
     Sphere sphere1=Sphere(float3(0,2+1.5*sin(time),0),0.5);lookAt=sphere1.pos;
     Plane plane1=Plane(float3(0,0,0),float3(0,1,0));
     Plane plane2=Plane(float3(-5,0,0),float3(1,0,0));
     Plane plane3=Plane(float3(0,0,-5),float3(0,0,1));
-    AABB aabb1=AABB(float3(-.1,0,-.1),float3(0.1,5,0.1));
+    AABB aabb1=AABB(float3(-.1,0,-.1),float3(0.1,3.5,0.1));
+    AABB aabb2=AABB(float3(-1.4,0,-.7),float3(-.6,1,0.3));
+
+#define intersectScene(r) (minHit(iSphere(sphere1,r),iPlane(plane1,r),iPlane(plane2,r),iPlane(plane3,r),iAABB(aabb1,r),iAABB(aabb2,r)))
+#endif
+    
+#if SCENE == 2
+    //Scene 2
+    Sphere sphere1=Sphere(float3(0,2,0),1);
+    Plane plane1=Plane(float3(0,0,0),float3(0,1,0));
+
+#define intersectScene(r) (minHit(iSphere(sphere1,r),iPlane(plane1,r)))
+#endif
+
+#if SCENE == 3
+    //Scene 3
+    AABB aabb1=AABB(float3(-.3,0,-.3),float3(.3,1,.3));
+    Plane plane1=Plane(float3(0,0,0),float3(0,1,0));
+
+#define intersectScene(r) (minHit(iAABB(aabb1,r),iPlane(plane1,r)))
+#endif
+    
+#if SCENE == 4
+    //Scene 4
+    Sphere sphere1=Sphere(float3(0,2+1.5*sin(time),0),0.5);lookAt=sphere1.pos;
+    Plane plane1=Plane(float3(0,0,0),float3(0,1,0));
+    AABB aabb1=AABB(float3(-.1,0,-.1),float3(0.1,3.5,0.1));
     AABB aabb2=AABB(float3(-1.4,0,-.7),float3(-.6,1,0.3));
     
-#define intersectScene(r) (minHit(iSphere(sphere1,r),iPlane(plane1,r),iPlane(plane2,r),iPlane(plane3,r),iAABB(aabb1,r),iAABB(aabb2,r)))
+#define intersectScene(r) (minHit(iSphere(sphere1,r),iPlane(plane1,r),iAABB(aabb1,r),iAABB(aabb2,r)))
+#endif
     
     float3 lightPos = float3(8,5,2);
 //    camPos=lightPos;
@@ -205,19 +243,50 @@ fragment float4 fragmentShader(VertexOut vout [[stage_in]], const device float& 
     RayHit hit=intersectScene(ray);
     float3 rayEnd=ray.pos+hit.t*ray.dir;
     
-    float3 ambient=0.3*float3(1,1,1);
+    float3 ambient=float3(0,0,1);
     float3 diffuse=0.5*float3(1,0,0);
-    float3 specular=float3(1,1,0);
+    float3 specular=0.3*float3(1,1,0);
     float shininess=400;
     
-    float3 phongRes=phong(ambient,diffuse,specular,shininess,camPos,rayEnd,hit.normal,lightPos);
-    Ray shadowRay;
-    shadowRay.pos=lightPos;
-    shadowRay.dir=normalize(rayEnd-lightPos);
-    shadowRay.pos+=0.0001*shadowRay.dir;
-    RayHit shadowHit=intersectScene(shadowRay);
-    float3 shadowEnd=shadowRay.pos+shadowHit.t*shadowRay.dir;
-    if(abs(shadowHit.t-length(rayEnd-lightPos))>0.001)phongRes=ambient;
+    float3 phongRes=phong(diffuse,specular,shininess,camPos,rayEnd,hit.normal,lightPos);
+    
+    
+    float3 normal=hit.normal;
+    //Ambient occlusion
+#define NUM_AO_SAMPLES 100.0f
+    float ao=0;
+    {
+        float3 w=normal;
+        float3 v=cross(w,float3(0.0072,1,0.0034));
+        v=normalize(v);
+        float3 u=cross(v,w);
+        for(int i=0;i<NUM_AO_SAMPLES;i++){
+            float theta=rng.rand()*2*PI;
+            float phi=rng.rand()*PI;
+            float3 sampled=float3(sin(theta)*cos(phi),sin(theta)*sin(phi),cos(theta));
+            float3 dir=normalize(sampled.x*u+sampled.y*v+sampled.z*w);// xyz to uvw
+    //        float3 dir=sampled;
+            Ray aoRay;
+            aoRay.pos=rayEnd+dir*0.0001;
+            aoRay.dir=dir;
+            RayHit aoHit=intersectScene(aoRay);
+            if(!aoHit.hit){
+                ao++;
+            }
+        }
+    }
+    ao/=NUM_AO_SAMPLES;
+    phongRes+=ambient*ao;
+    phongRes=float3(ao);
+    
+    //Shadows
+//    Ray shadowRay;
+//    shadowRay.pos=lightPos;
+//    shadowRay.dir=normalize(rayEnd-lightPos);
+//    shadowRay.pos+=0.0001*shadowRay.dir;
+//    RayHit shadowHit=intersectScene(shadowRay);
+//    float3 shadowEnd=shadowRay.pos+shadowHit.t*shadowRay.dir;
+//    if(abs(shadowHit.t-length(rayEnd-lightPos))>0.001)phongRes=ambient;
 //    if(true)return 0.05f*float4(shadowHit.t);
     if(hit.hit)return float4(clampColor(phongRes),1);
     else return float4(ambient,1);
