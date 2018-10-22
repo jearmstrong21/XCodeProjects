@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5AE731BB217CFCCB00BC5A83 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE731BA217CFCCB00BC5A83 /* main.swift */; };
-		5AE731C4217D2E8600BC5A83 /* grayscaleKernel.metal in Sources */ = {isa = PBXBuildFile; fileRef = 5AE731C3217D2E8600BC5A83 /* grayscaleKernel.metal */; };
+		5AE731C4217D2E8600BC5A83 /* imageKernel.metal in Sources */ = {isa = PBXBuildFile; fileRef = 5AE731C3217D2E8600BC5A83 /* imageKernel.metal */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -26,8 +26,7 @@
 /* Begin PBXFileReference section */
 		5AE731B7217CFCCB00BC5A83 /* MetalComputePathtracing */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = MetalComputePathtracing; sourceTree = BUILT_PRODUCTS_DIR; };
 		5AE731BA217CFCCB00BC5A83 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
-		5AE731C3217D2E8600BC5A83 /* grayscaleKernel.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = grayscaleKernel.metal; sourceTree = "<group>"; };
-		5AE731C5217D309F00BC5A83 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5AE731C3217D2E8600BC5A83 /* imageKernel.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = imageKernel.metal; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,8 +60,7 @@
 			isa = PBXGroup;
 			children = (
 				5AE731BA217CFCCB00BC5A83 /* main.swift */,
-				5AE731C3217D2E8600BC5A83 /* grayscaleKernel.metal */,
-				5AE731C5217D309F00BC5A83 /* Assets.xcassets */,
+				5AE731C3217D2E8600BC5A83 /* imageKernel.metal */,
 			);
 			path = MetalComputePathtracing;
 			sourceTree = "<group>";
@@ -124,7 +122,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5AE731C4217D2E8600BC5A83 /* grayscaleKernel.metal in Sources */,
+				5AE731C4217D2E8600BC5A83 /* imageKernel.metal in Sources */,
 				5AE731BB217CFCCB00BC5A83 /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

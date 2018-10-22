@@ -9,6 +9,7 @@
 import Foundation
 import Metal
 import MetalKit
+import MetalPerformanceShaders
 import CoreGraphics
 import Accelerate
 
@@ -19,11 +20,11 @@ var device: MTLDevice! = MTLCreateSystemDefaultDevice()
 
 var library: MTLLibrary! = device.makeDefaultLibrary()
 
-var grayscaleKernel = library?.makeFunction(name: "grayscaleKernel")
+var imageKernel = library?.makeFunction(name: "imageKernel")
 
 var textureLoader = MTKTextureLoader(device: device)
 //var inTexture = try! textureLoader.newTexture(name: "flower", scaleFactor: 1, bundle: Bundle.main, options: [:])
-var inTexture = try! textureLoader.newTexture(URL: URL(fileURLWithPath: "flower.jpeg"), options: [:])
+var inTexture = try! textureLoader.newTexture(URL: URL(fileURLWithPath: "peppers.jpeg"), options: [:])
 var texWidth=inTexture.width
 var texHeight=inTexture.height
 var outTextureDescriptor: MTLTextureDescriptor = MTLTextureDescriptor()
@@ -38,14 +39,14 @@ var outTexture = device.makeTexture(descriptor: outTextureDescriptor)
 let commandQueue = device.makeCommandQueue()
 let commandBuffer = commandQueue?.makeCommandBuffer()
 let encoder = commandBuffer?.makeComputeCommandEncoder()
-let pipelineGrayscale = try! device.makeComputePipelineState(function: grayscaleKernel!)
+let pipelineGrayscale = try! device.makeComputePipelineState(function: imageKernel!)
 
 encoder?.setComputePipelineState(pipelineGrayscale)
 
 encoder?.setTexture(inTexture , index: 0)
 encoder?.setTexture(outTexture, index: 1)
 
-var threadgroupSize = MTLSizeMake(16, 16, 1)
+var threadgroupSize = MTLSizeMake(32, 32, 1)
 var threadgroupCount = MTLSizeMake(1,1,1)
 threadgroupCount.width = (texWidth+threadgroupSize.width-1)/threadgroupSize.width
 threadgroupCount.height = (texHeight+threadgroupSize.height-1)/threadgroupSize.height
@@ -122,5 +123,5 @@ func writeTexture(_ texture: MTLTexture, url: URL) {
     }
 }
 
-writeTexture(outTexture!, url: URL(fileURLWithPath: "grayscale.png"))
+writeTexture(outTexture!, url: URL(fileURLWithPath: "processed.png"))
 
